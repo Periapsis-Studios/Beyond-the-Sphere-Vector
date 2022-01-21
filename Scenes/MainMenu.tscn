@@ -41,7 +41,7 @@ __meta__ = {
 [node name="NewGame" type="Button" parent="."]
 margin_left = 81.0
 margin_top = 131.0
-margin_right = 334.0
+margin_right = 362.0
 margin_bottom = 210.0
 custom_fonts/font = ExtResource( 3 )
 custom_styles/hover = SubResource( 1 )

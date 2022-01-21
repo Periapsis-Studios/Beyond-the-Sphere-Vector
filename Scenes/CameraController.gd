@@ -1,4 +1,4 @@
-extends Node2D
+extends Camera2D
 
 
 # Declare member variables here. Examples:
@@ -15,12 +15,11 @@ func _ready():
 #func _process(delta):
 #	pass
 
-static func getPortType():
-	return "Russian"
-
-static func getNode(node):
-	if [node == 1]:
-		return 56.5
-	else:
-		printerr("Failed while getting Soyuz node with number " + node)
-		return -1
+func _input(event):
+	if event.is_action_pressed("zoom_in"):
+		self.zoom.x -= 0.1
+		self.zoom.y -= 0.1
+		
+	if event.is_action_pressed("zoom_out"):
+		self.zoom.x += 0.1
+		self.zoom.y += 0.1

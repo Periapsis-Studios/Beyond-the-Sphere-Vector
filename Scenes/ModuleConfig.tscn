@@ -1,0 +1,22 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Textures/UI/ModuleSelectFrame.png" type="Texture" id=1]
+
+[node name="ModuleConfig" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = 4
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer"]
+margin_right = 4267.0
+margin_bottom = 2500.0
+rect_scale = Vector2( 0.24, 0.24 )
+texture = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}

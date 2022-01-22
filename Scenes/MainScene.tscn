@@ -1,19 +1,49 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Scripts/MainSceneControl.gd" type="Script" id=1]
 [ext_resource path="res://Scenes/CameraController.gd" type="Script" id=2]
 [ext_resource path="res://Scenes/EarthUI.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Scenes/Modules/Soyuz.tscn" type="PackedScene" id=4]
 
 [node name="MainScene" type="Node2D"]
 script = ExtResource( 1 )
-
-[node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2( 512, 300 )
-current = true
-script = ExtResource( 2 )
 
 [node name="EarthUI" parent="." instance=ExtResource( 3 )]
 margin_left = 345.0
 margin_top = 325.0
 margin_right = 345.0
 margin_bottom = 325.0
+
+[node name="Station" type="Node2D" parent="."]
+
+[node name="Module" parent="Station" instance=ExtResource( 4 )]
+position = Vector2( 515, 300 )
+docked = true
+built = true
+
+[node name="Player" type="Camera2D" parent="."]
+position = Vector2( 512, 300 )
+current = true
+script = ExtResource( 2 )
+
+[node name="BuildMenu" type="CanvasLayer" parent="Player"]
+
+[node name="BuildMenu" type="Control" parent="Player/BuildMenu"]
+visible = false
+margin_right = 40.0
+margin_bottom = 40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Soyuz" type="Button" parent="Player/BuildMenu/BuildMenu"]
+margin_left = 483.0
+margin_top = 315.0
+margin_right = 532.0
+margin_bottom = 335.0
+text = "Soyuz"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[connection signal="pressed" from="Player/BuildMenu/BuildMenu/Soyuz" to="Player" method="_on_Soyuz_pressed"]

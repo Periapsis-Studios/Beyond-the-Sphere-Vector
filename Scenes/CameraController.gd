@@ -1,19 +1,15 @@
 extends Camera2D
 
-
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
-
-
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
+onready var BuildMenu = $BuildMenu/BuildMenu
+onready var Station = get_parent().get_node("Station")
+var selected_docking_port
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
+func build_menu(docking_port):
+	if BuildMenu.visible==false:
+		BuildMenu.visible=true
+		selected_docking_port=docking_port
+		BuildMenu.rect_position=docking_port.global_position*zoom.x
 
 func _input(event):
 	if event.is_action_pressed("zoom_in"):
@@ -23,3 +19,11 @@ func _input(event):
 	if event.is_action_pressed("zoom_out"):
 		self.zoom.x += 0.1
 		self.zoom.y += 0.1
+
+
+func _on_Soyuz_pressed():
+	var soyuz_scene = load("res://Scenes/Modules/Soyuz.tscn")
+	var soyuz = soyuz_scene.instance()
+	soyuz.target_position=selected_docking_port.position
+	soyuz.position=selected_docking_port.position+Vector2(-1000,0).rotated(selected_docking_port.global_rotation)
+	Station.add_child(soyuz)

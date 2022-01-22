@@ -10,30 +10,10 @@ onready var camera = get_node("Camera2D")
 
 var docking_collide = false
 
-# Called when the node enters the scene tree for the first time.
 func _ready():
-	var menu_scene = load("res://Scenes/MainMenu.tscn")
-	
-	var menu_node = menu_scene.instance()
-	add_child(menu_node)
-	
-	curr_scene = "Menu"
-	
-	var newGame = menu_node.get_child(2)
-	newGame.connect("pressed", self, "launch")
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
+	launch()
 
 func launch():
-	var game_scene = load("res://Scenes/EarthUI.tscn")
-	
-	var game_node = game_scene.instance()
-	add_child(game_node)
-	remove_child(get_node("MainMenu"))
-	
 	dock(Vector2(0, 0), "up", "Russian", "res://Scenes/Prefabs/Soyuz.tscn", 1)
 
 func dock(port_pos, port_dir, port_type, module_path, node):

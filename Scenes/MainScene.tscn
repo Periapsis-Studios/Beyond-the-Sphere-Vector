@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://Scripts/MainSceneControl.gd" type="Script" id=1]
 [ext_resource path="res://Scenes/CameraController.gd" type="Script" id=2]
+[ext_resource path="res://Scenes/EarthUI.tscn" type="PackedScene" id=3]
 
 [node name="MainScene" type="Node2D"]
 script = ExtResource( 1 )
@@ -10,3 +11,9 @@ script = ExtResource( 1 )
 position = Vector2( 512, 300 )
 current = true
 script = ExtResource( 2 )
+
+[node name="EarthUI" parent="." instance=ExtResource( 3 )]
+margin_left = 345.0
+margin_top = 325.0
+margin_right = 345.0
+margin_bottom = 325.0

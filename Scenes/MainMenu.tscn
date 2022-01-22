@@ -96,8 +96,13 @@ custom_styles/disabled = SubResource( 4 )
 custom_styles/normal = SubResource( 5 )
 text = "Quit"
 
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2( 512, 300 )
+current = true
+
 [connection signal="mouse_entered" from="NewGame" to="." method="_on_NewGame_mouse_entered"]
 [connection signal="mouse_exited" from="NewGame" to="." method="_on_NewGame_mouse_exited"]
+[connection signal="pressed" from="NewGame" to="." method="_on_NewGame_pressed"]
 [connection signal="mouse_entered" from="LoadGame" to="." method="_on_LoadGame_mouse_entered"]
 [connection signal="mouse_exited" from="LoadGame" to="." method="_on_LoadGame_mouse_exited"]
 [connection signal="mouse_entered" from="Settings" to="." method="_on_Settings_mouse_entered"]

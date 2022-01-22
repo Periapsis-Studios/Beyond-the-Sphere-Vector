@@ -19,13 +19,13 @@ position = Vector2( -9, 0 )
 
 [node name="DockingPort" parent="DockingPorts" index="0" instance=ExtResource( 3 )]
 position = Vector2( 98, 0 )
-rotation = 1.5708
 
 [node name="TextureButton" type="TextureButton" parent="DockingPorts/DockingPort" index="0"]
-margin_left = -18.0
-margin_top = -14.0
-margin_right = 319.0
-margin_bottom = 132.0
+margin_left = 14.0
+margin_top = -18.0
+margin_right = 351.0
+margin_bottom = 128.0
+rect_rotation = 90.0
 rect_scale = Vector2( 0.105, 0.105 )
 texture_normal = ExtResource( 4 )
 __meta__ = {

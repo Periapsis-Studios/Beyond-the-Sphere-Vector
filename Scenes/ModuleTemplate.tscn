@@ -9,6 +9,4 @@ script = ExtResource( 1 )
 
 [node name="DockingPorts" type="Node2D" parent="."]
 
-[node name="BrakingTween" type="Tween" parent="."]
-
-[connection signal="tween_completed" from="BrakingTween" to="." method="_on_BrakingTween_tween_completed"]
+[node name="DockTween" type="Tween" parent="."]

@@ -29,9 +29,43 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="DockingPort2" parent="DockingPorts" index="1" instance=ExtResource( 3 )]
+position = Vector2( -48, 129 )
+rotation = 1.5708
+
+[node name="TextureButton" type="TextureButton" parent="DockingPorts/DockingPort2" index="0"]
+margin_left = 11.0
+margin_top = -18.0
+margin_right = 348.0
+margin_bottom = 128.0
+rect_rotation = 90.0
+rect_scale = Vector2( 0.105, 0.105 )
+texture_normal = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="DockingPort3" parent="DockingPorts" index="2" instance=ExtResource( 3 )]
+position = Vector2( -49, -132 )
+rotation = -1.57079
+
+[node name="TextureButton" type="TextureButton" parent="DockingPorts/DockingPort3" index="0"]
+margin_left = 11.0
+margin_top = -18.0
+margin_right = 348.0
+margin_bottom = 128.0
+rect_rotation = 90.0
+rect_scale = Vector2( 0.105, 0.105 )
+texture_normal = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="Sprite" type="Sprite" parent="." index="3"]
 rotation = 1.5708
 scale = Vector2( 0.1, 0.1 )
 texture = ExtResource( 2 )
 
 [connection signal="pressed" from="DockingPorts/DockingPort/TextureButton" to="DockingPorts/DockingPort" method="_on_TextureButton_pressed"]
+[connection signal="pressed" from="DockingPorts/DockingPort2/TextureButton" to="DockingPorts/DockingPort2" method="_on_TextureButton_pressed"]
+[connection signal="pressed" from="DockingPorts/DockingPort3/TextureButton" to="DockingPorts/DockingPort3" method="_on_TextureButton_pressed"]

@@ -7,6 +7,7 @@ onready var Modules = $BuildMenu/BuildMenu/Modules
 onready var Station = get_parent().get_node("Station")
 export(PackedScene) var module_button_scene
 var selected_docking_port
+var selected_docking_port_type
 var building :bool = false
 var temp_module
 var temp_module_collision
@@ -14,12 +15,16 @@ var temp_module_collision
 func build_menu(docking_port):
 	if BuildButton.visible==false and building:
 		selected_docking_port=docking_port
+		selected_docking_port_type=docking_port.port_type
 
 func _process(delta):
+	calculate_temp_module_position()
+
+func calculate_temp_module_position():
 	if selected_docking_port!=null and is_instance_valid(temp_module):
 		temp_module.rotation = (selected_docking_port.global_rotation-deg2rad(180))
 		temp_module.rotation-=temp_module.used_docking_port.rotation
-		temp_module.global_position=selected_docking_port.global_position-temp_module.used_docking_port.position.rotated(temp_module.rotation)
+		temp_module.global_position=selected_docking_port.global_position+(temp_module.global_position-temp_module.used_docking_port.global_position)
 		if Input.is_action_just_pressed("switch_port"):
 			if temp_module.docking_port_number == temp_module.docking_ports.size()-1:
 				temp_module.docking_port_number=0
@@ -77,6 +82,8 @@ func module_button_pressed(id :int):
 
 func _on_AcceptButton_pressed():
 	if selected_docking_port!=null and temp_module_collision.get_overlapping_areas() == []:
+		if temp_module.used_docking_port.port_type != selected_docking_port_type:
+			return
 		building=false
 		temp_module.disabled=false
 		temp_module.modulate.a=1
@@ -85,6 +92,15 @@ func _on_AcceptButton_pressed():
 		temp_module.global_position = selected_docking_port.global_position+(Vector2(1000,0)).rotated(selected_docking_port.global_rotation)
 		temp_module.global_position -= temp_module.used_docking_port.position.rotated(temp_module.rotation)
 		temp_module.target_position=selected_docking_port.global_position
+		temp_module.target_port=selected_docking_port
 		selected_docking_port=null
 		BuildButton.visible=true
 		AcceptButton.visible=false
+
+func _on_CancelButton_pressed():
+	if is_instance_valid(temp_module):
+		temp_module.queue_free()
+	selected_docking_port=null
+	BuildButton.visible=true
+	AcceptButton.visible=false
+	building=false

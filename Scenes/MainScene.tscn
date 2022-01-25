@@ -219,6 +219,17 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="CancelButton" type="Button" parent="Player/BuildMenu/BuildMenu/AcceptButton"]
+margin_left = 1.0
+margin_top = -76.0
+margin_right = 172.0
+margin_bottom = -5.0
+custom_fonts/font = SubResource( 2 )
+text = "Cancel"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="Modules" type="HBoxContainer" parent="Player/BuildMenu/BuildMenu"]
 margin_left = 192.0
 margin_top = 514.0
@@ -240,3 +251,4 @@ __meta__ = {
 [connection signal="pressed" from="Player/BuildMenu/BuildMenu/BuildButton" to="Player" method="_on_BuildButton_pressed"]
 [connection signal="pressed" from="Player/BuildMenu/BuildMenu/CancelBuildButton" to="Player" method="_on_CancelBuildButton_pressed"]
 [connection signal="pressed" from="Player/BuildMenu/BuildMenu/AcceptButton" to="Player" method="_on_AcceptButton_pressed"]
+[connection signal="pressed" from="Player/BuildMenu/BuildMenu/AcceptButton/CancelButton" to="Player" method="_on_CancelButton_pressed"]

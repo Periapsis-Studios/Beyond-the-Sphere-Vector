@@ -12,7 +12,8 @@ var building :bool = false
 var temp_module
 var temp_module_collision
 
-func build_menu(docking_port):
+func update_docking_ports(docking_port):
+	# Updates selected docking port refrence and type
 	if BuildButton.visible==false and building:
 		selected_docking_port=docking_port
 		selected_docking_port_type=docking_port.port_type
@@ -21,10 +22,13 @@ func _process(delta):
 	calculate_temp_module_position()
 
 func calculate_temp_module_position():
+	# Calculates the temporary module's rotation and position, accounting
+	# The selected docking port
 	if selected_docking_port!=null and is_instance_valid(temp_module):
 		temp_module.rotation = (selected_docking_port.global_rotation-deg2rad(180))
 		temp_module.rotation-=temp_module.used_docking_port.rotation
 		temp_module.global_position=selected_docking_port.global_position+(temp_module.global_position-temp_module.used_docking_port.global_position)
+		# If module has more than one ports, you can press R to switch between them
 		if Input.is_action_just_pressed("switch_port"):
 			if temp_module.docking_port_number == temp_module.docking_ports.size()-1:
 				temp_module.docking_port_number=0
@@ -46,11 +50,13 @@ func _input(event):
 		self.zoom.y += 0.1
 
 func _on_BuildButton_pressed():
+	# If the player isn't building, start building, initating the ui and setting building to true
 	if !building:
 		building=true
 		BuildButton.visible=false
 		CancelButton.visible=true
 		Modules.visible=true
+		# Procedularry adds buttons for all of the modules declared in the Data.gd file
 		for module in Modules.get_children(): #Clearing Buttons
 			module.queue_free()
 		var id :int = 0
@@ -67,6 +73,7 @@ func _on_CancelBuildButton_pressed():
 	Modules.visible=false
 
 func module_button_pressed(id :int):
+	# Creates a Temporary module, which is transparent. It's used for placing modules.
 	Modules.visible=false
 	CancelButton.visible=false
 	var soyuz_scene = load("res://Scenes/Modules/%s.tscn" % Data.modules[id])
@@ -81,6 +88,8 @@ func module_button_pressed(id :int):
 	temp_module_collision=temp_module.get_node("CollisionArea")
 
 func _on_AcceptButton_pressed():
+	# If the module is in a good position, not overlapping anything,
+	# start docking it to the station
 	if selected_docking_port!=null and temp_module_collision.get_overlapping_areas() == []:
 		if temp_module.used_docking_port.port_type != selected_docking_port_type:
 			return
@@ -98,6 +107,7 @@ func _on_AcceptButton_pressed():
 		AcceptButton.visible=false
 
 func _on_CancelButton_pressed():
+	# Cancels building and, if it exists, removes the temporary module
 	if is_instance_valid(temp_module):
 		temp_module.queue_free()
 	selected_docking_port=null

@@ -9,7 +9,7 @@
 
 [node name="CollisionShape2D" type="CollisionPolygon2D" parent="CollisionArea" index="0"]
 position = Vector2( -5.5, 0 )
-polygon = PoolVector2Array( -82.5, -32, -74.5, -128, -34.5, -128, -34.5, -32, 69.5, -32, 77.5, -40, 77.5, -32, 93.5, -32, 93.5, 32, -34.5, 32, -34.5, 128, -74.5, 128, -82.5, 32 )
+polygon = PoolVector2Array( -82.5, -32, -74.5, -128, -34.5, -128, -34.5, -32, 69.5, -32, 77.5, -40, 77.5, -32, 98.5, -32, 98.5, 32, -34.5, 32, -34.5, 128, -74.5, 128, -82.5, 32 )
 
 [node name="DockingPorts" parent="." index="1"]
 position = Vector2( -9, 0 )
@@ -23,7 +23,7 @@ margin_top = -18.0
 margin_right = 351.0
 margin_bottom = 128.0
 rect_rotation = 90.0
-rect_scale = Vector2( 0.105, 0.105 )
+rect_scale = Vector2( 0.106, 0.105 )
 texture_normal = ExtResource( 4 )
 __meta__ = {
 "_edit_use_anchors_": false

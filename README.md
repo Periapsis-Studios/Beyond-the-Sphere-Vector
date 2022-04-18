@@ -2,7 +2,7 @@
 ## Requirements:
 - Godot 3
 - Nim (v 1.7.1): https://nim-lang.org
-- Nim-Godot bindings: https://github.com/pragmagic/godot-nim
+- Nim-Godot bindings: https://github.com/pragmagic/godot-nim (bundled in repo)
 - A %nim% system variable holding path to nim.exe in nim_root\bin
 - A %nimble% system variable holding path to nimble.exe in nim_root\bin
 - Nim OOP library: https://github.com/jjv360/nim-classes (Installable with dep.bat)

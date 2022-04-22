@@ -8,6 +8,6 @@
 - Nimgame 2: https://vladar4.github.io/nimgame2/ (Installable with dep.bat)
 - Nake (Installable with dep.bat)
 NOTE:
-Rename SDL2_nim in your .nimble packages folder to just SDL2 (leaving the hashtag untouched)
+Rename SDL2_nim in your .nimble packages folder and inside that to just SDL2 (leaving the hashtag untouched)
 ## Building the Nim source files:
 - Run Build.bat, as simple as that

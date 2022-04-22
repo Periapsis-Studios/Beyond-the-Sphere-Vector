@@ -1,4 +1,4 @@
-# Beyond-the-Sphere (not yet implemented)
+# Beyond-the-Sphere
 ## Requirements:
 - Godot 3
 - Nim (v 1.7.1): https://github.com/dom96/choosenim/releases

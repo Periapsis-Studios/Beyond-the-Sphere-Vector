@@ -1,8 +1,7 @@
 # Beyond-the-Sphere (not yet implemented)
 ## Requirements:
 - Godot 3
-- Visual Studio
-- Nim (v 1.7.1): https://nim-lang.org
+- Nim (v 1.7.1): https://github.com/dom96/choosenim/releases
 - Nim-Godot bindings: https://github.com/pragmagic/godot-nim (bundled in repo, dep.bat)
 - A %nim% system variable holding path to nim.exe in nim_root\bin
 - A %nimble% system variable holding path to nimble.exe in nim_root\bin

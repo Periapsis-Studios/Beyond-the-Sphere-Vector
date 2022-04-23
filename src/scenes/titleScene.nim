@@ -1,36 +1,73 @@
 import nimgame2 / [
-  nimgame,
+  entity,
   scene,
-  texturegraphic,
-  types
+  types,
+  textgraphic
 ]
+import .. / dataScripts / mainData
+import .. / logger
+import .. / ui / mainMenu / [newGame, loadGame, settings, quit]
+
+const
+  titlePadding = 52.0
 
 
 
 type
   TitleScene = ref object of Scene
-    backgroundTexture: TextureGraphic
+
+
 
 proc init(scene: TitleScene) =
   Scene(scene).initScene()
-  scene.backgroundTexture = newTextureGraphic()
-  discard scene.backgroundTexture.load("data/gfx/BtS-Background.png")
+
+  let menuFont = loadMenuFont()
+  let titleText = newTextGraphic(menuFont)
+  titleText.setText("Beyond the Sphere")
+
+  let title = newEntity()
+  title.graphic = titleText
+  title.centrify()
+  title.pos = (gameWidth / 2, titlePadding)
+  scene.add(title)
+
+
+  let newGame = newNewGame()
+  let loadGame = newLoadGame()
+  let settings = newSettings()
+  let quit = newQuit()
+  scene.add(newGame)
+  scene.add(loadGame)
+  scene.add(settings)
+  scene.add(quit)
+
+
 
 proc newTitleScene*(): TitleScene =
     result = TitleScene()
     init(result)
 
+
+
 proc free*(scene: TitleScene) =
-  scene.backgroundTexture.free()
+  discard
+
+
 
 method event*(scene: TitleScene, event: Event) =
   discard
 
+
+
 method render*(scene: TitleScene) =
   scene.renderScene()
+
+
 
 method update*(scene: TitleScene, elapsed: float) =
   scene.updateScene(elapsed)
 
+
+
 method show*(scene: TitleScene) =
-  echo "Switched to title scene"
+  log "Switched to title scene"

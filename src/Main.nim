@@ -1,4 +1,8 @@
+import nimgame2 / [
+]
 import engineInit
-import scenes / [titleScene]
+import gameManager
 
-initEngine()
+
+
+initEngine(gameManager.game)

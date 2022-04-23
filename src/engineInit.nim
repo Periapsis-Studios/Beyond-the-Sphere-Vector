@@ -1,11 +1,9 @@
-import nimgame2 / [nimgame, settings]
-import scenes / [titleScene]
-import classes
+import nimgame2 / [nimgame]
+import scenes / [splashScene]
+import dataScripts / mainData
 
-proc initEngine*() =
-  game = newGame()
-  let initOkay = game.init(w = 1080, h = 768, title = "Beyond the Sphere")
-  if initOkay:
-    let titleScene = newTitleScene()
-    game.scene = titleScene
-    game.run
+proc initEngine*(game: var Game) =
+  let splashScene = newSplashScene()
+  game.setResizable(true)
+  game.scene = splashScene
+  game.run

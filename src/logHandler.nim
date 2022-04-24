@@ -25,4 +25,4 @@ proc handleLog*(userdata: pointer, category: LogCategory,
   else:
     log.add(fmt"{time}, UNKNOWN-{category}: {message}" & "\n")
 
-  writeFile(fmt"{getAppDir()}\debug.log", log)
+  writeFile(fmt"{getAppDir()}/debug.log", log)

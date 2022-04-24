@@ -32,8 +32,8 @@ proc init*(): App =
   if app.renderer.setRenderDrawColor(0, 0, 0, 255) != 0:
     logCritical(Log_Category_Error, fmt"Failed to set render draw color: {sdl.getError()}")
 
-  if sdl_image.init(Init_JPG + Init_PNG + Init_TIF + Init_WEBP) != 0:
-    logCritical(Log_Category_Error, fmt"Failed to initialize SDL image: {sdl.getError()}")
+  if sdl_image.init(Init_JPG + Init_PNG + Init_TIF + Init_WEBP) == 0:
+    logCritical(Log_Category_Error, fmt"Failed to initialize SDL image: {sdl_image.getError()}")
 
   logMessage(Log_Category_Application, Log_Priority_Info, "Successfully intitialized the application")
 

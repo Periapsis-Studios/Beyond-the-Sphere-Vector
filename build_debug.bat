@@ -1,4 +1,4 @@
-nim c --out:out\debug\BtS.exe src/Main.nim
+nim c --out:out\debug\BtS_debug.exe src/main.nim
 copy lib\* out\debug\
 mkdir out\debug\data\
 xcopy /e /y data\* out\debug\data\

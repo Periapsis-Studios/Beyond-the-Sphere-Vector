@@ -1,8 +1,12 @@
-import nimgame2 / [
-]
-import engineInit
-import gameManager
+import
+  boilerplate / [
+    app
+  ],
+  sdl2_nim / sdl,
+  strformat,
+  logHandler
 
 
-
-initEngine(gameManager.game)
+logSetOutputFunction(handleLog, nil)
+var appVar = app.init()
+appVar.exit()

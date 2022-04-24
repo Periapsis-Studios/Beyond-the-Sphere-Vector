@@ -1,1 +1,0 @@
-nim c -d:mingw -o

@@ -3,7 +3,6 @@ import
     app
   ],
   sdl2_nim / sdl,
-  strformat,
   logHandler
 
 

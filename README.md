@@ -4,10 +4,7 @@
 - Nim (v 1.7.1): https://github.com/dom96/choosenim/releases
 - Nim-Godot bindings: https://github.com/pragmagic/godot-nim (bundled in repo, dep.bat)
 - A %GODOT_BIN%  system variable holding path to godot.exe
-- Nim OOP library: https://github.com/jjv360/nim-classes (Installable with dep.bat)
-- Nimgame 2: https://vladar4.github.io/nimgame2/ (Installable with dep.bat)
 - Nake (Installable with dep.bat)
-NOTE:
-Rename SDL2_nim in your .nimble packages folder and inside that to just SDL2 (leaving the hashtag untouched)
+- SDL2_nim (Installable with dep.bat): https://vladar4.github.io/sdl2_nim/
 ## Building the Nim source files:
-- Run Build.bat, as simple as that
+- Run build_<version>.bat, as simple as that

@@ -1,0 +1,8 @@
+UiButton	engine/button.html#UiButton	button: UiButton	
+onLmbPress	engine/button.html#onLmbPress.e,UiButton	button: onLmbPress(uiButton: UiButton)	
+onMmbPress	engine/button.html#onMmbPress.e,UiButton	button: onMmbPress(uiButton: UiButton)	
+onRmbPress	engine/button.html#onRmbPress.e,UiButton	button: onRmbPress(uiButton: UiButton)	
+onHoverStart	engine/button.html#onHoverStart.e,UiButton	button: onHoverStart(uiButton: UiButton)	
+onHoverEnd	engine/button.html#onHoverEnd.e,UiButton	button: onHoverEnd(uiButton: UiButton)	
+update	engine/button.html#update.e,UiButton	button: update(uiButton: UiButton)	
+remove	engine/button.html#remove.e,UiButton	button: remove(uiButton: UiButton)	

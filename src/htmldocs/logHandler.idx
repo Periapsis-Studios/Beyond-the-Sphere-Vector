@@ -1,0 +1,1 @@
+handleLog	logHandler.html#handleLog,pointer,LogCategory,LogPriority,cstring	logHandler: handleLog(userdata: pointer; category: LogCategory; priority: LogPriority;\n          message: cstring)	

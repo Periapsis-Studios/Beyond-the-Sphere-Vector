@@ -223,11 +223,11 @@ method render*(app: App) {.base.} =
 
     if not entity.graphic.isNil():
       if app.renderer.renderCopy(entity.graphic.texture, nil, addr(rect)) != 0:
-        logCritical(Log_Category_Error, fmt"Failed to copy object texture to renderer: {getError()}")
+        logCritical(Log_Category_Error, fmt"Failed to copy object texture to renderer: {sdl.getError()}")
 
     if not entity.text.isNil():
       if app.renderer.renderCopy(entity.text.texture, nil, addr(rect)) != 0:
-        logCritical(Log_Category_Error, fmt"Failed to copy object text's texture to renderer: {getError()}")
+        logCritical(Log_Category_Error, fmt"Failed to copy object text's texture to renderer: {sdl.getError()}")
 
       
   
@@ -242,11 +242,11 @@ method render*(app: App) {.base.} =
 
     if not button.graphic.isNil():
       if app.renderer.renderCopy(button.graphic.texture, nil, addr(rect)) != 0:
-        logCritical(Log_Category_Error, fmt"Failed to copy object texture to renderer: {getError()}")
+        logCritical(Log_Category_Error, fmt"Failed to copy object texture to renderer: {sdl.getError()}")
 
     if not button.text.isNil():
       if app.renderer.renderCopy(button.text.texture, nil, addr(rect)) != 0:
-        logCritical(Log_Category_Error, fmt"Failed to copy object text's texture to renderer: {getError()}")
+        logCritical(Log_Category_Error, fmt"Failed to copy object text's texture to renderer: {sdl.getError()}")
 
   for dropdown in dropdowns:
     for button in dropdown.openButtons:
@@ -259,11 +259,11 @@ method render*(app: App) {.base.} =
 
       if not button.graphic.isNil():
         if app.renderer.renderCopy(button.graphic.texture, nil, addr(rect)) != 0:
-          logCritical(Log_Category_Error, fmt"Failed to copy object texture to renderer: {getError()}")
+          logCritical(Log_Category_Error, fmt"Failed to copy object texture to renderer: {sdl.getError()}")
 
       if not button.text.isNil():
         if app.renderer.renderCopy(button.text.texture, nil, addr(rect)) != 0:
-          logCritical(Log_Category_Error, fmt"Failed to copy object text's texture to renderer: {getError()}")
+          logCritical(Log_Category_Error, fmt"Failed to copy object text's texture to renderer: {sdl.getError()}")
 
   for textField in textFields:
     var rect = Rect(
@@ -273,26 +273,26 @@ method render*(app: App) {.base.} =
       h: textField.background.h
     )
 
-    if not textField.graphic.isNil():
+    if not textField.background.isNil():
       if app.renderer.renderCopy(textField.background.texture, nil, addr(rect)) != 0:
-        logCritical(Log_Category_Error, fmt"Failed to copy object texture to renderer: {getError()}")
+        logCritical(Log_Category_Error, fmt"Failed to copy object texture to renderer: {sdl.getError()}")
 
-    if not textField.text.isNil():
+    if not textField.currentText.isNil():
       if app.renderer.renderCopy(textField.currentText.texture, nil, addr(rect)) != 0:
-        logCritical(Log_Category_Error, fmt"Failed to copy object text's texture to renderer: {getError()}")
+        logCritical(Log_Category_Error, fmt"Failed to copy object text's texture to renderer: {sdl.getError()}")
 
   app.renderer.renderPresent()
 
 
 
-method quit*(app: App) =
-  registerEvents(Quit)
+method quit*(app: App) {.base.} =
+  sdl.quit()
 
 
 
-method run*(app: App, msPerUpdate: uint16) =
+method run*(app: App, msPerUpdate: uint16) {.base} =
   var previousTime = getTicks()
-  var lag = 0
+  var lag: uint32 = 0
   var running = true
 
   while running:
@@ -311,6 +311,6 @@ method run*(app: App, msPerUpdate: uint16) =
 
     app.render()
 
-    if event == Quit:
+    if event.kind == Quit:
       running = false
-      app.remove()
+      app.exit()

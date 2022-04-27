@@ -1,0 +1,20 @@
+entities	engine/registry.html#entities	registry: entities	
+sceneVar	engine/registry.html#sceneVar	registry: sceneVar	
+buttons	engine/registry.html#buttons	registry: buttons	
+dropdowns	engine/registry.html#dropdowns	registry: dropdowns	
+textFields	engine/registry.html#textFields	registry: textFields	
+register	engine/registry.html#register,Entity	registry: register(entity: Entity)	
+register	engine/registry.html#register,UiButton	registry: register(button: UiButton)	
+register	engine/registry.html#register,UiDropdown	registry: register(dropdown: UiDropdown)	
+register	engine/registry.html#register,UiTextField	registry: register(textField: UiTextField)	
+setActive	engine/registry.html#setActive,Scene	registry: setActive(sceneIn: Scene)	
+isRegistered	engine/registry.html#isRegistered,Entity	registry: isRegistered(entityIn: Entity): bool	
+isCurrent	engine/registry.html#isCurrent,Scene	registry: isCurrent(sceneIn: Scene): bool	
+isRegistered	engine/registry.html#isRegistered,UiButton	registry: isRegistered(buttonIn: UiButton): bool	
+isRegistered	engine/registry.html#isRegistered,UiDropdown	registry: isRegistered(dropdownIn: UiDropdown): bool	
+isRegistered	engine/registry.html#isRegistered,UiTextField	registry: isRegistered(textFieldIn: UiTextField): bool	
+deRegister	engine/registry.html#deRegister,Entity	registry: deRegister(entityIn: Entity): bool	
+deRegister	engine/registry.html#deRegister,UiButton	registry: deRegister(buttonIn: UiButton): bool	
+deRegister	engine/registry.html#deRegister,UiDropdown	registry: deRegister(dropdownIn: UiDropdown): bool	
+deRegister	engine/registry.html#deRegister,UiTextField	registry: deRegister(textFieldIn: UiTextField): bool	
+deRegister	engine/registry.html#deRegister,Scene	registry: deRegister(sceneIn: Scene): bool	

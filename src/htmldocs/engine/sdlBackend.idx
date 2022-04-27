@@ -1,0 +1,2 @@
+initSDL	engine/sdlBackend.html#initSDL	sdlBackend: initSDL()	
+destroySDL	engine/sdlBackend.html#destroySDL	sdlBackend: destroySDL()	

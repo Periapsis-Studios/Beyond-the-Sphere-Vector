@@ -297,7 +297,7 @@ method run*(app: App, msPerUpdate: uint16) =
 
   while running:
     var event: Event
-    pollEvent(addr(event))
+    discard pollEvent(addr(event))
     var currentTime = getTicks()
     var elapsedTime = currentTime - previousTime
     previousTime = currentTime

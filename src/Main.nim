@@ -1,5 +1,5 @@
 import
-  boilerplate / [
+  engine / [
     app
   ],
   sdl2_nim / sdl,

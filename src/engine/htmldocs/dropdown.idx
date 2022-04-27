@@ -1,0 +1,9 @@
+UiDropdown	dropdown.html#UiDropdown	dropdown: UiDropdown	
+newUiDropdown	dropdown.html#newUiDropdown,seq[TextGraphic],Vector2,int,Graphic	dropdown: newUiDropdown(options: seq[TextGraphic] = newSeq[TextGraphic]();\n              pos: Vector2 = Vector2(); defaultOptionIndex: int = 0;\n              optionGraphic: Graphic = Graphic()): UiDropdown	
+open	dropdown.html#open.e,UiDropdown	dropdown: open(uiDropdown: UiDropdown)	
+close	dropdown.html#close.e,UiDropdown	dropdown: close(uiDropdown: UiDropdown)	
+onLmbPress	dropdown.html#onLmbPress.e,UiDropdown,int	dropdown: onLmbPress(uiDropdown: UiDropdown; index: int)	
+onRmbPress	dropdown.html#onRmbPress.e,UiDropdown,int	dropdown: onRmbPress(uiDropdown: UiDropdown; index: int)	
+onMmbPress	dropdown.html#onMmbPress.e,UiDropdown,int	dropdown: onMmbPress(uiDropdown: UiDropdown; index: int)	
+onHoverStart	dropdown.html#onHoverStart.e,UiDropdown,int	dropdown: onHoverStart(uiDropdown: UiDropdown; index: int)	
+onHoverEnd	dropdown.html#onHoverEnd.e,UiDropdown,int	dropdown: onHoverEnd(uiDropdown: UiDropdown; index: int)	

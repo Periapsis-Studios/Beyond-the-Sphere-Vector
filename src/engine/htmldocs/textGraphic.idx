@@ -1,0 +1,4 @@
+TextGraphic	textGraphic.html#TextGraphic	textGraphic: TextGraphic	
+remove	textGraphic.html#remove.e,TextGraphic	textGraphic: remove(textGraphic: TextGraphic)	
+loadFont	textGraphic.html#loadFont.e,TextGraphic,string,cint	textGraphic: loadFont(textGraphic: TextGraphic; path: string; size: cint)	
+fillTextureWithText	textGraphic.html#fillTextureWithText.e,Renderer,TextGraphic	textGraphic: fillTextureWithText(renderer: Renderer; textGraphic: TextGraphic)	

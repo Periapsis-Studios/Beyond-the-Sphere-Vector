@@ -1,0 +1,3 @@
+UiTextField	textField.html#UiTextField	textField: UiTextField	
+newUiTextField	textField.html#newUiTextField,TextGraphic,Graphic,UiButton,Vector2	textField: newUiTextField(exampleText: TextGraphic = TextGraphic();\n               background: Graphic = Graphic();\n               buttonBackend: UiButton = UiButton(); pos: Vector2 = Vector2()): UiTextField	
+setCurrentText	textField.html#setCurrentText.e,UiTextField,string,Renderer	textField: setCurrentText(uiTextField: UiTextField; currentText: string; renderer: Renderer)	

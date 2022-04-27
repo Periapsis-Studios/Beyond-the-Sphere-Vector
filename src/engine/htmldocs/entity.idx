@@ -1,0 +1,3 @@
+Entity	entity.html#Entity	entity: Entity	
+update	entity.html#update.e,Entity	entity: update(entity: Entity)	
+remove	entity.html#remove.e,Entity	entity: remove(entity: Entity)	

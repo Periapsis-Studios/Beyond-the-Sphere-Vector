@@ -1,0 +1,13 @@
+title	app.html#title	app: title	
+width	app.html#width	app: width	
+height	app.html#height	app: height	
+flags	app.html#flags	app: flags	
+renderer	app.html#renderer	app: renderer	
+App	app.html#App	app: App	
+init	app.html#init	app: init(): App	
+exit	app.html#exit,App	app: exit(app: App)	
+handleInput	app.html#handleInput.e,App	app: handleInput(app: App)	
+update	app.html#update.e,App	app: update(app: App)	
+render	app.html#render.e,App	app: render(app: App)	
+quit	app.html#quit.e,App	app: quit(app: App)	
+run	app.html#run.e,App,uint16	app: run(app: App; msPerUpdate: uint16)	

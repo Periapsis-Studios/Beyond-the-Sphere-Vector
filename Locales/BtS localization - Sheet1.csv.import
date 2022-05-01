@@ -1,0 +1,16 @@
+[remap]
+
+importer="csv_translation"
+type="Translation"
+
+[deps]
+
+files=[ "res://Locales/BtS localization - Sheet1.en.translation", "res://Locales/BtS localization - Sheet1.cs.translation" ]
+
+source_file="res://Locales/BtS localization - Sheet1.csv"
+dest_files=[ "res://Locales/BtS localization - Sheet1.en.translation", "res://Locales/BtS localization - Sheet1.cs.translation" ]
+
+[params]
+
+compress=true
+delimiter=0

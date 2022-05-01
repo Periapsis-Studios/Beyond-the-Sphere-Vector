@@ -9,35 +9,35 @@ func _on_NewGame_pressed():
 	get_tree().change_scene("res://Scenes/MainScene.tscn")
 
 func _on_NewGame_mouse_entered():
-	new_game.text = "> New Game"
+	new_game.text = "> " + tr("newGame")
 
 
 func _on_NewGame_mouse_exited():
-	new_game.text = "New Game"
+	new_game.text = "newGame"
 
 
 func _on_LoadGame_mouse_entered():
-	load_game.text = "> Load Game"
+	load_game.text = "> " + tr("loadGame")
 
 
 func _on_LoadGame_mouse_exited():
-	load_game.text = "Load Game"
+	load_game.text = "loadGame"
 
 
 func _on_Settings_mouse_entered():
-	settings.text = "> Settings"
+	settings.text = "> " + tr("settings")
 
 
 func _on_Settings_mouse_exited():
-	settings.text = "Settings"
+	settings.text = "settings"
 
 
 func _on_Quit_mouse_entered():
-	quit.text = "> Quit"
+	quit.text = "> " + tr("quit")
 
 
 func _on_Quit_mouse_exited():
-	quit.text = "Quit"
+	quit.text = "quit"
 
 
 func _on_Quit_pressed():

@@ -1,5 +1,5 @@
 extends Node
 
-enum DockingPorts {SOYUZ=0} # Docking port Types
+var validCouples = {"RUS_PROBE": "RUS_DROGUE", "RUS_DROGUE": "RUS_PROBE"}
 
 var modules = ["Soyuz","TestTwoPorts"] # Module Types (needs a NAME.tscn module in Scenes/Modules)

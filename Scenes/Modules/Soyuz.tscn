@@ -28,6 +28,7 @@ texture = ExtResource( 4 )
 texture = ExtResource( 2 )
 
 [node name="Button" type="Button" parent="."]
+visible = false
 margin_left = -166.276
 margin_top = -930.0
 margin_right = 165.882

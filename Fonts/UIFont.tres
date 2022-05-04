@@ -1,8 +1,7 @@
 [gd_resource type="DynamicFont" load_steps=2 format=2]
 
-[sub_resource type="DynamicFontData" id=1]
-font_path = "res://Fonts/Nasa21.ttf"
+[ext_resource path="res://Fonts/nasalization-regular.ttf" type="DynamicFontData" id=1]
 
 [resource]
-size = 380
-font_data = SubResource( 1 )
+size = 200
+font_data = ExtResource( 1 )

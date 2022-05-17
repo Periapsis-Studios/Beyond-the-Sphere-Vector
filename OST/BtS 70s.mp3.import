@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/BtS 70s.mp3-11b70e95aa7d3454646e70c030b50e2d.mp3str"
+
+[deps]
+
+source_file="res://OST/BtS 70s.mp3"
+dest_files=[ "res://.import/BtS 70s.mp3-11b70e95aa7d3454646e70c030b50e2d.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

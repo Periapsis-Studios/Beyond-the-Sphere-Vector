@@ -20,32 +20,20 @@ func _input(event):
 	if event.is_action_pressed("zoom_out"):
 		camera.zoom.x += 1
 		camera.zoom.y += 1
-		
-	if event.is_action("move_down"):
-		camera.offset.y += MOVESPEED
-		
-	if event.is_action("move_up"):
-		camera.offset.y -= MOVESPEED
-		
-	if event.is_action("move_left"):
-		camera.offset.x -= MOVESPEED
-		
-	if event.is_action("move_right"):
-		camera.offset.x += MOVESPEED
 
 		
 func _process(delta):
 	if Input.is_action_pressed("move_down"):
-		move(0, MOVESPEED, delta)
+		move(0, MOVESPEED * camera.zoom.x, delta)
 		
 	if Input.is_action_pressed("move_up"):
-		move(0, -MOVESPEED, delta)
+		move(0, -MOVESPEED * camera.zoom.x, delta)
 		
 	if Input.is_action_pressed("move_left"):
-		move(-MOVESPEED, 0, delta)
+		move(-MOVESPEED * camera.zoom.x, 0, delta)
 		
 	if Input.is_action_pressed("move_right"):
-		move(-MOVESPEED, 0, delta)	
+		move(MOVESPEED * camera.zoom.x, 0, delta)	
 	
 
 func _ready():
@@ -53,7 +41,8 @@ func _ready():
 	
 	
 func move(amount_x: int, amount_y: int, delta: float):
-	tween.interpolate_property(camera, "offset", camera.position, Vector2(camera.position.x + amount_x, camera.position.y + amount_y), delta)
+	tween.interpolate_property(camera, "offset", camera.offset, Vector2(camera.offset.x + amount_x, camera.offset.y + amount_y), delta)
+	tween.start()
 	
 
 func dock(targetPos: Vector2, targetRot: int, targetPortType: String, module: String, port: int):

@@ -25,6 +25,7 @@ position = Vector2( 0, -949.379 )
 texture = ExtResource( 4 )
 
 [node name="Module" type="Sprite" parent="."]
+scale = Vector2( 4.15, 4.15 )
 texture = ExtResource( 2 )
 
 [node name="Button" type="Button" parent="."]

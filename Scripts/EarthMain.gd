@@ -54,21 +54,17 @@ func dock(targetPos: Vector2, targetRot: int, targetPortType: String, module: St
 	
 	# TODO: Replace with isCorrectType
 	if true:
-		print("Entered dock if")
-		
 		var camera = $Camera2D
 		var area = moduleInstance.get_node("Area2D")
 		
 		camera.add_child(moduleInstance)
 		match targetRot:
 			0:
-				print("Entered match 0")
 				moduleInstance.position.x = targetPos.x - moduleData.portPos[port].x
 				moduleInstance.position.y = targetPos.y - moduleData.portPos[port].y
 				moduleInstance.rotation = 0.0
 				
 				if area.get_overlapping_areas().empty():
-					print("Entered docking seq")
 					moduleInstance.position.y += DOCKDIST
 					
 					tween.interpolate_property(
@@ -82,7 +78,6 @@ func dock(targetPos: Vector2, targetRot: int, targetPortType: String, module: St
 					)
 					tween.start()
 				else:
-					print("Entered else")
 					camera.remove_child(moduleInstance)
 					
 			90:

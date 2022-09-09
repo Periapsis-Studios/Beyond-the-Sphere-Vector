@@ -12,3 +12,4 @@ var soyuz = {
 }
 
 var modules = {"Soyuz": soyuz}
+var unlockedModules = {"Soyuz": soyuz}

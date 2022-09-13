@@ -1,10 +1,11 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Textures/BtS-Background.png" type="Texture" id=1]
 [ext_resource path="res://Fonts/UIFont.tres" type="DynamicFont" id=2]
 [ext_resource path="res://Textures/UI/ResourceCounter.png" type="Texture" id=3]
 [ext_resource path="res://Fonts/nasalization-regular.ttf" type="DynamicFontData" id=4]
 [ext_resource path="res://Textures/UI/Button-Generic.png" type="Texture" id=5]
+[ext_resource path="res://Textures/UI/Build-Icon.png" type="Texture" id=6]
 
 [sub_resource type="DynamicFont" id=1]
 size = 200
@@ -81,9 +82,9 @@ __meta__ = {
 [node name="BuildButton" type="Button" parent="UI"]
 anchor_right = 0.012
 anchor_bottom = 0.033
-margin_top = 550.0
-margin_right = 1037.71
-margin_bottom = 1030.2
+margin_top = 552.0
+margin_right = 487.712
+margin_bottom = 1032.2
 rect_min_size = Vector2( 0.1, 0.1 )
 rect_scale = Vector2( 0.1, 0.1 )
 custom_colors/font_color_disabled = Color( 0, 0, 0, 1 )
@@ -95,7 +96,11 @@ custom_fonts/font = ExtResource( 2 )
 custom_styles/hover = SubResource( 2 )
 custom_styles/pressed = SubResource( 3 )
 custom_styles/normal = SubResource( 4 )
-text = "Build"
+
+[node name="Sprite" type="Sprite" parent="UI/BuildButton"]
+position = Vector2( 240, 260 )
+scale = Vector2( 0.454, 0.454 )
+texture = ExtResource( 6 )
 
 [node name="Background" type="CanvasLayer" parent="."]
 layer = -2

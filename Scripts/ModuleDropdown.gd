@@ -6,9 +6,10 @@ func preview_ready():
 	for module in Data.unlockedModules:
 		$ModuleDropdown.add_item(module, i)
 		i += 1
-	_on_OptionButton_item_selected(0)
+	_on_ModuleDropdown_item_selected(0)
 
 
-func _on_OptionButton_item_selected(index):
-	var option: String = $ModuleDropdown.items[index]
+func _on_ModuleDropdown_item_selected(index):
+	var option = $ModuleDropdown.items[index * 5]
+	print($ModuleDropdown.items)
 	$ModulePreview.texture = load("res://Textures/ModulePreviews/" + option + ".png")

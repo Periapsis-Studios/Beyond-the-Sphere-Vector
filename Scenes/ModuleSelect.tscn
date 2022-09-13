@@ -126,6 +126,7 @@ margin_left = 841.0
 margin_top = 491.0
 margin_right = 996.0
 margin_bottom = 577.0
+custom_colors/font_color_focus = Color( 0, 0, 0, 1 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_colors/font_color_hover = Color( 0.164706, 0.164706, 0.164706, 1 )
 custom_colors/font_color_pressed = Color( 0, 0, 0, 1 )
@@ -135,7 +136,7 @@ custom_styles/pressed = SubResource( 8 )
 custom_styles/focus = SubResource( 9 )
 custom_styles/disabled = SubResource( 10 )
 custom_styles/normal = SubResource( 11 )
-text = "Confirm"
+text = "confirm"
 
-[connection signal="item_selected" from="ModuleDropdown" to="ModuleDropdown" method="_on_OptionButton_item_selected"]
+[connection signal="item_selected" from="ModuleDropdown" to="." method="_on_ModuleDropdown_item_selected"]
 [connection signal="ready" from="ModulePreview" to="." method="preview_ready"]

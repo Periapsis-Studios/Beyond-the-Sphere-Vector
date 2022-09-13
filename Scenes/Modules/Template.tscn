@@ -17,10 +17,9 @@
 extents = Vector2( 1320, 887.5 )
 
 [node name="Node2D" type="Node2D"]
-z_as_relative = false
 
 [node name="Port1" type="Sprite" parent="."]
-position = Vector2( 0, -949 )
+position = Vector2( 0, -949.379 )
 texture = ExtResource( 4 )
 
 [node name="Module" type="Sprite" parent="."]

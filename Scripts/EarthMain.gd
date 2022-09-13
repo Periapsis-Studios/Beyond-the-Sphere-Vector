@@ -18,8 +18,13 @@ func _input(event):
 	if event.is_action_pressed("zoom_out"):
 		camera.zoom.x += 1
 		camera.zoom.y += 1
-
-		
+	
+	if event is InputEventMagnifyGesture:
+		print(event.factor)
+		camera.zoom.x += 1 - event.factor
+		camera.zoom.y += 1 - event.factor
+	
+	
 func _process(delta):
 	if Input.is_action_pressed("move_down"):
 		move(0, MOVESPEED * camera.zoom.x, delta)

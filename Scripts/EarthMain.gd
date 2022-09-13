@@ -4,8 +4,6 @@ extends Control
 var saveName: String
 var money: int
 var science: int
-var unlockedModules = {}
-var dockedModules = {}
 onready var camera = $Camera2D
 onready var tween: Tween = $Tween
 const DOCKSPEED = 5
@@ -53,7 +51,7 @@ func dock(targetPos: Vector2, targetRot: int, targetPortType: String, module: St
 	var isCorrectType: bool = Data.validCouples[targetPortType] == portType
 	
 	# TODO: Replace with isCorrectType
-	if true:
+	if (isCorrectType or Station.dockedModules.empty()) and module in Data.unlockedModules:
 		var camera = $Camera2D
 		var area = moduleInstance.get_node("Area2D")
 		
@@ -77,6 +75,7 @@ func dock(targetPos: Vector2, targetRot: int, targetPortType: String, module: St
 						Tween.EASE_IN_OUT
 					)
 					tween.start()
+					Station.dockModule(module, moduleInstance)
 				else:
 					camera.remove_child(moduleInstance)
 					
@@ -98,6 +97,7 @@ func dock(targetPos: Vector2, targetRot: int, targetPortType: String, module: St
 						Tween.EASE_IN_OUT
 					)
 					tween.start()
+					Station.dockModule(module, moduleInstance)
 				else:
 					camera.remove_child(moduleInstance)
 					
@@ -121,6 +121,7 @@ func dock(targetPos: Vector2, targetRot: int, targetPortType: String, module: St
 					tween.start()
 				else:
 					camera.remove_child(moduleInstance)
+					Station.dockModule(module, moduleInstance)
 					
 			270:
 				moduleInstance.position.x = targetPos.x - moduleObject.portPos.port.x
@@ -140,5 +141,6 @@ func dock(targetPos: Vector2, targetRot: int, targetPortType: String, module: St
 						Tween.EASE_IN_OUT
 					)
 					tween.start()
+					Station.dockModule(module, moduleInstance)
 				else:
 					camera.remove_child(moduleInstance)

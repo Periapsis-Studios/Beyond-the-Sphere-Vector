@@ -91,10 +91,11 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -512.0
-margin_top = -300.0
-margin_right = 512.0
-margin_bottom = 300.0
+margin_left = -1664.0
+margin_top = -975.0
+margin_right = -640.0
+margin_bottom = -375.0
+rect_scale = Vector2( 3, 3 )
 script = ExtResource( 3 )
 
 [node name="Sprite" type="Sprite" parent="."]
@@ -111,7 +112,7 @@ margin_bottom = 297.0
 rect_scale = Vector2( 0.3, 0.3 )
 theme = SubResource( 19 )
 custom_styles/pressed = SubResource( 2 )
-text = "LMB to select"
+text = "No Modules"
 
 [node name="ModulePreview" type="TextureRect" parent="."]
 margin_left = 27.0

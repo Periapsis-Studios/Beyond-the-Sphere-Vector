@@ -16,4 +16,6 @@ func _on_BuildButton_pressed():
 	var windowScene = load("res://Scenes/ModuleSelect.tscn")
 	var windowInstance = windowScene.instance()
 	
+	#windowInstance.rect_scale = Vector2(3, 3)
+	
 	self.add_child(windowInstance)

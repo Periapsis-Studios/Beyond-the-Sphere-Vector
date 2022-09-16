@@ -18,8 +18,8 @@ config/icon="res://icon.png"
 
 [autoload]
 
-Data="*res://Scripts/GlobalData.gd"
-Station="*res://Scripts/Station.gd"
+Data="*res://Scripts/Backend/GlobalData.gd"
+Station="*res://Scripts/Backend/Station.gd"
 
 [display]
 

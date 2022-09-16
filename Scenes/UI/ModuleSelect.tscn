@@ -1,0 +1,75 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://Textures/UI/ModuleSelectFrame.png" type="Texture" id=1]
+[ext_resource path="res://Scenes/UI/Dropdown.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Scripts/UI/ModuleDropdown.gd" type="Script" id=3]
+[ext_resource path="res://Fonts/nasalization-regular.ttf" type="DynamicFontData" id=4]
+
+[sub_resource type="DynamicFont" id=6]
+size = 32
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 4 )
+
+[sub_resource type="StyleBoxEmpty" id=7]
+
+[sub_resource type="StyleBoxEmpty" id=8]
+
+[sub_resource type="StyleBoxEmpty" id=9]
+
+[sub_resource type="StyleBoxEmpty" id=10]
+
+[sub_resource type="StyleBoxEmpty" id=11]
+
+[node name="Control" type="Control"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -1536.0
+margin_top = -900.0
+margin_right = 1536.0
+margin_bottom = 900.0
+script = ExtResource( 3 )
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 20.5184, 12 )
+scale = Vector2( 0.72, 0.72 )
+texture = ExtResource( 1 )
+offset = Vector2( 2048, 1200 )
+
+[node name="ModulePreview" type="TextureRect" parent="."]
+margin_left = 81.0
+margin_top = 513.0
+margin_right = 844.0
+margin_bottom = 872.0
+rect_scale = Vector2( 3, 3 )
+expand = true
+stretch_mode = 6
+
+[node name="ModuleDropdown" parent="." instance=ExtResource( 2 )]
+margin_left = 81.0
+margin_top = 176.0
+margin_right = -2597.0
+margin_bottom = -965.0
+rect_scale = Vector2( 2.147, 2.147 )
+
+[node name="Confirm" type="Button" parent="."]
+margin_left = 2489.0
+margin_top = 1388.0
+margin_right = 2644.0
+margin_bottom = 1474.0
+rect_scale = Vector2( 3, 3 )
+custom_colors/font_color_focus = Color( 0, 0, 0, 1 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_color_hover = Color( 0.164706, 0.164706, 0.164706, 1 )
+custom_colors/font_color_pressed = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 6 )
+custom_styles/hover = SubResource( 7 )
+custom_styles/pressed = SubResource( 8 )
+custom_styles/focus = SubResource( 9 )
+custom_styles/disabled = SubResource( 10 )
+custom_styles/normal = SubResource( 11 )
+text = "confirm"
+
+[connection signal="ready" from="ModulePreview" to="." method="preview_ready"]
+[connection signal="optionChanged" from="ModuleDropdown" to="." method="item_selected"]

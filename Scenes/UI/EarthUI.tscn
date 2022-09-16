@@ -6,7 +6,8 @@
 [ext_resource path="res://Fonts/nasalization-regular.ttf" type="DynamicFontData" id=4]
 [ext_resource path="res://Textures/UI/Button-Generic.png" type="Texture" id=5]
 [ext_resource path="res://Textures/UI/Build-Icon.png" type="Texture" id=6]
-[ext_resource path="res://Scripts/EarthUI.gd" type="Script" id=7]
+[ext_resource path="res://Scripts/UI/EarthUI.gd" type="Script" id=7]
+
 
 [sub_resource type="DynamicFont" id=1]
 size = 200

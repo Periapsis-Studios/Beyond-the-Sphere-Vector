@@ -10,7 +10,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 margin_right = -653.0
 script = ExtResource( 1 )
-options = [ "Option1", "Option2", "Option3", "Option4", "Option5", "Option6", "Option7", "Option8", "Option9", "Option10" ]
+options = [ "Option1", "Option2", "Option3", "Option4" ]
 defaultOption = "Dropdown"
 
 [node name="Popup" type="Control" parent="."]

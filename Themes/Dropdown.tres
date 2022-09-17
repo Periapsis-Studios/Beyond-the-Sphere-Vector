@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=24 format=2]
+[gd_resource type="Theme" load_steps=25 format=2]
 
 [ext_resource path="res://Textures/UI/Arrow.png" type="Texture" id=1]
 [ext_resource path="res://Fonts/UIFont.tres" type="DynamicFont" id=2]
@@ -12,6 +12,8 @@
 [sub_resource type="StyleBoxEmpty" id=36]
 
 [sub_resource type="StyleBoxEmpty" id=37]
+
+[sub_resource type="StyleBoxEmpty" id=38]
 
 [sub_resource type="StyleBoxEmpty" id=14]
 
@@ -57,6 +59,11 @@ Button/styles/focus = SubResource( 34 )
 Button/styles/hover = SubResource( 35 )
 Button/styles/normal = SubResource( 36 )
 Button/styles/pressed = SubResource( 37 )
+Label/colors/font_color = Color( 0, 0, 0, 1 )
+Label/colors/font_color_shadow = Color( 0, 0, 0, 0 )
+Label/colors/font_outline_modulate = Color( 0, 0, 0, 1 )
+Label/fonts/font = ExtResource( 2 )
+Label/styles/normal = SubResource( 38 )
 OptionButton/colors/font_color = Color( 0, 0, 0, 1 )
 OptionButton/colors/font_color_disabled = Color( 0, 0, 0, 1 )
 OptionButton/colors/font_color_focus = Color( 0, 0, 0, 1 )

@@ -1,28 +1,31 @@
 extends Control
 
 
-var saveName: String
-var money: int
-var science: int
 onready var camera = $Camera2D
 onready var tween: Tween = $Tween
+onready var cameraTween = Tween.new()
 const DOCKSPEED = 5
 const DOCKDIST = 5000
 const MOVESPEED = 10
+var selectedPort = null
+
 
 func _input(event):
 	if event.is_action_pressed("zoom_in"):
 		camera.zoom.x -= 1
 		camera.zoom.y -= 1
+		if camera.zoom.y < 0.1:
+			camera.zoom = Vector2(0.1, 0.1)
 		
 	if event.is_action_pressed("zoom_out"):
 		camera.zoom.x += 1
 		camera.zoom.y += 1
 	
 	if event is InputEventMagnifyGesture:
-		print(event.factor)
 		camera.zoom.x += 1 - event.factor
 		camera.zoom.y += 1 - event.factor
+		if camera.zoom.y < 0.1:
+			camera.zoom = Vector2(0.1, 0.1)
 	
 	
 func _process(delta):
@@ -38,34 +41,60 @@ func _process(delta):
 	if Input.is_action_pressed("move_right"):
 		move(MOVESPEED * camera.zoom.x, 0, delta)	
 	
-
-func _ready():
-	dock(Vector2(0, 0), 0, "RUS_PROBE", "Soyuz", 1)
-	
 	
 func move(amount_x: int, amount_y: int, delta: float):
-	tween.interpolate_property(camera, "offset", camera.offset, Vector2(camera.offset.x + amount_x, camera.offset.y + amount_y), delta)
-	tween.start()
+	cameraTween.interpolate_property(
+		camera,
+		"offset",
+		camera.offset,
+		Vector2(camera.offset.x + amount_x, camera.offset.y + amount_y),
+		delta)
+	cameraTween.start()
+	
+	
+func startBuild():
+	if Station.dockedModules.size() == 0:
+		targetSelected(Vector2(0, 0), 270, "ANY") # RUS_PROBE is ignored
+	
+	for button in get_tree().get_nodes_in_group("PortButtons"):
+		if button.isDocked == true:
+			continue
+		button.disabled = false
+		
+		button.connect("dockRequested", self, "targetSelected")
+		
+	
+func endBuild():
+	for button in get_tree().get_nodes_in_group("PortButtons"):
+		button.disabled = true
+		
+		
+func targetSelected(position, rotation, type):
+	$EarthUI.showSelector(position, rotation, type)
+	endBuild()
 	
 
 func dock(targetPos: Vector2, targetRot: int, targetPortType: String, module: String, port: int):
+	$EarthUI/UI/BuildButton.visible = false
+	$EarthUI/UI/BuildButton.disabled = true
 	var moduleObject = load("res://Scenes/Modules/" + module + ".tscn")
 	var moduleInstance = moduleObject.instance()
 	var moduleData = Data.modules[module]
 	var portType = moduleData.portTypes[port]
-	var isCorrectType: bool = Data.validCouples[targetPortType] == portType
-	
-	# TODO: Replace with isCorrectType
+	var isCorrectType: bool
+	if not targetPortType == "ANY":
+		isCorrectType = Data.validCouples[targetPortType] == portType
+
 	if (isCorrectType or Station.dockedModules.empty()) and module in Data.unlockedModules:
 		var camera = $Camera2D
 		var area = moduleInstance.get_node("Area2D")
 		
 		camera.add_child(moduleInstance)
 		match targetRot:
-			0:
-				moduleInstance.position.x = targetPos.x - moduleData.portPos[port].x
-				moduleInstance.position.y = targetPos.y - moduleData.portPos[port].y
-				moduleInstance.rotation = 0.0
+			180:
+				moduleInstance.position.x = targetPos.x - moduleData["portPos"][port].x
+				moduleInstance.position.y = targetPos.y - moduleData["portPos"][port].y
+				moduleInstance.rotation_degrees = 0.0
 				
 				if area.get_overlapping_areas().empty():
 					moduleInstance.position.y += DOCKDIST
@@ -80,16 +109,19 @@ func dock(targetPos: Vector2, targetRot: int, targetPortType: String, module: St
 						Tween.EASE_IN_OUT
 					)
 					tween.start()
+					moduleInstance.get_node("Port" + str(port) + "Button").isDocked = true
 					Station.dockModule(module, moduleInstance)
+					if selectedPort != null:
+						selectedPort.isDocked = true
 				else:
-					camera.remove_child(moduleInstance)
+					moduleInstance.queue_free()
 					
 			90:
-				moduleInstance.position.x = targetPos.x - moduleObject.portPos.port.x
-				moduleInstance.position.y = targetPos.y - moduleObject.portPos.port.y
-				moduleInstance.rotation = 90.0
+				moduleInstance.rotation_degrees = 270.0
+				moduleInstance.position.x = targetPos.x - moduleData["portPos"][port].y
+				moduleInstance.position.y = targetPos.y - moduleData["portPos"][port].x
 				
-				if area.get_overlapping_areas() == null:
+				if area.get_overlapping_areas().empty():
 					moduleInstance.position.x += DOCKDIST
 					
 					tween.interpolate_property(
@@ -103,15 +135,18 @@ func dock(targetPos: Vector2, targetRot: int, targetPortType: String, module: St
 					)
 					tween.start()
 					Station.dockModule(module, moduleInstance)
+					moduleInstance.get_node("Port" + str(port) + "Button").isDocked = true
+					if selectedPort != null:
+						selectedPort.isDocked = true
 				else:
-					camera.remove_child(moduleInstance)
+					moduleInstance.queue_free()
 					
-			180:
-				moduleInstance.position.x = targetPos.x - moduleObject.portPos.port.x
-				moduleInstance.position.y = targetPos.y - moduleObject.portPos.port.y
-				moduleInstance.rotation = 180.0
+			0:
+				moduleInstance.position.x = targetPos.x + moduleData["portPos"][port].x
+				moduleInstance.position.y = targetPos.y + moduleData["portPos"][port].y
+				moduleInstance.rotation_degrees = 180.0
 				
-				if area.get_overlapping_areas() == null:
+				if area.get_overlapping_areas().empty():
 					moduleInstance.position.y -= DOCKDIST
 					
 					tween.interpolate_property(
@@ -124,16 +159,20 @@ func dock(targetPos: Vector2, targetRot: int, targetPortType: String, module: St
 						Tween.EASE_IN_OUT
 					)
 					tween.start()
-				else:
-					camera.remove_child(moduleInstance)
 					Station.dockModule(module, moduleInstance)
+					moduleInstance.get_node("Port" + str(port) + "Button").isDocked = true
+					if selectedPort != null:
+						selectedPort.isDocked = true
+				else:
+					moduleInstance.queue_free()
 					
 			270:
-				moduleInstance.position.x = targetPos.x - moduleObject.portPos.port.x
-				moduleInstance.position.y = targetPos.y - moduleObject.portPos.port.y
-				moduleInstance.rotation = 270.0
+				moduleInstance.position.x = targetPos.x + moduleData["portPos"][port].y
+				moduleInstance.position.y = targetPos.y - moduleData["portPos"][port].x
+				moduleInstance.rotation_degrees = 90
 				
-				if area.get_overlapping_areas() == null:
+				
+				if area.get_overlapping_areas().empty():
 					moduleInstance.position.x -= DOCKDIST
 					
 					tween.interpolate_property(
@@ -146,6 +185,23 @@ func dock(targetPos: Vector2, targetRot: int, targetPortType: String, module: St
 						Tween.EASE_IN_OUT
 					)
 					tween.start()
+					if not Station.dockedModules.size() == 0:
+						moduleInstance.get_node("Port1Button").isDocked = true
 					Station.dockModule(module, moduleInstance)
+					if selectedPort != null:
+						selectedPort.isDocked = true
 				else:
-					camera.remove_child(moduleInstance)
+					moduleInstance.queue_free()
+	selectedPort = null
+	
+	var t = Timer.new()
+	t.set_wait_time(DOCKSPEED)
+	t.set_one_shot(true)
+	self.add_child(t)
+	t.start()
+	yield(t, "timeout")
+	
+	$EarthUI/UI/BuildButton.visible = true
+	$EarthUI/UI/BuildButton.disabled = false
+	
+	t.queue_free()

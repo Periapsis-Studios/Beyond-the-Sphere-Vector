@@ -19,7 +19,7 @@ func on_press():
 
 func showPopup():
 	scrollbar.visible = true
-	scrollbar.max_value = options.size() - 9
+	scrollbar.max_value = options.size()
 	scrollbar.value = 0
 	add_options(0, 9)
 	open = true
@@ -28,6 +28,9 @@ func showPopup():
 func add_options(start: int, end: int):
 	var pos = Vector2(self.rect_position.x, self.rect_position.y + 60)
 	for i in range(start, end):
+		if i >= options.size():
+			break
+			
 		var instance = dropButton.instance()
 		get_parent().get_node("Popup").add_child(instance)
 		instance.text = options[i]

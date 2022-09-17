@@ -1,0 +1,51 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://Scripts/Backend/PortButton.gd" type="Script" id=1]
+[ext_resource path="res://Themes/DockPortColor.tres" type="StyleBox" id=2]
+[ext_resource path="res://Textures/Spacecraft/Salyut-1.png" type="Texture" id=3]
+[ext_resource path="res://Textures/Spacecraft/RussianDockDrogue.png" type="Texture" id=4]
+
+[sub_resource type="StyleBoxEmpty" id=7]
+
+[sub_resource type="StyleBoxEmpty" id=4]
+
+[sub_resource type="RectangleShape2D" id=6]
+extents = Vector2( 1542.75, 1604 )
+
+[node name="Node2D" type="Node2D"]
+z_index = 1
+z_as_relative = false
+
+[node name="Port1" type="Sprite" parent="."]
+position = Vector2( 0, -949 )
+z_as_relative = false
+texture = ExtResource( 4 )
+
+[node name="Module" type="Sprite" parent="."]
+position = Vector2( 0, 667 )
+scale = Vector2( 5.27, 5.27 )
+texture = ExtResource( 3 )
+
+[node name="Port1Button" type="Button" parent="." groups=["PortButtons"]]
+margin_left = -166.0
+margin_top = -975.0
+margin_right = 166.158
+margin_bottom = -924.607
+custom_styles/hover = ExtResource( 2 )
+custom_styles/pressed = ExtResource( 2 )
+custom_styles/focus = SubResource( 7 )
+custom_styles/disabled = SubResource( 4 )
+custom_styles/normal = ExtResource( 2 )
+disabled = true
+script = ExtResource( 1 )
+type = "RUS_DROGUE"
+moduleName = "Salyut"
+portNum = 1
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2( 0, 682 )
+shape = SubResource( 6 )
+
+[connection signal="pressed" from="Port1Button" to="Port1Button" method="pressed"]

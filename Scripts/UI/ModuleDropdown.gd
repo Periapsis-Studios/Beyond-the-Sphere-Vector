@@ -8,19 +8,21 @@ signal confirmed(module, port)
 
 
 func ready(type):
-	$ModuleDropdown.defaultOption = Data.unlockedModules[0]
 	for module in Data.unlockedModules:
 		if type == "ANY":
 			$ModuleDropdown.options.append(module)
-		elif Data.validCouples[type] in Data.modules[module]["portTypes"]:
-			$ModuleDropdown.options.append(module)
-	item_selected(Data.unlockedModules[0])
+		else:
+			for port in Data.modules[module]["portTypes"]:
+				if Data.modules[module]["portTypes"][port] == Data.validCouples[type]:
+					$ModuleDropdown.options.append(module)
+	$ModuleDropdown.defaultOption = $ModuleDropdown.options[0]
+	item_selected($ModuleDropdown.options[0])
 
 
 func item_selected(option):
 	$ModulePreview.texture = load("res://Textures/ModulePreviews/" + option + ".png")
 	portNum = 1
-	maxPort = Data.modules[option]["portNum"]
+	maxPort = Data.modules[option]["portNum"] + 1
 
 
 func decreasePort():
@@ -28,7 +30,7 @@ func decreasePort():
 	if portNum == 0:
 		portNum = maxPort
 	
-	$PortNum.text = "Port" + str(portNum)
+	$PortNum.text = "Port " + str(portNum)
 
 
 func increasePort():
@@ -36,8 +38,8 @@ func increasePort():
 	if portNum > maxPort:
 		portNum = 1
 	
-	$PortNum.text = "Port" + str(portNum)
+	$PortNum.text = "Port " + str(portNum)
 
 
 func confirmPress():
-	emit_signal("confirmed", $ModuleDropdown/BaseButton.text, portNum)
+	emit_signal("confirmed", $ModuleDropdown/BaseButton.text, portNum - 1)

@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Themes/DockPortColor.tres" type="StyleBox" id=1]
 [ext_resource path="res://Textures/Spacecraft/Soyuz.png" type="Texture" id=2]
 [ext_resource path="res://Scripts/Backend/PortButton.gd" type="Script" id=3]
 [ext_resource path="res://Textures/Spacecraft/RussianDockPort.png" type="Texture" id=4]
+[ext_resource path="res://Scripts/Backend/Module.gd" type="Script" id=5]
 
 [sub_resource type="RectangleShape2D" id=6]
 extents = Vector2( 1320, 887.5 )
@@ -14,6 +15,10 @@ extents = Vector2( 1320, 887.5 )
 
 [node name="Node2D" type="Node2D"]
 z_as_relative = false
+script = ExtResource( 5 )
+ports = {
+0: false
+}
 
 [node name="Port1" type="Sprite" parent="."]
 position = Vector2( 0, -949 )
@@ -45,4 +50,3 @@ disabled = true
 script = ExtResource( 3 )
 type = "RUS_PROBE"
 moduleName = "Soyuz"
-portNum = 1

@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Scripts/Backend/PortButton.gd" type="Script" id=1]
 [ext_resource path="res://Themes/DockPortColor.tres" type="StyleBox" id=2]
 [ext_resource path="res://Textures/Spacecraft/Salyut-1.png" type="Texture" id=3]
 [ext_resource path="res://Textures/Spacecraft/RussianDockDrogue.png" type="Texture" id=4]
+[ext_resource path="res://Scripts/Backend/Module.gd" type="Script" id=5]
 
 [sub_resource type="StyleBoxEmpty" id=7]
 
@@ -15,6 +16,10 @@ extents = Vector2( 1542.75, 1604 )
 [node name="Node2D" type="Node2D"]
 z_index = 1
 z_as_relative = false
+script = ExtResource( 5 )
+ports = {
+0: false
+}
 
 [node name="Port1" type="Sprite" parent="."]
 position = Vector2( 0, -949 )
@@ -40,7 +45,6 @@ disabled = true
 script = ExtResource( 1 )
 type = "RUS_DROGUE"
 moduleName = "Salyut"
-portNum = 1
 
 [node name="Area2D" type="Area2D" parent="."]
 

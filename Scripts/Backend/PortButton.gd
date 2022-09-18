@@ -1,7 +1,6 @@
 extends Button
 
 
-export var isDocked: bool = false
 export var type: String
 export var moduleName: String
 export var portNum: int

@@ -1,0 +1,77 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Textures/UI/LoadGame.png" type="Texture" id=1]
+[ext_resource path="res://Scripts/Scene/LoadGame.gd" type="Script" id=2]
+[ext_resource path="res://Scenes/UI/Dropdown.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Themes/Dropdown.tres" type="Theme" id=4]
+
+[node name="Control" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_pivot_offset = Vector2( 768, 468 )
+script = ExtResource( 2 )
+
+[node name="TextureRect" type="TextureRect" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -321.5
+margin_top = -188.5
+margin_right = 321.5
+margin_bottom = 188.5
+rect_scale = Vector2( 1.1, 1.1 )
+texture = ExtResource( 1 )
+expand = true
+stretch_mode = 1
+
+[node name="Control" parent="." instance=ExtResource( 3 )]
+margin_left = 273.0
+margin_top = 124.0
+margin_right = -395.0
+margin_bottom = 243.0
+rect_scale = Vector2( 0.52, 0.52 )
+options = [  ]
+defaultOption = "choose"
+
+[node name="Science" type="Label" parent="."]
+margin_left = 785.0
+margin_top = 139.0
+margin_right = 1439.0
+margin_bottom = 477.0
+rect_scale = Vector2( 0.13, 0.13 )
+theme = ExtResource( 4 )
+align = 1
+valign = 1
+
+[node name="MoneyNum" type="Label" parent="."]
+margin_left = 657.0
+margin_top = 237.0
+margin_right = 1911.0
+margin_bottom = 568.0
+rect_scale = Vector2( 0.13, 0.13 )
+theme = ExtResource( 4 )
+align = 1
+valign = 1
+
+[node name="MoneySign" type="Label" parent="."]
+margin_left = 827.0
+margin_top = 237.0
+margin_right = 1158.0
+margin_bottom = 568.0
+rect_scale = Vector2( 0.13, 0.13 )
+theme = ExtResource( 4 )
+align = 1
+valign = 1
+
+[node name="Confirm" type="Button" parent="."]
+margin_left = 769.0
+margin_top = 465.0
+margin_right = 1590.0
+margin_bottom = 703.0
+rect_scale = Vector2( 0.13, 0.13 )
+theme = ExtResource( 4 )
+text = "confirm"
+
+[connection signal="optionChanged" from="Control" to="." method="selected"]
+[connection signal="pressed" from="Confirm" to="." method="confirmed"]

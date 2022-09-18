@@ -46,3 +46,8 @@ func hideSelector():
 func confirmSelection(module, port):
 	get_parent().dock(pos, rot, targetType, module, port)
 	hideSelector()
+
+
+func _on_PauseButton_pressed():
+	var pauseScene = load("res://Scenes/UI/PauseMenu.tscn")
+	$UI.add_child(pauseScene.instance())

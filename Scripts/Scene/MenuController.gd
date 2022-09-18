@@ -6,7 +6,7 @@ onready var settings = get_node("Settings")
 onready var quit = get_node("Quit")
 
 func _on_NewGame_pressed():
-	get_tree().change_scene("res://Scenes/EarthMain.tscn")
+	get_tree().change_scene("res://Scenes/NewGame.tscn")
 
 func _on_NewGame_mouse_entered():
 	new_game.text = "> " + tr("newGame")
@@ -14,6 +14,10 @@ func _on_NewGame_mouse_entered():
 
 func _on_NewGame_mouse_exited():
 	new_game.text = "newGame"
+	
+	
+func _on_LoadGame_pressed():
+	get_tree().change_scene("res://Scenes/LoadGame.tscn")
 
 
 func _on_LoadGame_mouse_entered():

@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=25 format=2]
+[gd_resource type="Theme" load_steps=28 format=2]
 
 [ext_resource path="res://Textures/UI/Arrow.png" type="Texture" id=1]
 [ext_resource path="res://Fonts/UIFont.tres" type="DynamicFont" id=2]
@@ -14,6 +14,12 @@
 [sub_resource type="StyleBoxEmpty" id=37]
 
 [sub_resource type="StyleBoxEmpty" id=38]
+
+[sub_resource type="StyleBoxEmpty" id=39]
+
+[sub_resource type="StyleBoxEmpty" id=40]
+
+[sub_resource type="StyleBoxEmpty" id=41]
 
 [sub_resource type="StyleBoxEmpty" id=14]
 
@@ -64,6 +70,17 @@ Label/colors/font_color_shadow = Color( 0, 0, 0, 0 )
 Label/colors/font_outline_modulate = Color( 0, 0, 0, 1 )
 Label/fonts/font = ExtResource( 2 )
 Label/styles/normal = SubResource( 38 )
+LineEdit/colors/clear_button_color = Color( 0, 0, 0, 1 )
+LineEdit/colors/clear_button_color_pressed = Color( 0, 0, 0, 1 )
+LineEdit/colors/cursor_color = Color( 0, 0, 0, 1 )
+LineEdit/colors/font_color = Color( 0, 0, 0, 1 )
+LineEdit/colors/font_color_selected = Color( 0, 0, 0, 1 )
+LineEdit/colors/font_color_uneditable = Color( 0, 0, 0, 0.898039 )
+LineEdit/colors/selection_color = Color( 0.196078, 0.196078, 0.196078, 1 )
+LineEdit/fonts/font = ExtResource( 2 )
+LineEdit/styles/focus = SubResource( 39 )
+LineEdit/styles/normal = SubResource( 40 )
+LineEdit/styles/read_only = SubResource( 41 )
 OptionButton/colors/font_color = Color( 0, 0, 0, 1 )
 OptionButton/colors/font_color_disabled = Color( 0, 0, 0, 1 )
 OptionButton/colors/font_color_focus = Color( 0, 0, 0, 1 )

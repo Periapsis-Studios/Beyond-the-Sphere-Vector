@@ -3,11 +3,16 @@ extends Control
 
 onready var camera = $Camera2D
 onready var tween: Tween = $Tween
-onready var cameraTween = Tween.new()
+onready var cameraTween: Tween = $CameraTween
 const DOCKSPEED = 5
 const DOCKDIST = 5000
 const MOVESPEED = 10
 var selectedPort = null
+
+
+func _ready():
+	if Data.loading:
+		Data.finishLoading()
 
 
 func _input(event):
@@ -56,12 +61,17 @@ func startBuild():
 	if Station.dockedModules.size() == 0:
 		targetSelected(Vector2(0, 0), 270, "ANY") # RUS_PROBE is ignored
 	
+	var enabled: int = 0
 	for button in get_tree().get_nodes_in_group("PortButtons"):
-		if button.isDocked == true:
+		if button.get_parent().ports[button.portNum] == true:
 			continue
 		button.disabled = false
 		
 		button.connect("dockRequested", self, "targetSelected")
+		enabled += 1
+		
+	if enabled == 0:
+		endBuild()
 		
 	
 func endBuild():
@@ -109,10 +119,10 @@ func dock(targetPos: Vector2, targetRot: int, targetPortType: String, module: St
 						Tween.EASE_IN_OUT
 					)
 					tween.start()
-					moduleInstance.get_node("Port" + str(port) + "Button").isDocked = true
+					moduleInstance.ports[port] = true
 					Station.dockModule(module, moduleInstance)
 					if selectedPort != null:
-						selectedPort.isDocked = true
+						selectedPort.get_parent().ports[selectedPort.portNum] = true
 				else:
 					moduleInstance.queue_free()
 					
@@ -135,9 +145,9 @@ func dock(targetPos: Vector2, targetRot: int, targetPortType: String, module: St
 					)
 					tween.start()
 					Station.dockModule(module, moduleInstance)
-					moduleInstance.get_node("Port" + str(port) + "Button").isDocked = true
+					moduleInstance.ports[port] = true
 					if selectedPort != null:
-						selectedPort.isDocked = true
+						selectedPort.get_parent().ports[selectedPort.portNum] = true
 				else:
 					moduleInstance.queue_free()
 					
@@ -160,9 +170,9 @@ func dock(targetPos: Vector2, targetRot: int, targetPortType: String, module: St
 					)
 					tween.start()
 					Station.dockModule(module, moduleInstance)
-					moduleInstance.get_node("Port" + str(port) + "Button").isDocked = true
+					moduleInstance.ports[port] = true
 					if selectedPort != null:
-						selectedPort.isDocked = true
+						selectedPort.get_parent().ports[selectedPort.portNum] = true
 				else:
 					moduleInstance.queue_free()
 					
@@ -186,10 +196,10 @@ func dock(targetPos: Vector2, targetRot: int, targetPortType: String, module: St
 					)
 					tween.start()
 					if not Station.dockedModules.size() == 0:
-						moduleInstance.get_node("Port1Button").isDocked = true
+						moduleInstance.ports[port] = true
 					Station.dockModule(module, moduleInstance)
 					if selectedPort != null:
-						selectedPort.isDocked = true
+						selectedPort.get_parent().ports[selectedPort.portNum] = true
 				else:
 					moduleInstance.queue_free()
 	selectedPort = null

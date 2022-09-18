@@ -4,3 +4,9 @@ loadGame,Load Game,Načíst Hru
 settings,Settings,Nastavení
 quit,Quit,Ukončit
 confirm,Confirm,Potvrdit
+name,Name,Název
+easy,Easy,Jednoduchá
+normal,Normal,Normální
+hard,Hard,Těžká
+sandbox,Sandbox,Pískoviště
+choose,Choose,Vyber

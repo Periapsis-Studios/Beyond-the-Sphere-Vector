@@ -20,6 +20,7 @@ config/icon="res://icon.png"
 
 Data="*res://Scripts/Backend/GlobalData.gd"
 Station="*res://Scripts/Backend/Station.gd"
+Contracts="*res://Scripts/Backend/Contracts.gd"
 
 [display]
 

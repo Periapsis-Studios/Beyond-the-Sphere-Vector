@@ -23,6 +23,7 @@ func item_selected(option):
 	$ModulePreview.texture = load("res://Textures/ModulePreviews/" + option + ".png")
 	portNum = 1
 	maxPort = Data.modules[option]["portNum"] + 1
+	updateCost(option)
 
 
 func decreasePort():
@@ -43,3 +44,13 @@ func increasePort():
 
 func confirmPress():
 	emit_signal("confirmed", $ModuleDropdown/BaseButton.text, portNum - 1)
+
+
+
+func updateCost(moduleName: String):
+	$Cost.text = Data.getMoneyString(Data.modules[moduleName]["cost"] * Data.difficulty, 3)[0] + Data.getMoneyString(Data.modules[moduleName]["cost"] * Data.difficulty, 3)[1] + "$"
+	if Data.modules[moduleName]["cost"] * Data.difficulty > Data.money:
+		$Confirm.disabled = true
+	else:
+		$Confirm.disabled = false	
+	

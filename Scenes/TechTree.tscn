@@ -1,0 +1,109 @@
+[gd_scene load_steps=13 format=2]
+
+[ext_resource path="res://Textures/UI/Back-icon.png" type="Texture" id=1]
+[ext_resource path="res://Textures/UI/Back-icon-pressed.png" type="Texture" id=2]
+[ext_resource path="res://Textures/UI/Tech-Background.png" type="Texture" id=3]
+[ext_resource path="res://Scripts/Scene/TechTree.gd" type="Script" id=4]
+[ext_resource path="res://Textures/UI/Menu-Background.png" type="Texture" id=5]
+[ext_resource path="res://Textures/UI/Contract-List.png" type="Texture" id=6]
+[ext_resource path="res://Fonts/nasalization-regular.ttf" type="DynamicFontData" id=7]
+[ext_resource path="res://Textures/UI/Checkmark.png" type="Texture" id=8]
+[ext_resource path="res://Textures/UI/Checkmark-Hover.png" type="Texture" id=9]
+[ext_resource path="res://Textures/UI/Checkmark-Dark.png" type="Texture" id=10]
+
+[sub_resource type="DynamicFont" id=1]
+font_data = ExtResource( 7 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 28
+font_data = ExtResource( 7 )
+
+[node name="Control" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 4 )
+
+[node name="Background" type="TextureRect" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -5.00005e+07
+margin_top = -5.00003e+07
+margin_right = 9.49999e+08
+margin_bottom = 9.5e+08
+rect_scale = Vector2( 0.1, 0.1 )
+texture = ExtResource( 3 )
+expand = true
+stretch_mode = 2
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = 0
+
+[node name="Back" type="TextureButton" parent="CanvasLayer"]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_top = -76.0
+margin_right = 166.0
+texture_normal = ExtResource( 1 )
+texture_pressed = ExtResource( 1 )
+texture_hover = ExtResource( 2 )
+texture_disabled = ExtResource( 1 )
+texture_focused = ExtResource( 1 )
+expand = true
+
+[node name="Menu" type="TextureRect" parent="CanvasLayer"]
+visible = false
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -227.0
+texture = ExtResource( 5 )
+expand = true
+
+[node name="Background" type="TextureRect" parent="CanvasLayer/Menu"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -87.5
+margin_top = 28.0
+margin_right = 87.5
+margin_bottom = 524.0
+texture = ExtResource( 6 )
+expand = true
+
+[node name="Unlocked" type="Label" parent="CanvasLayer/Menu/Background"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 1 )
+align = 1
+
+[node name="Cost" type="Label" parent="CanvasLayer/Menu"]
+margin_left = 8.0
+margin_top = 552.0
+margin_right = 149.0
+margin_bottom = 586.0
+custom_colors/font_color = Color( 0.00392157, 0.482353, 0.831373, 1 )
+custom_fonts/font = SubResource( 2 )
+text = "cost:"
+
+[node name="Buy" type="TextureButton" parent="CanvasLayer/Menu"]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -49.0
+margin_top = -48.0
+margin_right = -16.0
+margin_bottom = -15.0
+disabled = true
+texture_normal = ExtResource( 8 )
+texture_pressed = ExtResource( 8 )
+texture_hover = ExtResource( 9 )
+texture_disabled = ExtResource( 10 )
+texture_focused = ExtResource( 8 )
+expand = true
+
+[connection signal="pressed" from="CanvasLayer/Back" to="." method="_on_TextureButton_pressed"]
+[connection signal="pressed" from="CanvasLayer/Menu/Buy" to="." method="_on_Buy_pressed"]

@@ -62,6 +62,7 @@ margin_top = 241.0
 margin_right = 578.0
 margin_bottom = 327.0
 rect_scale = Vector2( 0.5, 0.5 )
+custom_colors/font_color_disabled = Color( 0.247059, 0.247059, 0.247059, 1 )
 custom_colors/font_color_focus = Color( 0, 0, 0, 1 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_colors/font_color_hover = Color( 0.164706, 0.164706, 0.164706, 1 )
@@ -105,6 +106,16 @@ margin_bottom = 169.0
 rect_rotation = 270.0
 rect_scale = Vector2( 0.1, 0.1 )
 texture_normal = ExtResource( 6 )
+
+[node name="Cost" type="Label" parent="."]
+margin_left = 421.0
+margin_top = 69.0
+margin_right = 1191.0
+margin_bottom = 369.0
+rect_scale = Vector2( 0.1, 0.1 )
+theme = ExtResource( 5 )
+align = 1
+valign = 1
 
 [connection signal="optionChanged" from="ModuleDropdown" to="." method="item_selected"]
 [connection signal="pressed" from="Confirm" to="." method="confirmPress"]

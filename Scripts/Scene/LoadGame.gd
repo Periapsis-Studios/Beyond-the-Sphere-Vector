@@ -25,24 +25,32 @@ func _ready():
 
 
 func selected(name):
+	$Delete.disabled = false
 	selected = true
 	Data.loadData(name)
 	$Science.text = str(Data.science)
-	$MoneyNum.text = str(Data.money / (Data.money / 10 % 6 + 1))
-	match Data.money / 10 % 6:
-		0: $MoneySign.text = ""
-		1: $MoneySign.text = "k"
-		2: $MoneySign.text = "M"
-		3: $MoneySign.text = "G"
-		4: $MoneySign.text = "T"
-		5: $MoneySign.text = "P"
-		6: $MoneySign.text = "E"
-		7: $MoneySign.text = "Z"
-		8: $MoneySign.text = "Y"
+	if Data.difficulty == 0:
+		$MoneyNum.text = "∞"
+		$MoneySign.text = ""
+		return
+	$MoneyNum.text = Data.getMoneyString(Data.money, 6)[0]
+	$MoneySign.text = Data.getMoneyString(Data.money, 6)[1]
 		
 		
 func confirmed():
 	if not selected:
 		return
+	Data.loadContracts()
 	Data.loadStation()
-	
+
+
+func backPressed():
+	get_tree().change_scene("res://Scenes/MainMenu.tscn")
+
+
+func deletePressed():
+	var dir = Directory.new()
+	dir.remove("user://saves/" + Data.saveName + "/data.json")
+	dir.remove("user://saves/" + Data.saveName + "/station.json")
+	dir.remove("user://saves/" + Data.saveName)
+	get_tree().change_scene("res://Scenes/LoadGame.tscn")

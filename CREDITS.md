@@ -1,2 +1,2 @@
 # CREDITS
-- Vecteezy: Contract icon
+- Vecteezy: Contract icon, Trash can icon

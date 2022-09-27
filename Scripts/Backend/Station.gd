@@ -14,3 +14,6 @@ func dockModule(moduleName: String, moduleInstance: Node):
 		"Skylab":
 			Contracts.unlockedTypes.append("Solar Observation")
 	
+
+func undockModule(moduleInstance):
+	dockedModules.erase(moduleInstance)

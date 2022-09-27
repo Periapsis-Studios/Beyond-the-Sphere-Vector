@@ -7,6 +7,7 @@ var science: int
 var loading: bool
 var gameRunning: bool = false
 var difficulty: int = 1
+var tutorial: bool
 
 
 var nodes = [

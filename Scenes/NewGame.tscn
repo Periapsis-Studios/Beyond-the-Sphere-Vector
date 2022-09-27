@@ -70,5 +70,20 @@ texture_hover = ExtResource( 6 )
 texture_disabled = ExtResource( 5 )
 texture_focused = ExtResource( 5 )
 
+[node name="TutorialLabel" type="Label" parent="."]
+margin_left = 715.0
+margin_top = 130.0
+margin_right = 1470.0
+margin_bottom = 368.0
+rect_scale = Vector2( 0.15, 0.15 )
+theme = ExtResource( 3 )
+text = "tutorial"
+
+[node name="CheckButton" type="CheckButton" parent="."]
+margin_left = 728.0
+margin_top = 170.0
+margin_right = 804.0
+margin_bottom = 210.0
+
 [connection signal="pressed" from="Confirm" to="." method="_on_Confirm_pressed"]
 [connection signal="pressed" from="Back" to="." method="backPressed"]

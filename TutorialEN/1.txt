@@ -1,0 +1,1 @@
+Let’s start by placing your first module. Click on the build icon in the bottom left.

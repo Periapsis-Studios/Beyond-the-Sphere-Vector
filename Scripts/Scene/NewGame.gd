@@ -19,6 +19,7 @@ func _on_Confirm_pressed():
 			Data.money = 300_000_000
 		"sandbox":
 			Data.difficulty = 0
+	Data.tutorial = $CheckButton.pressed
 	get_tree().change_scene("res://Scenes/EarthMain.tscn")
 
 

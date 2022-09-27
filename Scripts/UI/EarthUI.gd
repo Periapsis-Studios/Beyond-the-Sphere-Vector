@@ -6,12 +6,16 @@ var windowInstance: Control
 var pos: Vector2
 var rot: int
 var targetType: String
+var tutorialCurrent: int = 0
 
 
 func _ready():
 	updateCurrency()
 	Contracts.connect("contractCompleted", self, "updateCurrency")
 	_on_x1_pressed()
+	if Data.tutorial:
+		$TutorialCanvas/Tutorial.visible = true
+		playNextTut()
 
 
 func _on_BuildButton_pressed():
@@ -114,3 +118,27 @@ func _on_TechButton_pressed():
 func showUI():
 	for ui in $UI.get_children():
 		ui.visible = true
+
+
+func playNextTut():
+	if tutorialCurrent > 12:
+		$TutorialCanvas/Tutorial.visible = false
+		return
+	var locale = OS.get_locale_language().to_upper()
+	var dir = Directory.new()
+	if not dir.dir_exists("res://Tutorial" + locale):
+		locale = "EN"
+		
+	var file = File.new()
+	file.open("res://Tutorial" + locale + "/" + str(tutorialCurrent) + ".txt", File.READ)
+	$TutorialCanvas/Tutorial/Label.text = file.get_line()
+	
+	var player = $TutorialCanvas/Tutorial/AudioStreamPlayer2D
+	player.stream = load("res://Tutorial" + locale + "/" + str(tutorialCurrent) + ".wav")
+	player.play()
+	
+	tutorialCurrent += 1
+
+
+func _on_Continue_pressed():
+	playNextTut()

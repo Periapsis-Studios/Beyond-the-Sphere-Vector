@@ -40,6 +40,7 @@ func selected(name):
 func confirmed():
 	if not selected:
 		return
+	Data.tutorial = false
 	Data.loadContracts()
 	Data.loadStation()
 

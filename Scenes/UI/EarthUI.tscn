@@ -334,6 +334,22 @@ position = Vector2( 260, 250 )
 scale = Vector2( 0.14551, 0.14551 )
 texture = ExtResource( 12 )
 
+[node name="Collision" type="Label" parent="UI"]
+visible = false
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_left = -1019.0
+margin_top = -27.0
+margin_right = 4060.0
+margin_bottom = 211.0
+rect_scale = Vector2( 0.2, 0.2 )
+custom_colors/font_color = Color( 0.74902, 0.0980392, 0.0980392, 1 )
+custom_fonts/font = ExtResource( 2 )
+text = "collisionText"
+align = 2
+
 [node name="Popup" type="CanvasLayer" parent="."]
 layer = 3
 
@@ -381,4 +397,5 @@ stretch_mode = 4
 [connection signal="pressed" from="UI/x2" to="." method="_on_x2_pressed"]
 [connection signal="pressed" from="UI/x1" to="." method="_on_x1_pressed"]
 [connection signal="pressed" from="UI/Pause" to="." method="_on_Pause_pressed"]
+[connection signal="visibility_changed" from="UI/Collision" to="." method="_on_CollisionLabel_visibility_changed"]
 [connection signal="pressed" from="TutorialCanvas/Tutorial/Continue" to="." method="_on_Continue_pressed"]

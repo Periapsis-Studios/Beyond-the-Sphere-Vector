@@ -142,6 +142,8 @@ func dock(targetPos: Vector2, targetRot: int, targetPortType: String, module: St
 				else:
 					Station.refundModule(module)
 					moduleInstance.queue_free()
+					$EarthUI/UI/Collision.visible = true
+					return
 					
 			90:
 				var position = Vector2(
@@ -181,6 +183,8 @@ func dock(targetPos: Vector2, targetRot: int, targetPortType: String, module: St
 				else:
 					Station.refundModule(module)
 					moduleInstance.queue_free()
+					$EarthUI/UI/Collision.visible = true
+					return
 					
 			0:
 				var position = Vector2(
@@ -220,6 +224,8 @@ func dock(targetPos: Vector2, targetRot: int, targetPortType: String, module: St
 				else:
 					Station.refundModule(module)
 					moduleInstance.queue_free()
+					$EarthUI/UI/Collision.visible = true
+					return
 					
 			270:
 				var position = Vector2(
@@ -260,6 +266,8 @@ func dock(targetPos: Vector2, targetRot: int, targetPortType: String, module: St
 				else:
 					Station.refundModule(module)
 					moduleInstance.queue_free()
+					$EarthUI/UI/Collision.visible = true
+					return
 	if not selectedPort == null:
 		selectedPort.get_parent().dockedInstances.append(moduleInstance)
 		moduleInstance.dockedInstances.append(selectedPort.get_parent())

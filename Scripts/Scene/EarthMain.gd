@@ -93,29 +93,23 @@ func dock(targetPos: Vector2, targetRot: int, targetPortType: String, module: St
 	var moduleData = Data.modules[module]
 	var portType = moduleData.portTypes[port]
 	var isCorrectType: bool
+	var area = moduleInstance.get_node("Area2D")
 	if not targetPortType == "ANY":
 		isCorrectType = Data.validCouples[targetPortType] == portType
 
 	if (isCorrectType or Station.dockedModules.empty()) and module in Data.unlockedModules:
 		var camera = $Camera2D
-		var area = moduleInstance.get_node("Area2D")
-		var shape = ConvexPolygonShape2D.new()
-		shape.points = moduleInstance.get_node("Area2D").get_child(0).polygon
 		
 		camera.add_child(moduleInstance)
 		match int(abs(targetRot)) % 360:
 			180:
-				moduleInstance.position.x = targetPos.x - moduleData["portPos"][port].x
-				moduleInstance.position.y = targetPos.y - moduleData["portPos"][port].y
-				moduleInstance.rotation_degrees = 0.0 + moduleData["portRot"][port]
-				
 				var position = Vector2(
 					targetPos.x - moduleData["portPos"][port].x,
 					targetPos.y - moduleData["portPos"][port].y
 				)
 				var rotation = 0.0 + moduleData["portRot"][port]
-				
-				if not isOverlapping(shape, position, rotation, area):
+				var overlap = isNotOverlapping(moduleInstance, position, rotation, area)
+				if overlap:
 					moduleInstance.position.y += DOCKDIST
 					
 					tween.interpolate_property(
@@ -137,17 +131,13 @@ func dock(targetPos: Vector2, targetRot: int, targetPortType: String, module: St
 					moduleInstance.queue_free()
 					
 			90:
-				moduleInstance.rotation_degrees = 270.0 - moduleData["portRot"][port]
-				moduleInstance.position.x = targetPos.x - moduleData["portPos"][port].y
-				moduleInstance.position.y = targetPos.y + moduleData["portPos"][port].x
-				
 				var position = Vector2(
 					targetPos.x - moduleData["portPos"][port].y,
 					targetPos.y + moduleData["portPos"][port].x
 				)
 				var rotation = 270.0 - moduleData["portRot"][port]
-				
-				if not isOverlapping(shape, position, rotation, area):
+				var overlap = isNotOverlapping(moduleInstance, position, rotation, area)
+				if overlap:
 					moduleInstance.position.x += DOCKDIST
 					
 					tween.interpolate_property(
@@ -169,17 +159,13 @@ func dock(targetPos: Vector2, targetRot: int, targetPortType: String, module: St
 					moduleInstance.queue_free()
 					
 			0:
-				moduleInstance.position.x = targetPos.x + moduleData["portPos"][port].x
-				moduleInstance.position.y = targetPos.y + moduleData["portPos"][port].y
-				moduleInstance.rotation_degrees = 180.0 + moduleData["portRot"][port]
-				
 				var position = Vector2(
 					targetPos.x + moduleData["portPos"][port].x,
 					targetPos.y + moduleData["portPos"][port].y
 				)
-				var rotation = 18.0 + moduleData["portRot"][port]
-				
-				if not isOverlapping(shape, position, rotation, area):
+				var rotation = 180.0 + moduleData["portRot"][port]
+				var overlap = isNotOverlapping(moduleInstance, position, rotation, area)
+				if overlap:
 					moduleInstance.position.y -= DOCKDIST
 					
 					tween.interpolate_property(
@@ -201,17 +187,13 @@ func dock(targetPos: Vector2, targetRot: int, targetPortType: String, module: St
 					moduleInstance.queue_free()
 					
 			270:
-				moduleInstance.position.x = targetPos.x + moduleData["portPos"][port].y
-				moduleInstance.position.y = targetPos.y - moduleData["portPos"][port].x
-				moduleInstance.rotation_degrees = 90 - moduleData["portRot"][port]
-				
 				var position = Vector2(
 					targetPos.x + moduleData["portPos"][port].y,
 					targetPos.y - moduleData["portPos"][port].x
 				)
 				var rotation = 90.0 - moduleData["portRot"][port]
-				
-				if not isOverlapping(shape, position, rotation, area):
+				var overlap = isNotOverlapping(moduleInstance, position, rotation, area)
+				if overlap:
 					moduleInstance.position.x -= DOCKDIST
 					
 					tween.interpolate_property(
@@ -245,6 +227,7 @@ func dock(targetPos: Vector2, targetRot: int, targetPortType: String, module: St
 	self.add_child(t)
 	t.start()
 	yield(t, "timeout")
+	print(area.get_overlapping_areas())
 	
 	$EarthUI/UI/BuildButton.visible = true
 	$EarthUI/UI/BuildButton.disabled = false
@@ -252,15 +235,8 @@ func dock(targetPos: Vector2, targetRot: int, targetPortType: String, module: St
 	t.queue_free()
 	
 	
-func isOverlapping(shape, position: Vector2, rotation: float, area: Area2D):
-	var params = Physics2DShapeQueryParameters.new()
-	params.set_shape(shape)
-	params.transform = Transform2D(rotation, position)
-	params.collide_with_areas = true
-	params.collide_with_bodies = false
-	var state = get_world_2d().direct_space_state
-	print(state.intersect_shape(params))
-	for overlap in state.intersect_shape(params):
-		if not overlap["collider"] == area:
-			return true
-	return false
+func isNotOverlapping(object, position: Vector2, rotation: float, area: Area2D):
+	object.position = position
+	object.rotation_degrees = rotation
+	yield(get_tree(), "physics_frame")
+	return area.get_overlapping_areas().empty()

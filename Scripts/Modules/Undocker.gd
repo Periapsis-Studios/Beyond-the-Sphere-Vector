@@ -10,7 +10,7 @@ func _on_Undocker_pressed():
 		if get_parent().ports[i]:
 			dockedCount += 1
 			portNum = i
-	if dockedCount > 1:
+	if dockedCount != 1:
 		return
 	Station.undockModule(get_parent(), portNum, get_parent().dockedInstances[0], get_parent().dockedNumbers[0])
 	get_parent().queue_free()

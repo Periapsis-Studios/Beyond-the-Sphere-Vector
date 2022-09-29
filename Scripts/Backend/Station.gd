@@ -16,7 +16,10 @@ func dockModule(moduleName: String, moduleInstance: Node):
 	
 
 func undockModule(moduleInstance, modulePort, fromInstance, fromPort):
-	dockedModules.erase(moduleInstance)
+	for i in dockedModules.size():
+		if dockedModules[i][0] == moduleInstance:
+			dockedModules.remove(i)
+			break
 	fromInstance.ports[fromPort] = false
 	fromInstance.dockedInstances.erase(moduleInstance)
 	fromInstance.dockedNumbers.erase(modulePort)

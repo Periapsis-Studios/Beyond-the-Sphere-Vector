@@ -1,0 +1,96 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://Themes/DockPortColor.tres" type="StyleBox" id=1]
+[ext_resource path="res://Textures/Spacecraft/Mir Adapter.png" type="Texture" id=2]
+[ext_resource path="res://Scripts/Backend/PortButton.gd" type="Script" id=3]
+[ext_resource path="res://Textures/Spacecraft/RussianDockPort.png" type="Texture" id=4]
+[ext_resource path="res://Scripts/Backend/Module.gd" type="Script" id=5]
+[ext_resource path="res://Scripts/Modules/Undocker.gd" type="Script" id=6]
+[ext_resource path="res://Textures/Spacecraft/APAS-Flaps.png" type="Texture" id=7]
+[ext_resource path="res://Textures/Spacecraft/APAS.png" type="Texture" id=8]
+
+[sub_resource type="StyleBoxEmpty" id=8]
+
+[sub_resource type="StyleBoxEmpty" id=7]
+
+[sub_resource type="StyleBoxEmpty" id=9]
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource( 5 )
+portsNo = 2
+
+[node name="Port1" type="Sprite" parent="."]
+position = Vector2( 0, -949.379 )
+z_index = -1
+z_as_relative = false
+texture = ExtResource( 4 )
+
+[node name="Port2" type="Sprite" parent="."]
+position = Vector2( 1.23634e-12, -102 )
+rotation = 3.14159
+scale = Vector2( 0.184, 0.184 )
+texture = ExtResource( 8 )
+
+[node name="Port2-Flaps" type="Sprite" parent="."]
+position = Vector2( -7.10556e-14, -72 )
+rotation = 3.14159
+scale = Vector2( 0.184, 0.184 )
+z_index = -2
+z_as_relative = false
+texture = ExtResource( 7 )
+
+[node name="Module" type="Sprite" parent="."]
+position = Vector2( 0, -498 )
+scale = Vector2( 0.535, 0.535 )
+texture = ExtResource( 2 )
+
+[node name="Port1Button" type="Button" parent="." groups=["PortButtons"]]
+margin_left = -166.276
+margin_top = -930.0
+margin_right = 165.882
+margin_bottom = -879.607
+custom_styles/hover = ExtResource( 1 )
+custom_styles/pressed = ExtResource( 1 )
+custom_styles/focus = SubResource( 8 )
+custom_styles/disabled = SubResource( 7 )
+custom_styles/normal = ExtResource( 1 )
+disabled = true
+script = ExtResource( 3 )
+type = "RUS_PROBE"
+moduleName = "Mir Adapter"
+
+[node name="Port2Button" type="Button" parent="." groups=["PortButtons"]]
+margin_left = -168.0
+margin_top = -118.0
+margin_right = 169.0
+margin_bottom = -88.0
+custom_styles/hover = ExtResource( 1 )
+custom_styles/pressed = ExtResource( 1 )
+custom_styles/focus = SubResource( 8 )
+custom_styles/disabled = SubResource( 7 )
+custom_styles/normal = ExtResource( 1 )
+disabled = true
+script = ExtResource( 3 )
+type = "APAS"
+moduleName = "Mir Adapter"
+portNum = 1
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D"]
+polygon = PoolVector2Array( -205, -876, 203, -877, 199, -124, -201, -127 )
+
+[node name="Undocker" type="Button" parent="."]
+margin_left = -196.0
+margin_top = -876.0
+margin_right = 196.0
+margin_bottom = -118.0
+custom_styles/hover = SubResource( 9 )
+custom_styles/pressed = SubResource( 9 )
+custom_styles/focus = SubResource( 9 )
+custom_styles/disabled = SubResource( 9 )
+custom_styles/normal = SubResource( 9 )
+button_mask = 2
+script = ExtResource( 6 )
+
+[connection signal="pressed" from="Undocker" to="Undocker" method="_on_Undocker_pressed"]

@@ -1,0 +1,73 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://Themes/DockPortColor.tres" type="StyleBox" id=1]
+[ext_resource path="res://Textures/Spacecraft/Buran.png" type="Texture" id=2]
+[ext_resource path="res://Scripts/Backend/PortButton.gd" type="Script" id=3]
+[ext_resource path="res://Textures/Spacecraft/APAS.png" type="Texture" id=4]
+[ext_resource path="res://Scripts/Backend/Module.gd" type="Script" id=5]
+[ext_resource path="res://Scripts/Modules/Undocker.gd" type="Script" id=6]
+[ext_resource path="res://Textures/Spacecraft/APAS-Flaps.png" type="Texture" id=7]
+
+[sub_resource type="StyleBoxEmpty" id=8]
+
+[sub_resource type="StyleBoxEmpty" id=7]
+
+[sub_resource type="StyleBoxEmpty" id=9]
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource( 5 )
+portsNo = 1
+
+[node name="Port1" type="Sprite" parent="."]
+position = Vector2( 166, -790 )
+scale = Vector2( 0.183777, 0.183777 )
+texture = ExtResource( 4 )
+offset = Vector2( -903.27, -571.345 )
+
+[node name="Port1-Flaps" type="Sprite" parent="."]
+position = Vector2( 166, -820 )
+scale = Vector2( 0.183777, 0.183777 )
+z_index = -2
+z_as_relative = false
+texture = ExtResource( 7 )
+offset = Vector2( -903.27, -571.345 )
+
+[node name="Module" type="Sprite" parent="."]
+position = Vector2( 1933, -1186 )
+scale = Vector2( 1.14953, 1.14953 )
+texture = ExtResource( 2 )
+
+[node name="Port1Button" type="Button" parent="." groups=["PortButtons"]]
+margin_left = -166.0
+margin_top = -911.0
+margin_right = 166.0
+margin_bottom = -880.0
+custom_styles/hover = ExtResource( 1 )
+custom_styles/pressed = ExtResource( 1 )
+custom_styles/focus = SubResource( 8 )
+custom_styles/disabled = SubResource( 7 )
+custom_styles/normal = ExtResource( 1 )
+disabled = true
+script = ExtResource( 3 )
+type = "APAS"
+moduleName = "Space Shuttle"
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D"]
+polygon = PoolVector2Array( -281, -875, 185, -877, 185, -553, 3840, -555, 3842, -1010, 3982, -1243, 5525, -2708, 6193, -2711, 5478, -1240, 5841, 107, 5148, 316, -1091, 259, -1927, 148, -2291, -1, -2253, -229, -1136, -716, -893, -964, -777, -998, -280, -994 )
+
+[node name="Undocker" type="Button" parent="."]
+margin_left = -2250.0
+margin_top = -879.0
+margin_right = 5075.0
+margin_bottom = 313.0
+custom_styles/hover = SubResource( 9 )
+custom_styles/pressed = SubResource( 9 )
+custom_styles/focus = SubResource( 9 )
+custom_styles/disabled = SubResource( 9 )
+custom_styles/normal = SubResource( 9 )
+button_mask = 2
+script = ExtResource( 6 )
+
+[connection signal="pressed" from="Undocker" to="Undocker" method="_on_Undocker_pressed"]

@@ -4,7 +4,8 @@ var validCouples = {
 	"RUS_PROBE": "RUS_DROGUE",
 	"RUS_DROGUE": "RUS_PROBE",
 	"US_PROBE": "US_DROGUE",
-	"US_DROGUE": "US_PROBE"
+	"US_DROGUE": "US_PROBE",
+	"APAS": "APAS"
 }
 var saveName: String
 var money: int
@@ -161,6 +162,30 @@ var kvant2 = {
 	"portNum": 1,
 	"cost": 80_000_000
 }
+var shuttle = {
+	"portTypes": {0: "APAS"},
+	"portPos": {0: Vector2(0, -911)},
+	"portRot": {0: 0},
+	"portNum": 1,
+	"cost": 160_000_000
+}
+var buran = {
+	"portTypes": {0: "APAS"},
+	"portPos": {0: Vector2(0, -911)},
+	"portRot": {0: 0},
+	"portNum": 1,
+	"cost": 200_000_000
+}
+var mirAdapter = {
+	"portTypes": {0: "RUS_PROBE", 1: "APAS"},
+	"portPos": {
+		0: Vector2(0, -930),
+		1: Vector2(0, 88)
+	},
+	"portRot": {0: 0, 1: 180},
+	"portNum": 2,
+	"cost": 40_000_000
+}
 
 
 var modules = {
@@ -174,7 +199,10 @@ var modules = {
 	"Russian Node": rusNode,
 	"Mir Core": mirCore,
 	"Kvant-1": kvant1,
-	"Kvant-2": kvant2
+	"Kvant-2": kvant2,
+	"Space Shuttle": shuttle,
+	"Buran": buran,
+	"Mir Adapter": mirAdapter
 }
 var unlockedModules = [
 	"Soyuz",
@@ -311,7 +339,7 @@ func finishLoading():
 		moduleInstance.position = Vector2(stationLine["posx"], stationLine["posy"])
 		moduleInstance.rotation_degrees = stationLine["rot"]
 		for port in stationLine["ports"]:
-			moduleInstance.ports[int(port)] = stationLine["ports"][port]
+			moduleInstance.ports.append(bool(port))
 		Station.dockedModules.append([moduleInstance, stationLine["name"]])
 	stationFile.close()
 	loading = false

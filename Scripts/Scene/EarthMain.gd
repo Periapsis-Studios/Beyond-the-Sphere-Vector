@@ -8,6 +8,7 @@ const DOCKSPEED = 5
 const DOCKDIST = 5000
 const MOVESPEED = 10
 var selectedPort = null
+var dockBlocked: bool = false
 
 
 func _ready():
@@ -86,8 +87,7 @@ func targetSelected(position, rotation, type):
 	
 
 func dock(targetPos: Vector2, targetRot: int, targetPortType: String, module: String, port: int):
-	$EarthUI/UI/BuildButton.visible = false
-	$EarthUI/UI/BuildButton.disabled = true
+	dockBlocked = false
 	var moduleObject = load("res://Scenes/Modules/" + module + ".tscn")
 	var moduleInstance = moduleObject.instance()
 	var moduleData = Data.modules[module]
@@ -101,15 +101,28 @@ func dock(targetPos: Vector2, targetRot: int, targetPortType: String, module: St
 		var camera = $Camera2D
 		
 		camera.add_child(moduleInstance)
+		area.connect("area_shape_entered", self, "overlap")
+		moduleInstance.visible = false
 		match int(abs(targetRot)) % 360:
 			180:
 				var position = Vector2(
 					targetPos.x - moduleData["portPos"][port].x,
 					targetPos.y - moduleData["portPos"][port].y
 				)
-				var rotation = 0.0 + moduleData["portRot"][port]
-				var overlap = isNotOverlapping(moduleInstance, position, rotation, area)
-				if overlap:
+				moduleInstance.position = position
+				moduleInstance.rotation_degrees = 0.0 + moduleData["portRot"][port]
+				var t = Timer.new()
+				t.set_wait_time(1)
+				t.set_one_shot(true)
+				self.add_child(t)
+				t.start()
+				yield(t, "timeout")
+				t.queue_free()
+				if not dockBlocked:
+					$EarthUI/UI/BuildButton.visible = false
+					$EarthUI/UI/BuildButton.disabled = true
+	
+					moduleInstance.visible = true
 					moduleInstance.position.y += DOCKDIST
 					
 					tween.interpolate_property(
@@ -135,9 +148,20 @@ func dock(targetPos: Vector2, targetRot: int, targetPortType: String, module: St
 					targetPos.x - moduleData["portPos"][port].y,
 					targetPos.y + moduleData["portPos"][port].x
 				)
-				var rotation = 270.0 - moduleData["portRot"][port]
-				var overlap = isNotOverlapping(moduleInstance, position, rotation, area)
-				if overlap:
+				moduleInstance.position = position
+				moduleInstance.rotation_degrees = 270.0 - moduleData["portRot"][port]
+				var t = Timer.new()
+				t.set_wait_time(1)
+				t.set_one_shot(true)
+				self.add_child(t)
+				t.start()
+				yield(t, "timeout")
+				t.queue_free()
+				if not dockBlocked:
+					$EarthUI/UI/BuildButton.visible = false
+					$EarthUI/UI/BuildButton.disabled = true
+					
+					moduleInstance.visible = true
 					moduleInstance.position.x += DOCKDIST
 					
 					tween.interpolate_property(
@@ -163,9 +187,20 @@ func dock(targetPos: Vector2, targetRot: int, targetPortType: String, module: St
 					targetPos.x + moduleData["portPos"][port].x,
 					targetPos.y + moduleData["portPos"][port].y
 				)
-				var rotation = 180.0 + moduleData["portRot"][port]
-				var overlap = isNotOverlapping(moduleInstance, position, rotation, area)
-				if overlap:
+				moduleInstance.position = position
+				moduleInstance.rotation_degrees = 180.0 + moduleData["portRot"][port]
+				var t = Timer.new()
+				t.set_wait_time(1)
+				t.set_one_shot(true)
+				self.add_child(t)
+				t.start()
+				yield(t, "timeout")
+				t.queue_free()
+				if not dockBlocked:
+					$EarthUI/UI/BuildButton.visible = false
+					$EarthUI/UI/BuildButton.disabled = true
+					
+					moduleInstance.visible = true
 					moduleInstance.position.y -= DOCKDIST
 					
 					tween.interpolate_property(
@@ -191,9 +226,20 @@ func dock(targetPos: Vector2, targetRot: int, targetPortType: String, module: St
 					targetPos.x + moduleData["portPos"][port].y,
 					targetPos.y - moduleData["portPos"][port].x
 				)
-				var rotation = 90.0 - moduleData["portRot"][port]
-				var overlap = isNotOverlapping(moduleInstance, position, rotation, area)
-				if overlap:
+				moduleInstance.position = position
+				moduleInstance.rotation_degrees = 90.0 - moduleData["portRot"][port]
+				var t = Timer.new()
+				t.set_wait_time(1)
+				t.set_one_shot(true)
+				self.add_child(t)
+				t.start()
+				yield(t, "timeout")
+				t.queue_free()
+				if not dockBlocked:
+					$EarthUI/UI/BuildButton.visible = false
+					$EarthUI/UI/BuildButton.disabled = true
+					
+					moduleInstance.visible = true
 					moduleInstance.position.x -= DOCKDIST
 					
 					tween.interpolate_property(
@@ -227,7 +273,6 @@ func dock(targetPos: Vector2, targetRot: int, targetPortType: String, module: St
 	self.add_child(t)
 	t.start()
 	yield(t, "timeout")
-	print(area.get_overlapping_areas())
 	
 	$EarthUI/UI/BuildButton.visible = true
 	$EarthUI/UI/BuildButton.disabled = false
@@ -235,8 +280,6 @@ func dock(targetPos: Vector2, targetRot: int, targetPortType: String, module: St
 	t.queue_free()
 	
 	
-func isNotOverlapping(object, position: Vector2, rotation: float, area: Area2D):
-	object.position = position
-	object.rotation_degrees = rotation
-	yield(get_tree(), "physics_frame")
-	return area.get_overlapping_areas().empty()
+func overlap(area_rid, area, area_shape_index, local_shape_index):
+	dockBlocked = true
+	print("blocked")

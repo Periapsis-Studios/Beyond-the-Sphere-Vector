@@ -1,0 +1,1 @@
+Přijmi kontrakt. Má nastavenou délku, která bude ovlivněna počtem modulů ve tvé stanici.

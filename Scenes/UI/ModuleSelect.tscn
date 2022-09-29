@@ -1,0 +1,123 @@
+[gd_scene load_steps=13 format=2]
+
+[ext_resource path="res://Textures/UI/ModuleSelectFrame.png" type="Texture" id=1]
+[ext_resource path="res://Scenes/UI/Dropdown.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Scripts/UI/ModuleDropdown.gd" type="Script" id=3]
+[ext_resource path="res://Fonts/nasalization-regular.ttf" type="DynamicFontData" id=4]
+[ext_resource path="res://Themes/Dropdown.tres" type="Theme" id=5]
+[ext_resource path="res://Textures/UI/Arrow.png" type="Texture" id=6]
+
+[sub_resource type="DynamicFont" id=6]
+size = 32
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 4 )
+
+[sub_resource type="StyleBoxEmpty" id=7]
+
+[sub_resource type="StyleBoxEmpty" id=8]
+
+[sub_resource type="StyleBoxEmpty" id=9]
+
+[sub_resource type="StyleBoxEmpty" id=10]
+
+[sub_resource type="StyleBoxEmpty" id=11]
+
+[node name="Control" type="Control"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -256.0
+margin_top = -150.0
+margin_right = 256.0
+margin_bottom = 150.0
+script = ExtResource( 3 )
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 10.2592, 6.06001 )
+scale = Vector2( 0.119991, 0.1212 )
+texture = ExtResource( 1 )
+offset = Vector2( 2048, 1200 )
+
+[node name="ModulePreview" type="TextureRect" parent="."]
+margin_left = 30.0
+margin_top = 93.0
+margin_right = 148.0
+margin_bottom = 151.0
+rect_scale = Vector2( 3, 3 )
+expand = true
+stretch_mode = 6
+
+[node name="ModuleDropdown" parent="." instance=ExtResource( 2 )]
+margin_left = 19.0
+margin_top = 30.0
+margin_right = -149.0
+margin_bottom = 322.0
+rect_scale = Vector2( 0.4, 0.4 )
+options = [  ]
+
+[node name="Confirm" type="Button" parent="."]
+margin_left = 423.0
+margin_top = 241.0
+margin_right = 578.0
+margin_bottom = 327.0
+rect_scale = Vector2( 0.5, 0.5 )
+custom_colors/font_color_disabled = Color( 0.247059, 0.247059, 0.247059, 1 )
+custom_colors/font_color_focus = Color( 0, 0, 0, 1 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_color_hover = Color( 0.164706, 0.164706, 0.164706, 1 )
+custom_colors/font_color_pressed = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 6 )
+custom_styles/hover = SubResource( 7 )
+custom_styles/pressed = SubResource( 8 )
+custom_styles/focus = SubResource( 9 )
+custom_styles/disabled = SubResource( 10 )
+custom_styles/normal = SubResource( 11 )
+text = "confirm"
+
+[node name="PortNum" type="Label" parent="."]
+margin_left = 423.0
+margin_top = 39.0
+margin_right = 1131.0
+margin_bottom = 339.0
+rect_scale = Vector2( 0.1, 0.1 )
+theme = ExtResource( 5 )
+text = "Port 1"
+align = 1
+valign = 1
+
+[node name="Port-" type="TextureButton" parent="."]
+margin_left = 423.0
+margin_top = 39.0
+margin_right = 623.0
+margin_bottom = 139.0
+rect_rotation = 90.0
+rect_scale = Vector2( 0.1, 0.1 )
+texture_normal = ExtResource( 6 )
+texture_pressed = ExtResource( 6 )
+texture_hover = ExtResource( 6 )
+texture_focused = ExtResource( 6 )
+
+[node name="Port+" type="TextureButton" parent="."]
+margin_left = 494.0
+margin_top = 69.0
+margin_right = 694.0
+margin_bottom = 169.0
+rect_rotation = 270.0
+rect_scale = Vector2( 0.1, 0.1 )
+texture_normal = ExtResource( 6 )
+
+[node name="Cost" type="Label" parent="."]
+margin_left = 421.0
+margin_top = 69.0
+margin_right = 1191.0
+margin_bottom = 369.0
+rect_scale = Vector2( 0.1, 0.1 )
+theme = ExtResource( 5 )
+align = 1
+valign = 1
+
+[connection signal="optionChanged" from="ModuleDropdown" to="." method="item_selected"]
+[connection signal="pressed" from="Confirm" to="." method="confirmPress"]
+[connection signal="pressed" from="Port-" to="." method="decreasePort"]
+[connection signal="pressed" from="Port+" to="." method="increasePort"]

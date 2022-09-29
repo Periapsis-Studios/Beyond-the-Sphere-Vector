@@ -1,0 +1,1 @@
+Now accept a contract. The contract has a set duration, and will be faster or slower depending on the amount of modules on your station.

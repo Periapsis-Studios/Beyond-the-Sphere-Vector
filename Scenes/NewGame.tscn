@@ -1,0 +1,89 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://Textures/UI/NewGame.png" type="Texture" id=1]
+[ext_resource path="res://Scenes/UI/Dropdown.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Themes/Dropdown.tres" type="Theme" id=3]
+[ext_resource path="res://Scripts/Scene/NewGame.gd" type="Script" id=4]
+[ext_resource path="res://Textures/UI/Back-icon.png" type="Texture" id=5]
+[ext_resource path="res://Textures/UI/Back-icon-pressed.png" type="Texture" id=6]
+
+[node name="Control" type="Control"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -512.0
+margin_top = -300.0
+margin_right = 512.0
+margin_bottom = 300.0
+script = ExtResource( 4 )
+
+[node name="TextureRect" type="TextureRect" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -321.5
+margin_top = -188.5
+margin_right = 321.5
+margin_bottom = 188.5
+rect_scale = Vector2( 0.362, 0.362 )
+texture = ExtResource( 1 )
+stretch_mode = 1
+
+[node name="LineEdit" type="LineEdit" parent="."]
+margin_left = 306.0
+margin_top = 130.0
+margin_right = 2026.0
+margin_bottom = 435.0
+rect_scale = Vector2( 0.13, 0.13 )
+theme = ExtResource( 3 )
+text = "Name"
+
+[node name="Control" parent="." instance=ExtResource( 2 )]
+margin_left = 305.0
+margin_top = 220.0
+margin_right = -348.0
+margin_bottom = -40.0
+rect_scale = Vector2( 0.52, 0.52 )
+options = [ "easy", "normal", "hard", "sandbox" ]
+defaultOption = "easy"
+
+[node name="Confirm" type="Button" parent="."]
+margin_left = 742.0
+margin_top = 450.0
+margin_right = 1579.0
+margin_bottom = 688.0
+rect_scale = Vector2( 0.1, 0.1 )
+theme = ExtResource( 3 )
+text = "confirm"
+
+[node name="Back" type="TextureButton" parent="."]
+margin_left = 210.0
+margin_top = 450.0
+margin_right = 1881.0
+margin_bottom = 1214.0
+rect_scale = Vector2( 0.025, 0.025 )
+texture_normal = ExtResource( 5 )
+texture_pressed = ExtResource( 5 )
+texture_hover = ExtResource( 6 )
+texture_disabled = ExtResource( 5 )
+texture_focused = ExtResource( 5 )
+
+[node name="TutorialLabel" type="Label" parent="."]
+margin_left = 715.0
+margin_top = 130.0
+margin_right = 1470.0
+margin_bottom = 368.0
+rect_scale = Vector2( 0.15, 0.15 )
+theme = ExtResource( 3 )
+text = "tutorial"
+
+[node name="CheckButton" type="CheckButton" parent="."]
+margin_left = 728.0
+margin_top = 170.0
+margin_right = 804.0
+margin_bottom = 210.0
+
+[connection signal="pressed" from="Confirm" to="." method="_on_Confirm_pressed"]
+[connection signal="pressed" from="Back" to="." method="backPressed"]

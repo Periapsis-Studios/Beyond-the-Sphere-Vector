@@ -107,7 +107,6 @@ portNum = 3
 [node name="Area2D" type="Area2D" parent="."]
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D"]
-visible = false
 polygon = PoolVector2Array( -163, -867, 158, -867, 162, -545, 216, -297, 1585, -300, 1588, 175, 355, 225, 351, 1054, 508, 1337, 499, 2261, -539, 2263, -535, 1352, -367, 1041, -354, 217, -1592, 153, -1581, -293, -212, -298, -161, -547 )
 
 [node name="Undocker" type="Button" parent="."]

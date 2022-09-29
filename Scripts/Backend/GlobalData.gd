@@ -35,7 +35,7 @@ var nodes = [
 		"Pos": Vector2(2, 0),
 		"Unlocks": [
 			"OWS Node",
-			"Russian node"
+			"Russian Node"
 		],
 		"Cost": 5,
 		"Requires": 0,
@@ -49,6 +49,18 @@ var nodes = [
 		],
 		"Cost": 10,
 		"Requires": 0,
+		"Unlocked": false
+	},
+	{
+		"Name": "Early Modularity",
+		"Pos": Vector2(4, -2),
+		"Unlocks": [
+			"Mir Core",
+			"Kvant-1",
+			"Kvant-2"
+		],
+		"Cost": 20,
+		"Requires": 1,
 		"Unlocked": false
 	}
 ]
@@ -126,11 +138,28 @@ var mirCore = {
 		0: Vector2(0, -930),
 		1: Vector2(-709, -219),
 		2: Vector2(709, -226),
-		3: Vector2(0, -2284)
+		3: Vector2(0, -2334)
 	},
 	"portRot": {0: 0, 1: 90, 2: 270, 3: 180},
 	"portNum": 4,
-	"cost": 40_000_000
+	"cost": 100_000_000
+}
+var kvant1 = {
+	"portTypes": {0: "RUS_PROBE", 1: "RUS_DROGUE"},
+	"portPos": {
+		0: Vector2(0, -930),
+		1: Vector2(0, -306)
+	},
+	"portRot": {0: 0, 1: 180},
+	"portNum": 2,
+	"cost": 70_000_000
+}
+var kvant2 = {
+	"portTypes": {0: "RUS_PROBE"},
+	"portPos": {0: Vector2(0, -1663)},
+	"portRot": {0: 180},
+	"portNum": 1,
+	"cost": 80_000_000
 }
 
 
@@ -143,7 +172,9 @@ var modules = {
 	"Progress": progress,
 	"OWS Node": owsNode,
 	"Russian Node": rusNode,
-	"Mir Core": mirCore
+	"Mir Core": mirCore,
+	"Kvant-1": kvant1,
+	"Kvant-2": kvant2
 }
 var unlockedModules = [
 	"Soyuz",

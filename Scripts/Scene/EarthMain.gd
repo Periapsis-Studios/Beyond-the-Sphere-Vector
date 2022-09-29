@@ -257,6 +257,7 @@ func isOverlapping(shape, position: Vector2, rotation: float, area: Area2D):
 	params.set_shape(shape)
 	params.transform = Transform2D(rotation, position)
 	params.collide_with_areas = true
+	params.collide_with_bodies = false
 	var state = get_world_2d().direct_space_state
 	print(state.intersect_shape(params))
 	for overlap in state.intersect_shape(params):

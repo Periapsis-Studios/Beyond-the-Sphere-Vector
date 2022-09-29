@@ -1,5 +1,9 @@
 extends Node
 
+const version = "0.1.0"
+func _ready():
+	print("Version: " + version)
+
 var validCouples = {
 	"RUS_PROBE": "RUS_DROGUE",
 	"RUS_DROGUE": "RUS_PROBE",

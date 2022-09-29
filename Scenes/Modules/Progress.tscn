@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Themes/DockPortColor.tres" type="StyleBox" id=1]
 [ext_resource path="res://Textures/Spacecraft/Progress.png" type="Texture" id=2]
@@ -10,9 +10,6 @@
 [sub_resource type="StyleBoxEmpty" id=8]
 
 [sub_resource type="StyleBoxEmpty" id=7]
-
-[sub_resource type="RectangleShape2D" id=6]
-extents = Vector2( 1320, 887.5 )
 
 [sub_resource type="StyleBoxEmpty" id=9]
 
@@ -46,16 +43,14 @@ moduleName = "Progress"
 
 [node name="Area2D" type="Area2D" parent="."]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2( -5, 12.5 )
-shape = SubResource( 6 )
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D"]
+polygon = PoolVector2Array( -1293, 422, -302, 416, -287, -868, 303, -870, 298, 403, 1292, 413, 1289, 741, 281, 745, 355, 875, -341, 873, -282, 749, -1299, 741 )
 
 [node name="Undocker" type="Button" parent="."]
 margin_left = -269.0
 margin_top = -876.0
 margin_right = 273.0
 margin_bottom = 878.0
-hint_tooltip = "RMB to undock"
 custom_styles/hover = SubResource( 9 )
 custom_styles/pressed = SubResource( 9 )
 custom_styles/focus = SubResource( 9 )

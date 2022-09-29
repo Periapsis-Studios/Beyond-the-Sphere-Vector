@@ -20,9 +20,7 @@ func pressed():
 
 func getPosition():
 	rotation = abs(get_parent().rotation_degrees)
-	print(rotation)
 	rotation += Data.modules[moduleName]["portRot"][portNum]
-	print(rotation)
 	match fmod(rotation, 360.0):
 		0.0:
 			return get_parent().position + Data.modules[moduleName]["portPos"][portNum]

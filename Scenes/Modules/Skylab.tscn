@@ -46,14 +46,13 @@ moduleName = "Skylab"
 [node name="Area2D" type="Area2D" parent="."]
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D"]
-polygon = PoolVector2Array( -1698, -1700, -1346, -2051, -171, -888, 152, -888, 1311, -2031, 1607, -1744, 320, -445, 1603, 849, 2003, 849, 2011, 2971, -2098, 2955, -2066, 849, -1674, 861, -367, -434 )
+polygon = PoolVector2Array( -171, -888, 152, -888, 515, 851, 2003, 849, 2011, 2971, -2098, 2955, -2066, 849, -525, 843 )
 
 [node name="Undocker" type="Button" parent="."]
 margin_left = -480.0
 margin_top = -880.0
 margin_right = 493.0
 margin_bottom = 2880.0
-hint_tooltip = "RMB to undock"
 custom_styles/hover = SubResource( 9 )
 custom_styles/pressed = SubResource( 9 )
 custom_styles/focus = SubResource( 9 )

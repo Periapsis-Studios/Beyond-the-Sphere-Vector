@@ -99,6 +99,8 @@ func dock(targetPos: Vector2, targetRot: int, targetPortType: String, module: St
 	if (isCorrectType or Station.dockedModules.empty()) and module in Data.unlockedModules:
 		var camera = $Camera2D
 		var area = moduleInstance.get_node("Area2D")
+		var shape = ConvexPolygonShape2D.new()
+		shape.points = moduleInstance.get_node("Area2D").get_child(0).polygon
 		
 		camera.add_child(moduleInstance)
 		match int(abs(targetRot)) % 360:
@@ -107,7 +109,13 @@ func dock(targetPos: Vector2, targetRot: int, targetPortType: String, module: St
 				moduleInstance.position.y = targetPos.y - moduleData["portPos"][port].y
 				moduleInstance.rotation_degrees = 0.0 + moduleData["portRot"][port]
 				
-				if area.get_overlapping_areas().empty():
+				var position = Vector2(
+					targetPos.x - moduleData["portPos"][port].x,
+					targetPos.y - moduleData["portPos"][port].y
+				)
+				var rotation = 0.0 + moduleData["portRot"][port]
+				
+				if not isOverlapping(shape, position, rotation, area):
 					moduleInstance.position.y += DOCKDIST
 					
 					tween.interpolate_property(
@@ -133,7 +141,13 @@ func dock(targetPos: Vector2, targetRot: int, targetPortType: String, module: St
 				moduleInstance.position.x = targetPos.x - moduleData["portPos"][port].y
 				moduleInstance.position.y = targetPos.y + moduleData["portPos"][port].x
 				
-				if area.get_overlapping_areas().empty():
+				var position = Vector2(
+					targetPos.x - moduleData["portPos"][port].y,
+					targetPos.y + moduleData["portPos"][port].x
+				)
+				var rotation = 270.0 - moduleData["portRot"][port]
+				
+				if not isOverlapping(shape, position, rotation, area):
 					moduleInstance.position.x += DOCKDIST
 					
 					tween.interpolate_property(
@@ -159,7 +173,13 @@ func dock(targetPos: Vector2, targetRot: int, targetPortType: String, module: St
 				moduleInstance.position.y = targetPos.y + moduleData["portPos"][port].y
 				moduleInstance.rotation_degrees = 180.0 + moduleData["portRot"][port]
 				
-				if area.get_overlapping_areas().empty():
+				var position = Vector2(
+					targetPos.x + moduleData["portPos"][port].x,
+					targetPos.y + moduleData["portPos"][port].y
+				)
+				var rotation = 18.0 + moduleData["portRot"][port]
+				
+				if not isOverlapping(shape, position, rotation, area):
 					moduleInstance.position.y -= DOCKDIST
 					
 					tween.interpolate_property(
@@ -185,8 +205,13 @@ func dock(targetPos: Vector2, targetRot: int, targetPortType: String, module: St
 				moduleInstance.position.y = targetPos.y - moduleData["portPos"][port].x
 				moduleInstance.rotation_degrees = 90 - moduleData["portRot"][port]
 				
+				var position = Vector2(
+					targetPos.x + moduleData["portPos"][port].y,
+					targetPos.y - moduleData["portPos"][port].x
+				)
+				var rotation = 90.0 - moduleData["portRot"][port]
 				
-				if area.get_overlapping_areas().empty():
+				if not isOverlapping(shape, position, rotation, area):
 					moduleInstance.position.x -= DOCKDIST
 					
 					tween.interpolate_property(
@@ -207,6 +232,11 @@ func dock(targetPos: Vector2, targetRot: int, targetPortType: String, module: St
 				else:
 					Station.refundModule(module)
 					moduleInstance.queue_free()
+	if not selectedPort == null:
+		selectedPort.get_parent().dockedInstances.append(moduleInstance)
+		moduleInstance.dockedInstances.append(selectedPort.get_parent())
+		selectedPort.get_parent().dockedNumbers.append(port)
+		moduleInstance.dockedNumbers.append(selectedPort.portNum)
 	selectedPort = null
 	
 	var t = Timer.new()
@@ -220,3 +250,16 @@ func dock(targetPos: Vector2, targetRot: int, targetPortType: String, module: St
 	$EarthUI/UI/BuildButton.disabled = false
 	
 	t.queue_free()
+	
+	
+func isOverlapping(shape, position: Vector2, rotation: float, area: Area2D):
+	var params = Physics2DShapeQueryParameters.new()
+	params.set_shape(shape)
+	params.transform = Transform2D(rotation, position)
+	params.collide_with_areas = true
+	var state = get_world_2d().direct_space_state
+	print(state.intersect_shape(params))
+	for overlap in state.intersect_shape(params):
+		if not overlap["collider"] == area:
+			return true
+	return false

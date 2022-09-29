@@ -113,10 +113,22 @@ var rusNode = {
 	"portPos": {
 		0: Vector2(0, -930),
 		1: Vector2(-710, -214),
-		2: Vector2(0, 493),
+		2: Vector2(0, 491),
 		3: Vector2(710, -215)
 	},
 	"portRot": {0: 0, 1: 90, 2: 180, 3: 270},
+	"portNum": 4,
+	"cost": 40_000_000
+}
+var mirCore = {
+	"portTypes": {0: "RUS_DROGUE", 1: "RUS_DROGUE", 2: "RUS_DROGUE", 3: "RUS_DROGUE"},
+	"portPos": {
+		0: Vector2(0, -930),
+		1: Vector2(-709, -219),
+		2: Vector2(709, -226),
+		3: Vector2(0, -2284)
+	},
+	"portRot": {0: 0, 1: 90, 2: 270, 3: 180},
 	"portNum": 4,
 	"cost": 40_000_000
 }
@@ -130,7 +142,8 @@ var modules = {
 	"Adapter": adapter,
 	"Progress": progress,
 	"OWS Node": owsNode,
-	"Russian Node": rusNode
+	"Russian Node": rusNode,
+	"Mir Core": mirCore
 }
 var unlockedModules = [
 	"Soyuz",

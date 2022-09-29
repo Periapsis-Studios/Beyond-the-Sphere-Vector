@@ -8,6 +8,7 @@ onready var quit = get_node("Quit")
 func _on_NewGame_pressed():
 	get_tree().change_scene("res://Scenes/NewGame.tscn")
 
+
 func _on_NewGame_mouse_entered():
 	new_game.text = "> " + tr("newGame")
 

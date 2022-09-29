@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Scripts/Backend/PortButton.gd" type="Script" id=1]
 [ext_resource path="res://Themes/DockPortColor.tres" type="StyleBox" id=2]
@@ -10,9 +10,6 @@
 [sub_resource type="StyleBoxEmpty" id=7]
 
 [sub_resource type="StyleBoxEmpty" id=4]
-
-[sub_resource type="RectangleShape2D" id=6]
-extents = Vector2( 1542.75, 1604 )
 
 [sub_resource type="StyleBoxEmpty" id=8]
 
@@ -53,16 +50,11 @@ moduleName = "Salyut"
 
 [node name="Area2D" type="Area2D" parent="."]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2( 0, 682 )
-shape = SubResource( 6 )
-
 [node name="Undocker" type="Button" parent="."]
 margin_left = -458.0
 margin_top = -922.0
 margin_right = 452.0
 margin_bottom = 2261.0
-hint_tooltip = "RMB to undock"
 custom_styles/hover = SubResource( 8 )
 custom_styles/pressed = SubResource( 9 )
 custom_styles/focus = SubResource( 10 )
@@ -70,6 +62,9 @@ custom_styles/disabled = SubResource( 10 )
 custom_styles/normal = SubResource( 10 )
 button_mask = 2
 script = ExtResource( 6 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PoolVector2Array( -1536, 2290, 1527, 2268, 1529, 1836, 487, 1824, 486, 911, 343, 610, 339, -184, 1522, -251, 1522, -683, 235, -681, 177, -917, -190, -915, -235, -689, -1545, -701, -1535, -262, -355, -199, -356, 612, -475, 907, -488, 1802, -1541, 1800 )
 
 [connection signal="pressed" from="Port1Button" to="Port1Button" method="pressed"]
 [connection signal="pressed" from="Undocker" to="Undocker" method="_on_Undocker_pressed"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Themes/DockPortColor.tres" type="StyleBox" id=1]
 [ext_resource path="res://Textures/Spacecraft/Adapter.png" type="Texture" id=2]
@@ -11,9 +11,6 @@
 [sub_resource type="StyleBoxEmpty" id=8]
 
 [sub_resource type="StyleBoxEmpty" id=7]
-
-[sub_resource type="RectangleShape2D" id=6]
-extents = Vector2( 374, 557.5 )
 
 [sub_resource type="StyleBoxEmpty" id=9]
 
@@ -75,16 +72,14 @@ portNum = 1
 
 [node name="Area2D" type="Area2D" parent="."]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2( -181, -322.5 )
-shape = SubResource( 6 )
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D"]
+polygon = PoolVector2Array( 167, -872, -521, -874, -515, 232, 170, 227 )
 
 [node name="Undocker" type="Button" parent="."]
 margin_left = -519.0
 margin_top = -877.0
 margin_right = 171.0
 margin_bottom = 237.0
-hint_tooltip = "RMB to undock"
 custom_styles/hover = SubResource( 9 )
 custom_styles/pressed = SubResource( 9 )
 custom_styles/focus = SubResource( 9 )

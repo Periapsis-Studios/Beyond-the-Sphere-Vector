@@ -24,9 +24,7 @@ extents = Vector2( 1542.75, 1604 )
 z_index = 1
 z_as_relative = false
 script = ExtResource( 5 )
-ports = {
-0: false
-}
+portsNo = 1
 
 [node name="Port1" type="Sprite" parent="."]
 position = Vector2( 0, -949 )

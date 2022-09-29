@@ -1,0 +1,140 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://Themes/DockPortColor.tres" type="StyleBox" id=1]
+[ext_resource path="res://Textures/Spacecraft/OWS-Node.png" type="Texture" id=2]
+[ext_resource path="res://Scripts/Backend/PortButton.gd" type="Script" id=3]
+[ext_resource path="res://Textures/Spacecraft/USDockDrogue.png" type="Texture" id=4]
+[ext_resource path="res://Scripts/Backend/Module.gd" type="Script" id=5]
+[ext_resource path="res://Scripts/Modules/Undocker.gd" type="Script" id=6]
+[ext_resource path="res://Textures/Spacecraft/US_Probe.png" type="Texture" id=7]
+
+[sub_resource type="StyleBoxEmpty" id=8]
+
+[sub_resource type="StyleBoxEmpty" id=7]
+
+[sub_resource type="RectangleShape2D" id=6]
+extents = Vector2( 178, 436 )
+
+[sub_resource type="StyleBoxEmpty" id=9]
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource( 5 )
+portsNo = 4
+
+[node name="Port1" type="Sprite" parent="."]
+position = Vector2( 4.76837e-07, -769 )
+scale = Vector2( 0.161662, 0.161662 )
+z_as_relative = false
+texture = ExtResource( 4 )
+
+[node name="Port2" type="Sprite" parent="."]
+position = Vector2( -5.82432e-11, 245 )
+rotation = 3.14159
+scale = Vector2( 0.167436, 0.167436 )
+z_index = -2
+z_as_relative = false
+texture = ExtResource( 7 )
+
+[node name="Port3" type="Sprite" parent="."]
+position = Vector2( 213, -270 )
+rotation = 1.5708
+scale = Vector2( 0.161662, 0.161662 )
+texture = ExtResource( 4 )
+
+[node name="Port4" type="Sprite" parent="."]
+position = Vector2( -214, -270 )
+rotation = 4.71239
+scale = Vector2( 0.161662, 0.161662 )
+z_as_relative = false
+texture = ExtResource( 4 )
+
+[node name="Module" type="Sprite" parent="."]
+position = Vector2( -9.09495e-13, -296 )
+scale = Vector2( 2.13348, 2.13348 )
+z_index = -1
+texture = ExtResource( 2 )
+
+[node name="Port1Button" type="Button" parent="." groups=["PortButtons"]]
+margin_left = -166.0
+margin_top = -804.0
+margin_right = 166.0
+margin_bottom = -734.0
+custom_styles/hover = ExtResource( 1 )
+custom_styles/pressed = ExtResource( 1 )
+custom_styles/focus = SubResource( 8 )
+custom_styles/disabled = SubResource( 7 )
+custom_styles/normal = ExtResource( 1 )
+disabled = true
+script = ExtResource( 3 )
+type = "US_DROGUE"
+moduleName = "OWS Node"
+
+[node name="Port2Button" type="Button" parent="." groups=["PortButtons"]]
+margin_left = -179.0
+margin_top = 142.0
+margin_right = 169.0
+margin_bottom = 190.0
+custom_styles/hover = ExtResource( 1 )
+custom_styles/pressed = ExtResource( 1 )
+custom_styles/focus = SubResource( 8 )
+custom_styles/disabled = SubResource( 7 )
+custom_styles/normal = ExtResource( 1 )
+disabled = true
+script = ExtResource( 3 )
+type = "US_PROBE"
+moduleName = "OWS Node"
+portNum = 1
+
+[node name="Port3Button" type="Button" parent="." groups=["PortButtons"]]
+margin_left = 179.0
+margin_top = -435.0
+margin_right = 247.0
+margin_bottom = -105.0
+custom_styles/hover = ExtResource( 1 )
+custom_styles/pressed = ExtResource( 1 )
+custom_styles/focus = SubResource( 8 )
+custom_styles/disabled = SubResource( 7 )
+custom_styles/normal = ExtResource( 1 )
+disabled = true
+script = ExtResource( 3 )
+type = "US_DROGUE"
+moduleName = "OWS Node"
+portNum = 2
+
+[node name="Port4Button" type="Button" parent="." groups=["PortButtons"]]
+margin_left = -248.0
+margin_top = -435.0
+margin_right = -180.0
+margin_bottom = -104.0
+custom_styles/hover = ExtResource( 1 )
+custom_styles/pressed = ExtResource( 1 )
+custom_styles/focus = SubResource( 8 )
+custom_styles/disabled = SubResource( 7 )
+custom_styles/normal = ExtResource( 1 )
+disabled = true
+script = ExtResource( 3 )
+type = "US_DROGUE"
+moduleName = "OWS Node"
+portNum = 3
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2( 1, -293 )
+shape = SubResource( 6 )
+
+[node name="Undocker" type="Button" parent="."]
+margin_left = -179.0
+margin_top = -734.0
+margin_right = 179.0
+margin_bottom = 142.0
+hint_tooltip = "RMB to undock"
+custom_styles/hover = SubResource( 9 )
+custom_styles/pressed = SubResource( 9 )
+custom_styles/focus = SubResource( 9 )
+custom_styles/disabled = SubResource( 9 )
+custom_styles/normal = SubResource( 9 )
+button_mask = 2
+script = ExtResource( 6 )
+
+[connection signal="pressed" from="Undocker" to="Undocker" method="_on_Undocker_pressed"]

@@ -36,9 +36,8 @@ func showSelector(position, rotation, type):
 	isBuildActive = true
 	var windowScene = load("res://Scenes/UI/ModuleSelect.tscn")
 	windowInstance = windowScene.instance()
-	windowInstance.ready(type)
-	
 	get_parent().get_node("Control").add_child(windowInstance)
+	windowInstance.ready(type)
 	
 	windowInstance.connect("confirmed", self, "confirmSelection")
 

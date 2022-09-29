@@ -6,6 +6,7 @@ func _ready():
 
 
 func _on_Confirm_pressed():
+	Station.dockedModules = []
 	Data.saveName = $LineEdit.text
 	match $Control/BaseButton.text:
 		"easy":
@@ -19,6 +20,9 @@ func _on_Confirm_pressed():
 			Data.money = 300_000_000
 		"sandbox":
 			Data.difficulty = 0
+			Data.unlockedModules = []
+			for module in Data.modules:
+				Data.unlockedModules.append(module)
 	Data.tutorial = $CheckButton.pressed
 	get_tree().change_scene("res://Scenes/EarthMain.tscn")
 

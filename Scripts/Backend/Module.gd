@@ -1,3 +1,11 @@
 extends Node
 
-export var ports: Dictionary
+
+var ports: Dictionary
+export var portsNo: int
+
+
+func _ready():
+	for i in portsNo:
+		print(i)
+		ports[i] = false

@@ -17,3 +17,8 @@ func dockModule(moduleName: String, moduleInstance: Node):
 
 func undockModule(moduleInstance):
 	dockedModules.erase(moduleInstance)
+
+
+func refundModule(name):
+	Data.money += Data.modules[name]["cost"] * Data.difficulty
+	get_parent().get_node("Control").get_child(0).updateCurrency()

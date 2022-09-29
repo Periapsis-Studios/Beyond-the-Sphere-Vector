@@ -58,6 +58,7 @@ func move(amount_x: int, amount_y: int, delta: float):
 	
 	
 func startBuild():
+	
 	if Station.dockedModules.size() == 0:
 		targetSelected(Vector2(0, 0), 270, "ANY") # RUS_PROBE is ignored
 	
@@ -100,11 +101,11 @@ func dock(targetPos: Vector2, targetRot: int, targetPortType: String, module: St
 		var area = moduleInstance.get_node("Area2D")
 		
 		camera.add_child(moduleInstance)
-		match targetRot:
+		match int(abs(targetRot)) % 360:
 			180:
 				moduleInstance.position.x = targetPos.x - moduleData["portPos"][port].x
 				moduleInstance.position.y = targetPos.y - moduleData["portPos"][port].y
-				moduleInstance.rotation_degrees = 0.0
+				moduleInstance.rotation_degrees = 0.0 + moduleData["portRot"][port]
 				
 				if area.get_overlapping_areas().empty():
 					moduleInstance.position.y += DOCKDIST
@@ -124,12 +125,13 @@ func dock(targetPos: Vector2, targetRot: int, targetPortType: String, module: St
 					if selectedPort != null:
 						selectedPort.get_parent().ports[selectedPort.portNum] = true
 				else:
+					Station.refundModule(module)
 					moduleInstance.queue_free()
 					
 			90:
-				moduleInstance.rotation_degrees = 270.0
+				moduleInstance.rotation_degrees = 270.0 - moduleData["portRot"][port]
 				moduleInstance.position.x = targetPos.x - moduleData["portPos"][port].y
-				moduleInstance.position.y = targetPos.y - moduleData["portPos"][port].x
+				moduleInstance.position.y = targetPos.y + moduleData["portPos"][port].x
 				
 				if area.get_overlapping_areas().empty():
 					moduleInstance.position.x += DOCKDIST
@@ -149,12 +151,13 @@ func dock(targetPos: Vector2, targetRot: int, targetPortType: String, module: St
 					if selectedPort != null:
 						selectedPort.get_parent().ports[selectedPort.portNum] = true
 				else:
+					Station.refundModule(module)
 					moduleInstance.queue_free()
 					
 			0:
 				moduleInstance.position.x = targetPos.x + moduleData["portPos"][port].x
 				moduleInstance.position.y = targetPos.y + moduleData["portPos"][port].y
-				moduleInstance.rotation_degrees = 180.0
+				moduleInstance.rotation_degrees = 180.0 + moduleData["portRot"][port]
 				
 				if area.get_overlapping_areas().empty():
 					moduleInstance.position.y -= DOCKDIST
@@ -174,12 +177,13 @@ func dock(targetPos: Vector2, targetRot: int, targetPortType: String, module: St
 					if selectedPort != null:
 						selectedPort.get_parent().ports[selectedPort.portNum] = true
 				else:
+					Station.refundModule(module)
 					moduleInstance.queue_free()
 					
 			270:
 				moduleInstance.position.x = targetPos.x + moduleData["portPos"][port].y
 				moduleInstance.position.y = targetPos.y - moduleData["portPos"][port].x
-				moduleInstance.rotation_degrees = 90
+				moduleInstance.rotation_degrees = 90 - moduleData["portRot"][port]
 				
 				
 				if area.get_overlapping_areas().empty():
@@ -201,6 +205,7 @@ func dock(targetPos: Vector2, targetRot: int, targetPortType: String, module: St
 					if selectedPort != null:
 						selectedPort.get_parent().ports[selectedPort.portNum] = true
 				else:
+					Station.refundModule(module)
 					moduleInstance.queue_free()
 	selectedPort = null
 	

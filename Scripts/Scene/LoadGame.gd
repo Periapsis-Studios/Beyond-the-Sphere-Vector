@@ -32,6 +32,9 @@ func selected(name):
 	if Data.difficulty == 0:
 		$MoneyNum.text = "∞"
 		$MoneySign.text = ""
+		Data.unlockedModules = []
+		for module in Data.modules:
+			Data.unlockedModules.append(module)
 		return
 	$MoneyNum.text = Data.getMoneyString(Data.money, 6)[0]
 	$MoneySign.text = Data.getMoneyString(Data.money, 6)[1]

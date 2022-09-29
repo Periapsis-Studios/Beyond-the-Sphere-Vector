@@ -4,6 +4,7 @@ extends Button
 export var type: String
 export var moduleName: String
 export var portNum: int
+var rotation
 
 signal dockRequested(position)
 
@@ -13,12 +14,16 @@ func _ready():
 
 
 func pressed():
-	emit_signal("dockRequested", getPosition(), get_parent().rotation_degrees, type)
+	emit_signal("dockRequested", getPosition(), rotation, type)
 	get_parent().get_parent().get_parent().selectedPort = self
 
 
 func getPosition():
-	match get_parent().rotation_degrees:
+	rotation = abs(get_parent().rotation_degrees)
+	print(rotation)
+	rotation += Data.modules[moduleName]["portRot"][portNum]
+	print(rotation)
+	match fmod(rotation, 360.0):
 		0.0:
 			return get_parent().position + Data.modules[moduleName]["portPos"][portNum]
 		90.0:

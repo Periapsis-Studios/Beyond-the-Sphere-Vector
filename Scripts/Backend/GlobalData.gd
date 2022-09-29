@@ -1,6 +1,11 @@
 extends Node
 
-var validCouples = {"RUS_PROBE": "RUS_DROGUE", "RUS_DROGUE": "RUS_PROBE"}
+var validCouples = {
+	"RUS_PROBE": "RUS_DROGUE",
+	"RUS_DROGUE": "RUS_PROBE",
+	"US_PROBE": "US_DROGUE",
+	"US_DROGUE": "US_PROBE"
+}
 var saveName: String
 var money: int
 var science: int
@@ -18,7 +23,8 @@ var nodes = [
 			"Soyuz",
 			"Salyut",
 			"Skylab",
-			"Apollo"
+			"Apollo",
+			"Progress"
 		],
 		"Cost": 0,
 		"Requires": -1,
@@ -28,7 +34,7 @@ var nodes = [
 		"Name": "Basic branching",
 		"Pos": Vector2(2, 0),
 		"Unlocks": [
-			"OWS node",
+			"OWS Node",
 			"Russian node"
 		],
 		"Cost": 5,
@@ -39,7 +45,7 @@ var nodes = [
 		"Name": "Basic adapters",
 		"Pos": Vector2(2, -2),
 		"Unlocks": [
-			"ASTP Adapter"
+			"Adapter"
 		],
 		"Cost": 10,
 		"Requires": 0,
@@ -62,15 +68,76 @@ var salyut1 = {
 	"portNum": 1,
 	"cost": 50_000_000
 }
+var skylab = {
+	"portTypes": {0: "US_DROGUE"},
+	"portPos": {0: Vector2(-6, -953)},
+	"portRot": {0: 0},
+	"portNum": 1,
+	"cost": 190_000_000
+}
+var apollo = {
+	"portTypes": {0: "US_PROBE"},
+	"portPos": {0: Vector2(-6, -865)},
+	"portRot": {0: 0},
+	"portNum": 1,
+	"cost": 55_000_000
+}
+var adapter = {
+	"portTypes": {0: "RUS_PROBE", 1: "US_PROBE"},
+	"portPos": {0: Vector2(0, -920), 1: Vector2(0, -285)},
+	"portRot": {0: 0, 1: 180},
+	"portNum": 2,
+	"cost": 50_000_000
+}
+var progress = {
+	"portTypes": {0: "RUS_PROBE"},
+	"portPos": {0: Vector2(0, -930)},
+	"portRot": {0: 0},
+	"portNum": 1,
+	"cost": 40_000_000
+}
+var owsNode = {
+	"portTypes": {0: "US_DROGUE", 1: "US_PROBE", 2: "US_DROGUE", 3: "US_DROGUE"},
+	"portPos": {
+		0: Vector2(0, -804),
+		1: Vector2(0, -190),
+		2: Vector2(-270, -247),
+		3: Vector2(270, -247)
+	},
+	"portRot": {0: 0, 1: 180, 2: 90, 3: 270},
+	"portNum": 4,
+	"cost": 50_000_000
+}
+var rusNode = {
+	"portTypes": {0: "RUS_DROGUE", 1: "RUS_DROGUE", 2: "RUS_PROBE", 3: "RUS_DROGUE"},
+	"portPos": {
+		0: Vector2(0, -930),
+		1: Vector2(-710, -214),
+		2: Vector2(0, 493),
+		3: Vector2(710, -215)
+	},
+	"portRot": {0: 0, 1: 90, 2: 180, 3: 270},
+	"portNum": 4,
+	"cost": 40_000_000
+}
 
 
 var modules = {
 	"Soyuz": soyuz,
-	"Salyut": salyut1
+	"Salyut": salyut1,
+	"Skylab": skylab,
+	"Apollo": apollo,
+	"Adapter": adapter,
+	"Progress": progress,
+	"OWS Node": owsNode,
+	"Russian Node": rusNode
 }
 var unlockedModules = [
 	"Soyuz",
-	"Salyut"
+	"Salyut",
+	"Skylab",
+	"Apollo",
+	"Progress"
 ]
 
 

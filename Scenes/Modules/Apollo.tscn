@@ -1,14 +1,11 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Themes/DockPortColor.tres" type="StyleBox" id=1]
-[ext_resource path="res://Textures/Spacecraft/Soyuz.png" type="Texture" id=2]
+[ext_resource path="res://Textures/Spacecraft/Apollo.png" type="Texture" id=2]
 [ext_resource path="res://Scripts/Backend/PortButton.gd" type="Script" id=3]
-[ext_resource path="res://Textures/Spacecraft/RussianDockPort.png" type="Texture" id=4]
+[ext_resource path="res://Textures/Spacecraft/US_Probe.png" type="Texture" id=4]
 [ext_resource path="res://Scripts/Backend/Module.gd" type="Script" id=5]
 [ext_resource path="res://Scripts/Modules/Undocker.gd" type="Script" id=6]
-
-[sub_resource type="RectangleShape2D" id=6]
-extents = Vector2( 1320, 887.5 )
 
 [sub_resource type="StyleBoxEmpty" id=8]
 
@@ -16,40 +13,27 @@ extents = Vector2( 1320, 887.5 )
 
 [sub_resource type="StyleBoxEmpty" id=9]
 
-[sub_resource type="StyleBoxEmpty" id=10]
-
-[sub_resource type="StyleBoxEmpty" id=11]
-
-[sub_resource type="StyleBoxEmpty" id=12]
-
-[sub_resource type="StyleBoxEmpty" id=13]
-
 [node name="Node2D" type="Node2D"]
-z_as_relative = false
 script = ExtResource( 5 )
 portsNo = 1
 
 [node name="Port1" type="Sprite" parent="."]
-position = Vector2( 0, -949 )
-z_index = -1
+position = Vector2( -6, -918 )
+scale = Vector2( 0.16231, 0.16231 )
+z_index = -3
 z_as_relative = false
 texture = ExtResource( 4 )
 
 [node name="Module" type="Sprite" parent="."]
-scale = Vector2( 4.15, 4.15 )
+position = Vector2( 0, 916 )
+scale = Vector2( 2.24624, 2.24624 )
 texture = ExtResource( 2 )
 
-[node name="Area2D" type="Area2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2( -5, 12.5 )
-shape = SubResource( 6 )
-
 [node name="Port1Button" type="Button" parent="." groups=["PortButtons"]]
-margin_left = -166.276
-margin_top = -930.0
-margin_right = 165.882
-margin_bottom = -879.607
+margin_left = -172.0
+margin_top = -865.0
+margin_right = 160.0
+margin_bottom = -817.0
 custom_styles/hover = ExtResource( 1 )
 custom_styles/pressed = ExtResource( 1 )
 custom_styles/focus = SubResource( 8 )
@@ -57,20 +41,25 @@ custom_styles/disabled = SubResource( 7 )
 custom_styles/normal = ExtResource( 1 )
 disabled = true
 script = ExtResource( 3 )
-type = "RUS_PROBE"
-moduleName = "Soyuz"
+type = "US_PROBE"
+moduleName = "Apollo"
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D"]
+polygon = PoolVector2Array( -734, 315, -724, 2717, 726, 2728, 738, -102, 246, -813, -227, -814, -227, -813, -707, -87 )
 
 [node name="Undocker" type="Button" parent="."]
-margin_left = -278.0
-margin_top = -876.0
-margin_right = 278.0
-margin_bottom = 878.0
+margin_left = -699.0
+margin_top = -817.0
+margin_right = 699.0
+margin_bottom = 2651.0
 hint_tooltip = "RMB to undock"
 custom_styles/hover = SubResource( 9 )
-custom_styles/pressed = SubResource( 10 )
-custom_styles/focus = SubResource( 11 )
-custom_styles/disabled = SubResource( 12 )
-custom_styles/normal = SubResource( 13 )
+custom_styles/pressed = SubResource( 9 )
+custom_styles/focus = SubResource( 9 )
+custom_styles/disabled = SubResource( 9 )
+custom_styles/normal = SubResource( 9 )
 button_mask = 2
 script = ExtResource( 6 )
 

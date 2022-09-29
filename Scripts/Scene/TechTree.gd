@@ -67,6 +67,7 @@ func onSelect(nodeNum):
 func _on_Buy_pressed():
 	for line in $CanvasLayer/Menu/Background/Unlocked.text.split("\n"):
 		Data.unlockedModules.append(line)
+	Data.unlockedModules.remove(Data.unlockedModules.size() - 1)
 	instances[selected].get_node("TextureRect").disabled = true
 	Data.nodes[selectedNum]["Unlocked"] = true
 	Data.science -= Data.nodes[selectedNum]["Cost"]

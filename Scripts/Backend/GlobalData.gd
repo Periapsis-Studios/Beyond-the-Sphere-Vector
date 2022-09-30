@@ -67,6 +67,18 @@ var nodes = [
 		"Cost": 20,
 		"Requires": 1,
 		"Unlocked": false
+	},
+	{
+		"Name": "LEO Ferrying",
+		"Pos": Vector2(4, 0),
+		"Unlocks": [
+			"Mir Adapter",
+			"Space Shuttle",
+			"Buran"
+		],
+		"Cost": 20,
+		"Requires": 1,
+		"Unlocked": false
 	}
 ]
 

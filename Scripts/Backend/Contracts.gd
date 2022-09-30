@@ -97,7 +97,7 @@ func _ready():
 	
 	
 func timeout():
-	timer.set_wait_time(randi()%180+120)
+	timer.set_wait_time(randi()%40+30)
 	timer.set_one_shot(true)
 	timer.start()
 	if lastContract < cap:

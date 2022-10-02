@@ -8,7 +8,7 @@ var contracts: Array
 func _ready():
 	contracts = Contracts.contracts + Contracts.accepted
 	if contracts.size() > 4:
-		$VScrollBar.max_value = Contracts.contracts.size() - 4
+		$VScrollBar.max_value = contracts.size() - 4
 	else:
 		$VScrollBar.max_value = 0
 	displayContracts()
@@ -32,6 +32,7 @@ func displayContracts():
 	if not contracts.empty():
 		for i in range(1, 5):
 			if i + $VScrollBar.value - 1 < contracts.size():
+				get_node("ListBackground/Contract" + str(i)).visible = true
 				get_node("ListBackground/Contract" + str(i) + "/Button").disabled = false
 				get_node("ListBackground/Contract" + str(i) + "/Button").focus_mode = 2
 				get_node("ListBackground/Contract" + str(i) + "/Cash").visible = true
@@ -45,6 +46,9 @@ func displayContracts():
 					get_node("ListBackground/Contract" + str(i) + "/ProgressBar").value = contracts[i + $VScrollBar.value - 1].completion
 				else:
 					get_node("ListBackground/Contract" + str(i) + "/ProgressBar").visible = false
+			else:
+				get_node("ListBackground/Contract" + str(i)).visible = false
+				get_node("ListBackground/Contract" + str(i) + "/Button").disabled = true
 	else:
 		$ListBackground/Contract1/Type.text = "No Contracts"
 		
@@ -63,7 +67,24 @@ func accept(contract: Contracts.Contract):
 	contracts = Contracts.contracts + Contracts.accepted
 	contract.start()
 	displayContracts()
+	
+	
+func deny(contract: Contracts.Contract):
+	if not contract.accepted:
+		Contracts.contracts.erase(contract)
+	if contract.accepted:
+		Contracts.accepted.erase(contract)
+	contracts = Contracts.contracts + Contracts.accepted
+	if contracts.size() > 4:
+		$VScrollBar.max_value = contracts.size() - 4
+	else:
+		$VScrollBar.max_value = 0
+	displayContracts()
 
 
 func scrollChange(_value):
 	displayContracts()
+
+
+func noPressed():
+	deny(contracts[selected - 1 + $VScrollBar.value])

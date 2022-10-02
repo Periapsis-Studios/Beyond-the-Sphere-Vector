@@ -25,6 +25,7 @@
 z_as_relative = false
 script = ExtResource( 5 )
 portsNo = 1
+moduleName = "Soyuz"
 
 [node name="Port1" type="Sprite" parent="."]
 position = Vector2( 0, -949 )

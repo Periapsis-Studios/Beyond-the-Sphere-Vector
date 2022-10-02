@@ -1,6 +1,6 @@
 extends Node
 
-const version = "0.1.0"
+const version = "0.1.2h1"
 func _ready():
 	print("Version: " + version)
 
@@ -106,7 +106,7 @@ var skylab = {
 }
 var apollo = {
 	"portTypes": {0: "US_PROBE"},
-	"portPos": {0: Vector2(-6, -865)},
+	"portPos": {0: Vector2(0, -512)},
 	"portRot": {0: 0},
 	"portNum": 1,
 	"cost": 55_000_000
@@ -165,7 +165,7 @@ var kvant1 = {
 	"portTypes": {0: "RUS_PROBE", 1: "RUS_DROGUE"},
 	"portPos": {
 		0: Vector2(0, -930),
-		1: Vector2(0, -306)
+		1: Vector2(0, -356)
 	},
 	"portRot": {0: 0, 1: 180},
 	"portNum": 2,
@@ -256,7 +256,8 @@ func saveData():
 		"money": money,
 		"science": science,
 		"difficulty": difficulty,
-		"nodes": nodes
+		"nodes": nodes,
+		"version": version
 	}
 	saveFile.store_line(to_json(data_dict))
 	saveFile.close()
@@ -287,8 +288,17 @@ func saveStation():
 			"posx": module[0].position.x,
 			"posy": module[0].position.y,
 			"rot": module[0].rotation_degrees,
-			"ports": module[0].ports
+			"ports": module[0].ports,
+			"dockedInstances": [],
+			"dockedNumbers": module[0].dockedNumbers
 		}
+		for instance in module[0].dockedInstances:
+			module_dict["dockedInstances"].append(
+				{
+					"posx": instance.position.x,
+					"posy": instance.position.y
+				}
+			)
 		saveFile.store_line(to_json(module_dict))
 	saveFile.close()
 	
@@ -301,6 +311,9 @@ func loadData(name: String):
 	dataFile.open("user://saves/" + name + "/data.json", File.READ)
 	while dataFile.get_position() < dataFile.get_len():
 		var data = parse_json(dataFile.get_line())
+		
+		if not data.has("version"):
+			return 1
 		
 		saveName = name
 		money = data["money"]
@@ -319,6 +332,7 @@ func loadData(name: String):
 		Contracts.lastContract = 0
 		
 	dataFile.close()
+	return 0
 	
 	
 func loadContracts():
@@ -326,7 +340,7 @@ func loadContracts():
 	if not file.file_exists("user://saves/" + saveName + "/contracts.json"):
 		return 1
 	
-	file.open("user://saves/" + name + "/contracts.json", File.READ)
+	file.open("user://saves/" + saveName + "/contracts.json", File.READ)
 	while file.get_position() < file.get_len():
 		var data = parse_json(file.get_line())
 		
@@ -354,9 +368,69 @@ func finishLoading():
 		get_parent().get_node("Control").get_node("Camera2D").add_child(moduleInstance)
 		moduleInstance.position = Vector2(stationLine["posx"], stationLine["posy"])
 		moduleInstance.rotation_degrees = stationLine["rot"]
+		moduleInstance.dockedInstances = stationLine["dockedInstances"]
+		moduleInstance.dockedNumbers = stationLine["dockedNumbers"]
 		for port in stationLine["ports"]:
 			moduleInstance.ports.append(bool(port))
 		Station.dockedModules.append([moduleInstance, stationLine["name"]])
 	stationFile.close()
+	for module in Station.dockedModules:
+		var instances = module[0].dockedInstances
+		module[0].dockedInstances = []
+		for instance in instances:
+			var result = Station.getModuleByPos(instance["posx"], instance["posy"])[0]
+			module[0].dockedInstances.append(result)
 	loading = false
 	gameRunning = true
+
+
+func isVersionHigher(a: String, b: String):
+	var aArray = a.split(".")
+	var bArray = b.split(".")
+	var aVersion = [
+		int(aArray[0]),
+		int(aArray[1]),
+		int(aArray[2].split("h")[0]),
+		int(aArray[2].split("h")[1])
+	]
+	var bVersion = [
+		int(bArray[0]),
+		int(bArray[1]),
+		int(bArray[2].split("h")[0]),
+		int(bArray[2].split("h")[1])
+	]
+	if aVersion[0] > bVersion[0]:
+		return true
+	if aVersion[1] > bVersion[1]:
+		return true
+	if aVersion[2] > bVersion[2]:
+		return true
+	if aVersion[3] > bVersion[3]:
+		return true
+	return false
+	
+	
+func isVersionEqual(a: String, b: String):
+	var aArray = a.split(".")
+	var bArray = b.split(".")
+	var aVersion = [
+		int(aArray[0]),
+		int(aArray[1]),
+		int(aArray[2].split("h")[0]),
+		int(aArray[2].split("h")[1])
+	]
+	var bVersion = [
+		int(bArray[0]),
+		int(bArray[1]),
+		int(bArray[2].split("h")[0]),
+		int(bArray[2].split("h")[1])
+	]
+	if not aVersion[0] == bVersion[0]:
+		return false
+	if not aVersion[1] == bVersion[1]:
+		return false
+	if not aVersion[2] == bVersion[2]:
+		return false
+	if not aVersion[3] == bVersion[3]:
+		return false
+	return true

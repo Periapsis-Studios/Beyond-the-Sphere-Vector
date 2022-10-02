@@ -28,3 +28,10 @@ func undockModule(moduleInstance, modulePort, fromInstance, fromPort):
 func refundModule(name):
 	Data.money += Data.modules[name]["cost"] * Data.difficulty
 	get_parent().get_node("Control").get_child(0).updateCurrency()
+
+
+func getModuleByPos(x, y):
+	for module in dockedModules:
+		if module[0].position == Vector2(x, y):
+			return module
+	return null

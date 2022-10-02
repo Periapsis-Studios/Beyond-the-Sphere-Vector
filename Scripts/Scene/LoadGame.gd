@@ -27,7 +27,12 @@ func _ready():
 func selected(name):
 	$Delete.disabled = false
 	selected = true
-	Data.loadData(name)
+	if Data.loadData(name) == 1:
+		disableLoad()
+		return
+		
+	enableLoad()
+		
 	$Science.text = str(Data.science)
 	if Data.difficulty == 0:
 		$MoneyNum.text = "∞"
@@ -56,5 +61,16 @@ func deletePressed():
 	var dir = Directory.new()
 	dir.remove("user://saves/" + Data.saveName + "/data.json")
 	dir.remove("user://saves/" + Data.saveName + "/station.json")
+	dir.remove("user://saves/" + Data.saveName + "/contracts.json")
 	dir.remove("user://saves/" + Data.saveName)
 	get_tree().change_scene("res://Scenes/LoadGame.tscn")
+
+
+func disableLoad():
+	$OldSave.visible = true
+	$Confirm.disabled = true
+
+
+func enableLoad():
+	$OldSave.visible = false
+	$Confirm.disabled = false

@@ -16,6 +16,7 @@
 [node name="Node2D" type="Node2D"]
 script = ExtResource( 5 )
 portsNo = 4
+moduleName = "Mir Core"
 
 [node name="Port1" type="Sprite" parent="."]
 position = Vector2( 0, -904 )
@@ -54,7 +55,6 @@ custom_styles/normal = ExtResource( 1 )
 disabled = true
 script = ExtResource( 3 )
 type = "RUS_DROGUE"
-moduleName = "Mir Core"
 
 [node name="Port2Button" type="Button" parent="." groups=["PortButtons"]]
 margin_left = 167.0
@@ -69,7 +69,6 @@ custom_styles/normal = ExtResource( 1 )
 disabled = true
 script = ExtResource( 3 )
 type = "RUS_DROGUE"
-moduleName = "Mir Core"
 portNum = 1
 
 [node name="Port3Button" type="Button" parent="." groups=["PortButtons"]]
@@ -85,7 +84,6 @@ custom_styles/normal = ExtResource( 1 )
 disabled = true
 script = ExtResource( 3 )
 type = "RUS_DROGUE"
-moduleName = "Mir Core"
 portNum = 2
 
 [node name="Port4Button" type="Button" parent="." groups=["PortButtons"]]
@@ -101,7 +99,6 @@ custom_styles/normal = ExtResource( 1 )
 disabled = true
 script = ExtResource( 3 )
 type = "RUS_DROGUE"
-moduleName = "Mir Core"
 portNum = 3
 
 [node name="Area2D" type="Area2D" parent="."]

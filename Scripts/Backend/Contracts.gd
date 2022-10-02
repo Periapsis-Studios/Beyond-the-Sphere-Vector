@@ -79,6 +79,7 @@ class Contract:
 			Data.science += self.rewardSci
 			Contracts.complete()
 			timer.queue_free()
+			Contracts.timeout()
 
 
 func organizeArray(a, b):
@@ -100,7 +101,7 @@ func timeout():
 	timer.set_wait_time(randi()%40+30)
 	timer.set_one_shot(true)
 	timer.start()
-	if lastContract < cap:
+	if accepted.size() + contracts.size() < cap:
 		generate()
 
 

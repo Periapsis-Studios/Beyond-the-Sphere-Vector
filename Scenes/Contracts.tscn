@@ -433,5 +433,6 @@ text = "Exit"
 [connection signal="pressed" from="ListBackground/Contract3/Button" to="ListBackground/Contract3" method="onSelect"]
 [connection signal="pressed" from="ListBackground/Contract4/Button" to="ListBackground/Contract4" method="onSelect"]
 [connection signal="pressed" from="Yes" to="." method="yesPressed"]
+[connection signal="pressed" from="No" to="." method="noPressed"]
 [connection signal="value_changed" from="VScrollBar" to="." method="scrollChange"]
 [connection signal="pressed" from="Exit" to="." method="exitPressed"]

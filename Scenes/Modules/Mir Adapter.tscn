@@ -18,6 +18,7 @@
 [node name="Node2D" type="Node2D"]
 script = ExtResource( 5 )
 portsNo = 2
+moduleName = "Mir Adapter"
 
 [node name="Port1" type="Sprite" parent="."]
 position = Vector2( 0, -949.379 )

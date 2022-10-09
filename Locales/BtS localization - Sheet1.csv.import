@@ -2,13 +2,14 @@
 
 importer="csv_translation"
 type="Translation"
+uid="uid://cep1h2meos02b"
 
 [deps]
 
-files=[ "res://Locales/BtS localization - Sheet1.en.translation", "res://Locales/BtS localization - Sheet1.cs.translation" ]
+files=["res://Locales/BtS localization - Sheet1.en.translation", "res://Locales/BtS localization - Sheet1.cs.translation"]
 
 source_file="res://Locales/BtS localization - Sheet1.csv"
-dest_files=[ "res://Locales/BtS localization - Sheet1.en.translation", "res://Locales/BtS localization - Sheet1.cs.translation" ]
+dest_files=["res://Locales/BtS localization - Sheet1.en.translation", "res://Locales/BtS localization - Sheet1.cs.translation"]
 
 [params]
 

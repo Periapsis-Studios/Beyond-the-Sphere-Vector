@@ -1,0 +1,38 @@
+[gd_scene load_steps=3 format=3 uid="uid://bqkqvbgh5062m"]
+
+[ext_resource type="PackedScene" uid="uid://b182xdum3jugt" path="res://Sub-Scenes/Backgrounds/EarthBackground.tscn" id="1_asyjk"]
+[ext_resource type="PackedScene" uid="uid://bkmq60sq3r6qn" path="res://Sub-Scenes/UI/MainMenuUI.tscn" id="2_ku4bp"]
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="EarthBackground" parent="." instance=ExtResource("1_asyjk")]
+layer = -1
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -169.0
+offset_right = 20.0
+offset_bottom = 68.0
+grow_horizontal = 2
+color = Color(0, 0, 0, 1)
+
+[node name="ColorRect2" type="ColorRect" parent="."]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -564.0
+offset_top = 194.0
+offset_right = -252.0
+offset_bottom = 478.0
+grow_horizontal = 2
+color = Color(0, 0, 0, 1)
+
+[node name="MainMenuUI" parent="." instance=ExtResource("2_ku4bp")]

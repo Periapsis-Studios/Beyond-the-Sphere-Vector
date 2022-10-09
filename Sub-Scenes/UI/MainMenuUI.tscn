@@ -1,0 +1,80 @@
+[gd_scene load_steps=3 format=3 uid="uid://bkmq60sq3r6qn"]
+
+[ext_resource type="Theme" uid="uid://dih8bhruikikh" path="res://Themes/MainMenu.tres" id="1_1yc12"]
+[ext_resource type="Script" path="res://Scripts/UI/MainMenu.gd" id="1_38xn1"]
+
+[node name="MainMenuUI" type="CanvasLayer"]
+script = ExtResource("1_38xn1")
+
+[node name="Title" type="Label" parent="."]
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 290.0
+offset_right = -290.0
+offset_bottom = 68.0
+grow_horizontal = 2
+theme = ExtResource("1_1yc12")
+text = "Beyond the Sphere"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="NewGame" type="Button" parent="."]
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 63.0
+offset_top = -114.0
+offset_right = 278.0
+offset_bottom = -54.0
+grow_vertical = 2
+theme = ExtResource("1_1yc12")
+text = "newGame"
+
+[node name="LoadGame" type="Button" parent="."]
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 63.0
+offset_top = -54.0
+offset_right = 278.0
+offset_bottom = 6.0
+grow_vertical = 2
+theme = ExtResource("1_1yc12")
+text = "loadGame"
+
+[node name="Settings" type="Button" parent="."]
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 63.0
+offset_top = 6.0
+offset_right = 278.0
+offset_bottom = 66.0
+grow_vertical = 2
+theme = ExtResource("1_1yc12")
+text = "settings"
+
+[node name="Quit" type="Button" parent="."]
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 63.0
+offset_top = 66.0
+offset_right = 278.0
+offset_bottom = 126.0
+grow_vertical = 2
+theme = ExtResource("1_1yc12")
+text = "quit"
+
+[connection signal="mouse_entered" from="NewGame" to="." method="_on_new_game_mouse_entered"]
+[connection signal="mouse_exited" from="NewGame" to="." method="_on_new_game_mouse_exited"]
+[connection signal="pressed" from="NewGame" to="." method="_on_new_game_pressed"]
+[connection signal="mouse_entered" from="LoadGame" to="." method="_on_load_game_mouse_entered"]
+[connection signal="mouse_exited" from="LoadGame" to="." method="_on_load_game_mouse_exited"]
+[connection signal="pressed" from="LoadGame" to="." method="_on_load_game_pressed"]
+[connection signal="mouse_entered" from="Settings" to="." method="_on_settings_mouse_entered"]
+[connection signal="mouse_exited" from="Settings" to="." method="_on_settings_mouse_exited"]
+[connection signal="pressed" from="Settings" to="." method="_on_settings_pressed"]
+[connection signal="mouse_entered" from="Quit" to="." method="_on_quit_mouse_entered"]
+[connection signal="mouse_exited" from="Quit" to="." method="_on_quit_mouse_exited"]
+[connection signal="pressed" from="Quit" to="." method="_on_quit_pressed"]

@@ -1,0 +1,21 @@
+{
+	"version": 1,
+	"changelists": [
+		{
+			"guid": "00000000000000000000000000000000",
+			"description": "Default Uncontrolled Changelist",
+			"files": [
+				"F:/Beyond-the-Sphere/Beyond_the_Sphere/Content/Textures/8k_sun.uasset",
+				"F:/Beyond-the-Sphere/Beyond_the_Sphere/Content/Blueprints/BP_Sun.uasset",
+				"F:/Beyond-the-Sphere/Beyond_the_Sphere/Content/Materials/M_Star.uasset",
+				"F:/Beyond-the-Sphere/Beyond_the_Sphere/Content/Materials/MI_Sun.uasset",
+				"F:/Beyond-the-Sphere/Beyond_the_Sphere/Content/Blueprints/BP_AstronomicalBody.uasset",
+				"F:/Beyond-the-Sphere/Beyond_the_Sphere/Content/Levels/SolarSytem.umap",
+				"F:/Beyond-the-Sphere/Beyond_the_Sphere/Content/Blueprints/BP_GameData.uasset",
+				"F:/Beyond-the-Sphere/Beyond_the_Sphere/Content/Textures/8k_stars_milky_way.uasset",
+				"F:/Beyond-the-Sphere/Beyond_the_Sphere/Content/Materials/M_Skybox.uasset",
+				"F:/Beyond-the-Sphere/Beyond_the_Sphere/Content/Blueprints/BP_Skybox.uasset"
+			]
+		}
+	]
+}

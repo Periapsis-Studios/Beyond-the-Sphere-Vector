@@ -6,7 +6,6 @@
 			"description": "Default Uncontrolled Changelist",
 			"files": [
 				"F:/Beyond-the-Sphere/Beyond_the_Sphere/Content/Textures/8k_sun.uasset",
-				"F:/Beyond-the-Sphere/Beyond_the_Sphere/Content/Blueprints/BP_Sun.uasset",
 				"F:/Beyond-the-Sphere/Beyond_the_Sphere/Content/Materials/M_Star.uasset",
 				"F:/Beyond-the-Sphere/Beyond_the_Sphere/Content/Materials/MI_Sun.uasset",
 				"F:/Beyond-the-Sphere/Beyond_the_Sphere/Content/Blueprints/BP_AstronomicalBody.uasset",
@@ -14,7 +13,18 @@
 				"F:/Beyond-the-Sphere/Beyond_the_Sphere/Content/Blueprints/BP_GameData.uasset",
 				"F:/Beyond-the-Sphere/Beyond_the_Sphere/Content/Textures/8k_stars_milky_way.uasset",
 				"F:/Beyond-the-Sphere/Beyond_the_Sphere/Content/Materials/M_Skybox.uasset",
-				"F:/Beyond-the-Sphere/Beyond_the_Sphere/Content/Blueprints/BP_Skybox.uasset"
+				"F:/Beyond-the-Sphere/Beyond_the_Sphere/Content/Blueprints/BP_Skybox.uasset",
+				"F:/Beyond-the-Sphere/Beyond_the_Sphere/Content/Materials/M_Planet.uasset",
+				"F:/Beyond-the-Sphere/Beyond_the_Sphere/Content/Materials/M_Earth.uasset",
+				"F:/Beyond-the-Sphere/Beyond_the_Sphere/Content/Textures/8k_earth_daymap.uasset",
+				"F:/Beyond-the-Sphere/Beyond_the_Sphere/Content/Textures/8k_earth_nightmap.uasset",
+				"F:/Beyond-the-Sphere/Beyond_the_Sphere/Content/Materials/MI_Earth.uasset",
+				"F:/Beyond-the-Sphere/Beyond_the_Sphere/Content/Blueprints/BP_Light.uasset",
+				"F:/Beyond-the-Sphere/Beyond_the_Sphere/Content/Blueprints/BP_Camera.uasset",
+				"F:/Beyond-the-Sphere/Beyond_the_Sphere/Content/_GENERATED/knedl/Sphere_8DE72A29.uasset",
+				"F:/Beyond-the-Sphere/Beyond_the_Sphere/Content/Textures/8k_earth_clouds.uasset",
+				"F:/Beyond-the-Sphere/Beyond_the_Sphere/Content/Levels/Earth.umap",
+				"F:/Beyond-the-Sphere/Beyond_the_Sphere/Content/Blueprints/BP_Sun.uasset"
 			]
 		}
 	]

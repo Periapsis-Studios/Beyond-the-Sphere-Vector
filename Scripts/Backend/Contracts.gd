@@ -6,18 +6,18 @@ var contracts: Array
 var accepted: Array
 var timer: Timer
 var types = {
-	"Spy Photography": [[100, 200], [0, 0], [30, 60]],
-	"Medical Experiments": [[50, 100], [1, 3], [30, 90]],
-	"Technological R&D": [[20, 50], [3, 5], [60, 120]],
-	"Microbiology": [[50, 80], [2, 5], [30, 60]],
-	"Crew Science": [[40, 70], [3, 6], [20, 50]],
-	"Solar Observation": [[20, 40], [3, 7], [20, 70]]
+	"spyPhotos": [[100, 200], [0, 0], [30, 60]],
+	"medicalExperiments": [[50, 100], [1, 3], [30, 90]],
+	"techRnD": [[20, 50], [3, 5], [60, 120]],
+	"microbiology": [[50, 80], [2, 5], [30, 60]],
+	"crewSci": [[40, 70], [3, 6], [20, 50]],
+	"solarObservation": [[20, 40], [3, 7], [20, 70]]
 }
 var unlockedTypes = [
-	"Medical Experiments",
-	"Technological R&D",
-	"Microbiology",
-	"Crew Science"
+	"medicalExperiments",
+	"techRnD",
+	"microbiology",
+	"crewSci"
 ]
 var cap = 5
 

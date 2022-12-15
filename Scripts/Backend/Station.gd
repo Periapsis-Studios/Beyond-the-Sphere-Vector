@@ -10,9 +10,9 @@ func dockModule(moduleName: String, moduleInstance: Node):
 	get_parent().get_node("Control").get_child(0).updateCurrency()
 	match moduleName:
 		"Salyut":
-			Contracts.unlockedTypes.append("Spy Photography")
+			Contracts.unlockedTypes.append("spyPhotos")
 		"Skylab":
-			Contracts.unlockedTypes.append("Solar Observation")
+			Contracts.unlockedTypes.append("solarObservation")
 	
 
 func undockModule(moduleInstance, modulePort, fromInstance, fromPort):

@@ -13,7 +13,7 @@
 [ext_resource path="res://Scripts/UI/Contract.gd" type="Script" id=11]
 
 [sub_resource type="DynamicFont" id=1]
-size = 48
+size = 38
 outline_color = Color( 0, 0, 0, 1 )
 font_data = ExtResource( 8 )
 
@@ -322,6 +322,7 @@ custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 custom_fonts/font = SubResource( 1 )
 align = 1
 valign = 1
+autowrap = true
 
 [node name="ProgressBar" type="ProgressBar" parent="ListBackground/Contract4"]
 visible = false
@@ -426,7 +427,7 @@ margin_bottom = 744.0
 rect_scale = Vector2( 0.275, 0.275 )
 theme = ExtResource( 10 )
 custom_colors/font_color_hover = Color( 0.172549, 0.172549, 0.172549, 1 )
-text = "Exit"
+text = "exit"
 
 [connection signal="pressed" from="ListBackground/Contract1/Button" to="ListBackground/Contract1" method="onSelect"]
 [connection signal="pressed" from="ListBackground/Contract2/Button" to="ListBackground/Contract2" method="onSelect"]

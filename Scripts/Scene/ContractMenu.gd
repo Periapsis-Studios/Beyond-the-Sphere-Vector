@@ -37,7 +37,7 @@ func displayContracts():
 				get_node("ListBackground/Contract" + str(i) + "/Button").focus_mode = 2
 				get_node("ListBackground/Contract" + str(i) + "/Cash").visible = true
 				get_node("ListBackground/Contract" + str(i) + "/Science").visible = true
-				get_node("ListBackground/Contract" + str(i) + "/Type").text = contracts[i + $VScrollBar.value - 1].type
+				get_node("ListBackground/Contract" + str(i) + "/Type").text = tr(contracts[i + $VScrollBar.value - 1].type)
 				var money = contracts[i + $VScrollBar.value - 1].rewardCash
 				get_node("ListBackground/Contract" + str(i) + "/Cash/RewardCash").text = Data.getMoneyString(money, 3)[0] + Data.getMoneyString(money, 3)[1]
 				get_node("ListBackground/Contract" + str(i) + "/Science/RewardScience").text = str(contracts[i + $VScrollBar.value - 1].rewardSci)

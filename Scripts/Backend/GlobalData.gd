@@ -22,7 +22,7 @@ var tutorial: bool
 
 var nodes = [
 	{
-		"Name": "Single-module",
+		"Name": "singleModule",
 		"Pos": Vector2(0, 0),
 		"Unlocks": [
 			"Soyuz",
@@ -36,7 +36,7 @@ var nodes = [
 		"Unlocked": true
 	},
 	{
-		"Name": "Basic branching",
+		"Name": "branching",
 		"Pos": Vector2(2, 0),
 		"Unlocks": [
 			"OWS Node",
@@ -47,7 +47,7 @@ var nodes = [
 		"Unlocked": false
 	},
 	{
-		"Name": "Basic adapters",
+		"Name": "adapters",
 		"Pos": Vector2(2, -2),
 		"Unlocks": [
 			"Adapter"
@@ -57,7 +57,7 @@ var nodes = [
 		"Unlocked": false
 	},
 	{
-		"Name": "Early Modularity",
+		"Name": "modularityEarly",
 		"Pos": Vector2(4, -2),
 		"Unlocks": [
 			"Mir Core",
@@ -69,7 +69,7 @@ var nodes = [
 		"Unlocked": false
 	},
 	{
-		"Name": "LEO Ferrying",
+		"Name": "leoFerry",
 		"Pos": Vector2(4, 0),
 		"Unlocks": [
 			"Mir Adapter",

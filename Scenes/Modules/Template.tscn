@@ -15,6 +15,7 @@
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource( 5 )
+moduleName = "Template"
 
 [node name="Port1" type="Sprite" parent="."]
 position = Vector2( 0, -949.379 )
@@ -37,7 +38,6 @@ custom_styles/normal = ExtResource( 1 )
 disabled = true
 script = ExtResource( 3 )
 type = "RUS_PROBE"
-moduleName = "Template"
 
 [node name="Area2D" type="Area2D" parent="."]
 

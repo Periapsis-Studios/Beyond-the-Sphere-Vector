@@ -93,7 +93,7 @@ func dock(targetPos: Vector2, targetRot: int, targetPortType: String, module: St
 	var moduleData = Data.modules[module]
 	var portType = moduleData.portTypes[port]
 	var isCorrectType: bool
-	var area = moduleInstance.get_node("Area2D")
+	var area: Area2D = moduleInstance.get_node("Area2D")
 	if not targetPortType == "ANY":
 		isCorrectType = Data.validCouples[targetPortType] == portType
 
@@ -268,6 +268,7 @@ func dock(targetPos: Vector2, targetRot: int, targetPortType: String, module: St
 					moduleInstance.queue_free()
 					$EarthUI/UI/Collision.visible = true
 					return
+	area.disconnect("area_shape_entered", self, "overlap")
 	if not selectedPort == null:
 		selectedPort.get_parent().dockedInstances.append(moduleInstance)
 		moduleInstance.dockedInstances.append(selectedPort.get_parent())
@@ -290,4 +291,4 @@ func dock(targetPos: Vector2, targetRot: int, targetPortType: String, module: St
 	
 func overlap(area_rid, area, area_shape_index, local_shape_index):
 	dockBlocked = true
-	print("blocked")
+	$EarthUI.showCollision()

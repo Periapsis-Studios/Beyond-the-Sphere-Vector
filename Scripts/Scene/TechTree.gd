@@ -58,7 +58,8 @@ func onSelect(nodeNum):
 		$CanvasLayer/Menu/Background/Unlocked.text += unlockable + "\n"
 	
 	$CanvasLayer/Menu/Cost.text = tr("cost") + ": " + str(Data.nodes[nodeNum]["Cost"])
-	if Data.science >= Data.nodes[nodeNum]["Cost"]:
+	var isRequiredUnlocked = Data.nodes[Data.nodes[nodeNum]["Requires"]]["Unlocked"]
+	if Data.science >= Data.nodes[nodeNum]["Cost"] and isRequiredUnlocked:
 		$CanvasLayer/Menu/Buy.disabled = false
 	else:
 		$CanvasLayer/Menu/Buy.disabled = true

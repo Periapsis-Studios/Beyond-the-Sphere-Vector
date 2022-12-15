@@ -22,6 +22,7 @@ z_index = 1
 z_as_relative = false
 script = ExtResource( 5 )
 portsNo = 1
+moduleName = "Salyut"
 
 [node name="Port1" type="Sprite" parent="."]
 position = Vector2( 0, -949 )

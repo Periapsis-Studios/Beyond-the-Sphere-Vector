@@ -16,3 +16,4 @@ menu,Menu,Menu
 cost,Cost,Cena
 tutorial,Tutorial,Návod
 collisionText,Collision Detected!,Kolize Detekována!
+oldSaveText,CAN'T LOAD!\nSAVE TOO OLD!,NELZE NAČÍST!\nSTARÁ HRA!

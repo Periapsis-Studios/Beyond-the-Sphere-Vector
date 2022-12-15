@@ -1,1 +1,1 @@
-Now select a module, most likely Salyut or Skylab, and click confirm.
+Now select a module, most likely Salyut or Skylab, and click confirm. Note that you can also right click to undock.

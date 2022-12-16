@@ -15,6 +15,7 @@
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource( 5 )
+maxLoad = 2000
 portsNo = 1
 moduleName = "Kvant-2"
 
@@ -43,7 +44,6 @@ custom_styles/normal = ExtResource( 1 )
 disabled = true
 script = ExtResource( 3 )
 type = "RUS_PROBE"
-moduleName = "Kvant-2"
 
 [node name="Area2D" type="Area2D" parent="."]
 

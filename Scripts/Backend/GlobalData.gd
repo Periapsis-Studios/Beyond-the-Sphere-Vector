@@ -1,6 +1,8 @@
 extends Node
 
 const version = "0.1.2h1"
+const humanWeight = 80 # Kilograms
+const packageWeight = 200 # Kilograms
 func _ready():
 	print("Version: " + version)
 
@@ -290,7 +292,11 @@ func saveStation():
 			"rot": module[0].rotation_degrees,
 			"ports": module[0].ports,
 			"dockedInstances": [],
-			"dockedNumbers": module[0].dockedNumbers
+			"dockedNumbers": module[0].dockedNumbers,
+			"food": module[0].food,
+			"water": module[0].water,
+			"equipment": module[0].equipment,
+			"crew": module[0].crew
 		}
 		for instance in module[0].dockedInstances:
 			module_dict["dockedInstances"].append(
@@ -370,6 +376,10 @@ func finishLoading():
 		moduleInstance.rotation_degrees = stationLine["rot"]
 		moduleInstance.dockedInstances = stationLine["dockedInstances"]
 		moduleInstance.dockedNumbers = stationLine["dockedNumbers"]
+		moduleInstance.food = stationLine["food"]
+		moduleInstance.water = stationLine["water"]
+		moduleInstance.equipment = stationLine["equipment"]
+		moduleInstance.crew = stationLine["crew"]
 		for port in stationLine["ports"]:
 			moduleInstance.ports.append(bool(port))
 		Station.dockedModules.append([moduleInstance, stationLine["name"]])

@@ -15,6 +15,10 @@
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource( 5 )
+canLaunchCrew = true
+needsCrew = true
+maxCrew = 3
+maxLoad = 1050
 portsNo = 1
 moduleName = "Apollo"
 

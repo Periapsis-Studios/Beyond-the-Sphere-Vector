@@ -15,6 +15,7 @@
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource( 5 )
+maxLoad = 2350
 portsNo = 1
 moduleName = "Progress"
 
@@ -40,7 +41,6 @@ custom_styles/normal = ExtResource( 1 )
 disabled = true
 script = ExtResource( 3 )
 type = "RUS_PROBE"
-moduleName = "Progress"
 
 [node name="Area2D" type="Area2D" parent="."]
 

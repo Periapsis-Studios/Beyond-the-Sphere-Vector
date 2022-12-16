@@ -16,6 +16,9 @@
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource( 5 )
+canLaunchCrew = true
+maxCrew = 10
+maxLoad = 30000
 portsNo = 1
 moduleName = "Buran"
 
@@ -51,7 +54,6 @@ custom_styles/normal = ExtResource( 1 )
 disabled = true
 script = ExtResource( 3 )
 type = "APAS"
-moduleName = "Space Shuttle"
 
 [node name="Area2D" type="Area2D" parent="."]
 

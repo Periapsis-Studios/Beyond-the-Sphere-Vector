@@ -21,6 +21,8 @@
 z_index = 1
 z_as_relative = false
 script = ExtResource( 5 )
+maxCrew = 3
+maxLoad = 2000
 portsNo = 1
 moduleName = "Salyut"
 
@@ -47,7 +49,6 @@ custom_styles/normal = ExtResource( 2 )
 disabled = true
 script = ExtResource( 1 )
 type = "RUS_DROGUE"
-moduleName = "Salyut"
 
 [node name="Area2D" type="Area2D" parent="."]
 

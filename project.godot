@@ -8,8 +8,32 @@
 
 config_version=5
 
+_global_script_classes=[{
+"base": "Node2D",
+"class": &"Main",
+"language": &"GDScript",
+"path": "res://Scenes/Main.gd"
+}, {
+"base": "Control",
+"class": &"MainMenu",
+"language": &"GDScript",
+"path": "res://Scenes/UI/MainMenu.gd"
+}]
+_global_script_class_icons={
+"Main": "",
+"MainMenu": ""
+}
+
 [application]
 
 config/name="Beyond-the-sphere"
+run/main_scene="res://Scenes/Main.tscn"
 config/features=PackedStringArray("4.0", "Forward Plus")
 config/icon="res://icon.svg"
+
+[display]
+
+window/size/viewport_width=1024
+window/size/viewport_height=600
+window/stretch/mode="viewport"
+window/stretch/aspect="ignore"

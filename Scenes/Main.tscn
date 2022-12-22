@@ -1,4 +1,4 @@
-[gd_scene load_steps=21743 format=3 uid="uid://dhbvrp7vqakit"]
+[gd_scene load_steps=21744 format=3 uid="uid://dhbvrp7vqakit"]
 
 [ext_resource type="Script" path="res://Scenes/Main.gd" id="1_l5ews"]
 [ext_resource type="Texture2D" uid="uid://b428f8s6lgqac" path="res://Textures/Planets/Animated/Earth.png" id="1_nr2uk"]
@@ -13,6 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://bbq1ck6yt7jur" path="res://Textures/Planets/Animated/Jupiter.png" id="10_hrj6t"]
 [ext_resource type="Texture2D" uid="uid://les8c3lj7m13" path="res://Textures/Planets/Animated/Saturn.png" id="11_8aiim"]
 [ext_resource type="Texture2D" uid="uid://728r7kngbae" path="res://Textures/Planets/Animated/Pluto.png" id="12_tgxr1"]
+[ext_resource type="PackedScene" uid="uid://b6puad2v54nnp" path="res://Scenes/UI/NewGame.tscn" id="14_0f808"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_yw1tx"]
 
@@ -86979,7 +86980,6 @@ script = ExtResource("3_0wqwv")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 current = true
-zoom = Vector2(0.026, 0.026)
 
 [node name="Background" type="Sprite2D" parent="Camera2D"]
 z_index = -1
@@ -86999,8 +86999,6 @@ offset_left = -512.0
 offset_top = -300.0
 offset_right = 512.0
 offset_bottom = 300.0
-grow_horizontal = 2
-grow_vertical = 2
 
 [node name="Thame" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
@@ -87056,3 +87054,17 @@ position = Vector2(13012, 0)
 scale = Vector2(6, 6)
 frames = SubResource("SpriteFrames_hirob")
 script = ExtResource("3_0wqwv")
+
+[node name="NewGame" parent="." instance=ExtResource("14_0f808")]
+visible = false
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 375.0
+offset_top = -1050.0
+offset_right = 1399.0
+offset_bottom = -450.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[connection signal="new_game" from="MainMenu" to="." method="_on_main_menu_new_game"]

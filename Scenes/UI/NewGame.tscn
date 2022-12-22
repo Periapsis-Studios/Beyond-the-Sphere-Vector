@@ -1,0 +1,59 @@
+[gd_scene load_steps=2 format=3 uid="uid://b6puad2v54nnp"]
+
+[ext_resource type="Theme" uid="uid://bkxim1wxdnqsc" path="res://Themes/MainMenu.tres" id="1_77b6t"]
+
+[node name="NewGame" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="NameLabel" type="Label" parent="."]
+offset_left = 20.0
+offset_right = 245.0
+offset_bottom = 79.0
+theme = ExtResource("1_77b6t")
+text = "name: "
+vertical_alignment = 1
+
+[node name="NameEdit" type="LineEdit" parent="NameLabel"]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_right = 501.0
+offset_bottom = 96.0
+grow_horizontal = 0
+theme = ExtResource("1_77b6t")
+placeholder_text = "Click to type"
+
+[node name="Difficulty" type="OptionButton" parent="."]
+offset_left = 20.0
+offset_top = 100.0
+offset_right = 34.0
+offset_bottom = 120.0
+theme = ExtResource("1_77b6t")
+item_count = 4
+selected = 0
+popup/item_0/text = "Sandbox"
+popup/item_0/id = 0
+popup/item_1/text = "Easy"
+popup/item_1/id = 1
+popup/item_2/text = "Normal"
+popup/item_2/id = 2
+popup/item_3/text = "Hard"
+popup/item_3/id = 3
+
+[node name="Start" type="Button" parent="."]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -128.0
+offset_top = -71.0
+offset_right = -20.0
+offset_bottom = -20.0
+grow_horizontal = 0
+grow_vertical = 0
+theme = ExtResource("1_77b6t")
+text = "Start"

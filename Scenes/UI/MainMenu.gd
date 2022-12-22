@@ -3,6 +3,10 @@ class_name MainMenu
 
 
 
+signal new_game
+
+
+
 func _on_new_game_mouse_entered():
 	$NewGame.text = "> " + tr("newGame")
 
@@ -37,3 +41,8 @@ func _on_quit_mouse_exited():
 
 func _on_quit_pressed():
 	get_tree().quit()
+
+
+
+func _on_new_game_pressed():
+	emit_signal("new_game")

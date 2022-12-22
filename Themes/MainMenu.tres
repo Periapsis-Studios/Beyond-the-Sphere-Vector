@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=7 format=3 uid="uid://bkxim1wxdnqsc"]
+[gd_resource type="Theme" load_steps=26 format=3 uid="uid://bkxim1wxdnqsc"]
 
 [ext_resource type="FontFile" uid="uid://byj82vuu8bclj" path="res://Fonts/m5x7.ttf" id="1_l0hqv"]
 
@@ -12,10 +12,48 @@
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_mxbhg"]
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ecw61"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_vsdjf"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_4ch14"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_j87h5"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ya16l"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ftx84"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_elhsq"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8wqnd"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2fmiw"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_cqthq"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_84412"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_1ij03"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2lw18"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_hp5op"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_unqgq"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8te5n"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_wxvi5"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ed8py"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ewhbf"]
+
 [resource]
 default_font_size = 64
 Button/colors/font_color = Color(1, 1, 1, 1)
-Button/colors/font_hover_color = Color(0.95, 0.95, 0.95, 1)
+Button/colors/font_hover_color = Color(0.862745, 0.862745, 0.862745, 1)
 Button/font_sizes/font_size = 64
 Button/fonts/font = ExtResource("1_l0hqv")
 Button/styles/disabled = SubResource("StyleBoxEmpty_7rx7g")
@@ -25,3 +63,29 @@ Button/styles/normal = SubResource("StyleBoxEmpty_3gha0")
 Button/styles/pressed = SubResource("StyleBoxEmpty_mxbhg")
 Label/font_sizes/font_size = 96
 Label/fonts/font = ExtResource("1_l0hqv")
+LineEdit/font_sizes/font_size = 64
+LineEdit/fonts/font = ExtResource("1_l0hqv")
+LineEdit/styles/focus = SubResource("StyleBoxEmpty_ecw61")
+LineEdit/styles/normal = SubResource("StyleBoxEmpty_vsdjf")
+LineEdit/styles/read_only = SubResource("StyleBoxEmpty_4ch14")
+OptionButton/font_sizes/font_size = 64
+OptionButton/fonts/font = ExtResource("1_l0hqv")
+OptionButton/styles/disabled = SubResource("StyleBoxEmpty_j87h5")
+OptionButton/styles/disabled_mirrored = SubResource("StyleBoxEmpty_ya16l")
+OptionButton/styles/focus = SubResource("StyleBoxEmpty_ftx84")
+OptionButton/styles/hover = SubResource("StyleBoxEmpty_elhsq")
+OptionButton/styles/hover_mirrored = SubResource("StyleBoxEmpty_8wqnd")
+OptionButton/styles/normal = SubResource("StyleBoxEmpty_2fmiw")
+OptionButton/styles/normal_mirrored = SubResource("StyleBoxEmpty_cqthq")
+OptionButton/styles/pressed = SubResource("StyleBoxEmpty_84412")
+OptionButton/styles/pressed_mirrored = SubResource("StyleBoxEmpty_1ij03")
+PopupMenu/colors/font_hover_color = Color(0.862745, 0.862745, 0.862745, 1)
+PopupMenu/font_sizes/font_size = 64
+PopupMenu/fonts/font = ExtResource("1_l0hqv")
+PopupMenu/styles/hover = SubResource("StyleBoxEmpty_2lw18")
+PopupMenu/styles/labeled_separator_left = SubResource("StyleBoxEmpty_hp5op")
+PopupMenu/styles/labeled_separator_right = SubResource("StyleBoxEmpty_unqgq")
+PopupMenu/styles/panel = SubResource("StyleBoxEmpty_8te5n")
+PopupMenu/styles/panel_disabled = SubResource("StyleBoxEmpty_wxvi5")
+PopupMenu/styles/separator = SubResource("StyleBoxEmpty_ed8py")
+ScrollContainer/styles/panel = SubResource("StyleBoxEmpty_ewhbf")

@@ -73,6 +73,7 @@ alignment = 0
 
 [connection signal="mouse_entered" from="NewGame" to="." method="_on_new_game_mouse_entered"]
 [connection signal="mouse_exited" from="NewGame" to="." method="_on_new_game_mouse_exited"]
+[connection signal="pressed" from="NewGame" to="." method="_on_new_game_pressed"]
 [connection signal="mouse_entered" from="LoadGame" to="." method="_on_load_game_mouse_entered"]
 [connection signal="mouse_exited" from="LoadGame" to="." method="_on_load_game_mouse_exited"]
 [connection signal="mouse_entered" from="Settings" to="." method="_on_settings_mouse_entered"]
